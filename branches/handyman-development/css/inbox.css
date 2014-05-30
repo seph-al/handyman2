@@ -1,0 +1,157 @@
+
+.dash-constr{
+    padding-top: 20px;
+}
+/*Inbox Content*/
+.a-view-prof,.a-view-prof:hover,.a-view-prof:focus{
+    text-decoration: none;
+    outline: none;
+}
+.a-view-prof:hover .label{
+    background:rgba(240, 173, 78, 0.5);;
+}
+.inbox-content .btn{
+    border-radius: 0;
+}
+.btn-sm{
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 4px 10px 5px;
+}
+.blue.btn {
+    background-color: #4B8DF8;
+    color: #FFFFFF;
+}
+.inbox-content .dropdown-menu{
+    border-radius: 0;
+}
+
+.inbox-content .pagination-control {
+    text-align: right;
+}
+
+.inbox .pagination-control .pagination-info {
+    display: inline-block;
+    padding-right: 10px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.inbox tr {
+    color: #777;
+    font-size: 13px;
+}
+
+.inbox tr label {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.inbox tr.unread td {
+    font-weight: 600;
+}
+
+.inbox td i.icon-paper-clip {
+    top: 2px;
+    color: #d8e0e5;
+    font-size: 17px;
+    position: relative;
+}
+
+.inbox tr i.icon-star,
+.inbox tr i.icon-trash {
+    cursor: pointer;
+}
+
+.inbox tr i.icon-star {
+    color: #eceef0;
+}
+
+.inbox tr i.icon-star:hover {
+    color: #fd7b12;
+}
+
+.inbox tr i.inbox-started {
+    color: #fd7b12;
+}
+
+.inbox .table th,
+.inbox .table td {
+    border: none;
+}
+
+.inbox .table th {
+    background: #eef4f7;
+    border-bottom: solid 5px #fff;
+}
+
+.inbox th.text-right {
+    text-align: right;
+}
+
+.inbox th label.inbox-select-all {
+    color: #828f97;
+    font-size: 13px;
+    padding: 1px 4px 0;
+}
+
+.inbox ul.inbox-nav {
+    margin-bottom: 0;
+}
+
+.inbox ul.inbox-nav li {
+    padding: 0;
+}
+
+.inbox ul.inbox-nav li span {
+    color: #828f97;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.inbox ul.inbox-nav i {
+    color: #fff;
+    padding: 1px 0;
+    font-size: 15px;
+    cursor: pointer;
+    background: #d0dde4 !important;
+}
+
+.inbox ul.inbox-nav i:hover {
+    background: #169ef4 !important;
+}
+
+.inbox td.text-right {
+    width: 100px;
+    text-align: right;
+}
+
+.inbox td.inbox-small-cells {
+    width: 10px;
+}
+
+.inbox .table-hover tbody tr:hover > td,
+.inbox .table-hover tbody tr:hover > th,
+.inbox .table-striped tbody > tr:nth-child(odd) > td,
+.inbox .table-striped tbody > tr:nth-child(odd) > th {
+    background: #f8fbfd;
+    cursor: pointer;
+}
+
+.inbox .table-hover tbody tr:hover > td,
+.inbox .table-hover tbody tr:hover > th {
+    background: #eef4f7;
+}
+div.checker {
+    margin-left: 3px;
+    margin-right: 2px;
+    margin-top: -2px;
+    position: relative;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+div.checker span{
+    height: 19px;
+    width: 19px;
+}

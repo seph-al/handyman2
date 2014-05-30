@@ -1,0 +1,1282 @@
+# Copyright (C) 2014 ProteusThemes
+# This file is distributed under the GPL 2.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Carpress WP Theme 1.4.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/carpress\n"
+"POT-Creation-Date: 2014-04-03 10:08:51+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: 404.php:9 inc/helpers.php:124
+msgid "Error 404"
+msgstr ""
+
+#. translators: the first string %s for line break, the second and third %s for
+#. link to home page wrap
+#: 404.php:17
+msgid ""
+"Looks like something went wrong! The page you were looking for is not here. "
+"%s Go %sHome%s or try to search"
+msgstr ""
+
+#: _misc/translate/pomo/sample/app.php:56
+msgid "Welcome %s!"
+msgstr ""
+
+#: _misc/translate/pomo/sample/app.php:60
+msgid "A string with low priority!"
+msgstr ""
+
+#: _misc/translate/pomo/sample/app.php:62
+msgid "Bye\n"
+msgstr ""
+
+#: archive-gallery.php:58 single-gallery.php:57
+msgid "Gallery not found"
+msgstr ""
+
+#: archive-services.php:68 index.php:70 single.php:72
+msgid "Not Found"
+msgstr ""
+
+#: archive-services.php:71 front-template-page.php:46 page-no-sidebar.php:46
+#: page-right-sidebar.php:46 page.php:46 services-page.php:62
+#: single-services.php:70 single.php:75
+msgid "Page not found"
+msgstr ""
+
+#: comments.php:23
+msgid "comments"
+msgstr ""
+
+#: comments.php:23
+msgid "comment"
+msgstr ""
+
+#: comments.php:34
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:35
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:36
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:46 comments.php:99
+msgid "Comments for this post are closed."
+msgstr ""
+
+#: comments.php:65
+msgid "Write a Comment"
+msgstr ""
+
+#: comments.php:66
+msgid "Fields with * are requierd"
+msgstr ""
+
+#: comments.php:77
+msgid "First and Last name"
+msgstr ""
+
+#: comments.php:78
+msgid "E-mail Address"
+msgstr ""
+
+#: comments.php:79
+msgid "Website"
+msgstr ""
+
+#: comments.php:88
+msgctxt "noun"
+msgid "Your comment"
+msgstr ""
+
+#: comments.php:90
+msgid "Post A Comment"
+msgstr ""
+
+#: inc/custom-comments.php:51
+msgid "<p class=\"name\"><span>%s</span> said:</p>"
+msgstr ""
+
+#. translators: 1: date, 2: time
+#: inc/custom-comments.php:57
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: inc/custom-comments.php:57
+msgid "(Edit)"
+msgstr ""
+
+#: inc/custom-comments.php:65
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/helpers.php:85
+msgid "Page %s"
+msgstr ""
+
+#: inc/helpers.php:119
+msgid "Home Page"
+msgstr ""
+
+#: inc/helpers.php:120
+msgid "Archive by Category &quot;%s&quot;"
+msgstr ""
+
+#: inc/helpers.php:121
+msgid "Search Results for &quot;%s&quot; Query"
+msgstr ""
+
+#: inc/helpers.php:122
+msgid "Posts Tagged &quot;%s&quot;"
+msgstr ""
+
+#: inc/helpers.php:123
+msgid "Articles Posted by %s"
+msgstr ""
+
+#: inc/helpers.php:245
+msgid "Page"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:14 inc/ot-meta-boxes.php:48 inc/ot-meta-boxes.php:134
+msgid "Carpress Options"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:15 inc/ot-meta-boxes.php:49 inc/ot-meta-boxes.php:135
+msgid "Options specific to Carpress theme"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:22 inc/ot-meta-boxes.php:56 inc/ot-meta-boxes.php:142
+#: inc/theme-widgets.php:1486
+msgid "Subtitle"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:23 inc/ot-meta-boxes.php:57 inc/ot-meta-boxes.php:143
+msgid ""
+"Subtitle of this page (shown right below the main title). Leave blank if you "
+"don't want to show."
+msgstr ""
+
+#: inc/ot-meta-boxes.php:31 inc/ot-meta-boxes.php:85
+msgid "Background Image for Title Area"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:32 inc/ot-meta-boxes.php:86
+msgid ""
+"You can upload a custom image for the background of the title area for "
+"individual page."
+msgstr ""
+
+#: inc/ot-meta-boxes.php:65
+msgid "Show on front page"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:66
+msgid "Show this service on the front page?"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:73 inc/ot-meta-boxes.php:156
+#: inc/theme-customizer.php:210 inc/theme-customizer.php:357
+#: inc/theme-customizer.php:371 inc/theme-customizer.php:518
+msgid "Yes"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:78 inc/ot-meta-boxes.php:161
+#: inc/theme-customizer.php:211 inc/theme-customizer.php:356
+#: inc/theme-customizer.php:372 inc/theme-customizer.php:519
+msgid "No"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:94
+msgid "Optional link for the front page services widget"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:95
+msgid ""
+"By default (if you leave this blank) each &quot;READ MORE&quot; link will "
+"link to the service. You can override this default behaviour by specifing "
+"your custom link in this field."
+msgstr ""
+
+#: inc/ot-meta-boxes.php:110
+msgid "Testimonial Options"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:118
+msgid "Title of the author for this testimonial"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:149
+msgid "Disply in the widget?"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:150
+msgid ""
+"If you select here yes, this team member will be shown in the widget The Team"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:168
+msgid "Team Member Custom Fields"
+msgstr ""
+
+#: inc/ot-meta-boxes.php:169
+msgid ""
+"You can here define properties of the team member such as Age, Style, "
+"Education etc."
+msgstr ""
+
+#: inc/post-types.php:12 inc/post-types.php:23 titlearea.php:40
+msgid "Services"
+msgstr ""
+
+#: inc/post-types.php:13
+msgid "Service"
+msgstr ""
+
+#: inc/post-types.php:14 inc/post-types.php:43 inc/post-types.php:72
+#: inc/post-types.php:100 inc/post-types.php:128
+msgid "Add New"
+msgstr ""
+
+#: inc/post-types.php:15
+msgid "Add New Service"
+msgstr ""
+
+#: inc/post-types.php:16
+msgid "Edit Service"
+msgstr ""
+
+#: inc/post-types.php:17
+msgid "New Service"
+msgstr ""
+
+#: inc/post-types.php:18
+msgid "All Services"
+msgstr ""
+
+#: inc/post-types.php:19
+msgid "View Service"
+msgstr ""
+
+#: inc/post-types.php:20
+msgid "Search Services"
+msgstr ""
+
+#: inc/post-types.php:21
+msgid "No services found"
+msgstr ""
+
+#: inc/post-types.php:22
+msgid "No services found in Trash"
+msgstr ""
+
+#: inc/post-types.php:41
+msgid "Galleries"
+msgstr ""
+
+#: inc/post-types.php:42 inc/post-types.php:52 titlearea.php:42
+msgid "Gallery"
+msgstr ""
+
+#: inc/post-types.php:44
+msgid "Add New Gallery"
+msgstr ""
+
+#: inc/post-types.php:45
+msgid "Edit Gallery"
+msgstr ""
+
+#: inc/post-types.php:46
+msgid "New Gallery"
+msgstr ""
+
+#: inc/post-types.php:47
+msgid "All Galleries"
+msgstr ""
+
+#: inc/post-types.php:48
+msgid "View Gallery"
+msgstr ""
+
+#: inc/post-types.php:49
+msgid "Search Galleries"
+msgstr ""
+
+#: inc/post-types.php:50
+msgid "No galleries found"
+msgstr ""
+
+#: inc/post-types.php:51
+msgid "No galleries found in Trash"
+msgstr ""
+
+#: inc/post-types.php:70 inc/post-types.php:81
+msgid "Slider"
+msgstr ""
+
+#: inc/post-types.php:71
+msgid "Slide"
+msgstr ""
+
+#: inc/post-types.php:73
+msgid "Add New Slide"
+msgstr ""
+
+#: inc/post-types.php:74
+msgid "Edit Slide"
+msgstr ""
+
+#: inc/post-types.php:75
+msgid "New Slide"
+msgstr ""
+
+#: inc/post-types.php:76
+msgid "All Slides"
+msgstr ""
+
+#: inc/post-types.php:77
+msgid "View Slide"
+msgstr ""
+
+#: inc/post-types.php:78
+msgid "Search Slides"
+msgstr ""
+
+#: inc/post-types.php:79
+msgid "No slides found"
+msgstr ""
+
+#: inc/post-types.php:80
+msgid "No slides found in Trash"
+msgstr ""
+
+#: inc/post-types.php:98 inc/post-types.php:109
+msgid "Testimonials"
+msgstr ""
+
+#: inc/post-types.php:99
+msgid "Testimonial"
+msgstr ""
+
+#: inc/post-types.php:101
+msgid "Add New Testimonial"
+msgstr ""
+
+#: inc/post-types.php:102
+msgid "Edit Testimonial"
+msgstr ""
+
+#: inc/post-types.php:103
+msgid "New Testimonial"
+msgstr ""
+
+#: inc/post-types.php:104
+msgid "All Testimonials"
+msgstr ""
+
+#: inc/post-types.php:105
+msgid "View Testimonial"
+msgstr ""
+
+#: inc/post-types.php:106
+msgid "Search Testimonials"
+msgstr ""
+
+#: inc/post-types.php:107
+msgid "No testimonial found"
+msgstr ""
+
+#: inc/post-types.php:108
+msgid "No testimonial found in Trash"
+msgstr ""
+
+#: inc/post-types.php:126 inc/post-types.php:137
+msgid "Team"
+msgstr ""
+
+#: inc/post-types.php:127
+msgid "Team Member"
+msgstr ""
+
+#: inc/post-types.php:129
+msgid "Add New Team Member"
+msgstr ""
+
+#: inc/post-types.php:130
+msgid "Edit Team Member"
+msgstr ""
+
+#: inc/post-types.php:131
+msgid "New Team Member"
+msgstr ""
+
+#: inc/post-types.php:132
+msgid "All Team Members"
+msgstr ""
+
+#: inc/post-types.php:133
+msgid "View Team Member"
+msgstr ""
+
+#: inc/post-types.php:134
+msgid "Search Team Members"
+msgstr ""
+
+#: inc/post-types.php:135
+msgid "No team members found"
+msgstr ""
+
+#: inc/post-types.php:136
+msgid "No team members found in Trash"
+msgstr ""
+
+#: inc/register-sidebars.php:15
+msgid "Blog Sidebar"
+msgstr ""
+
+#: inc/register-sidebars.php:17
+msgid "Sidebar in the blog layout"
+msgstr ""
+
+#: inc/register-sidebars.php:33
+msgid "Services Sidebar"
+msgstr ""
+
+#: inc/register-sidebars.php:35
+msgid "Sidebar in the services layout"
+msgstr ""
+
+#: inc/register-sidebars.php:51
+msgid "Gallery Sidebar"
+msgstr ""
+
+#: inc/register-sidebars.php:53
+msgid "Sidebar in the gallery layout"
+msgstr ""
+
+#: inc/register-sidebars.php:67
+msgid "Shop Sidebar"
+msgstr ""
+
+#: inc/register-sidebars.php:69
+msgid "Sidebar for the shop page"
+msgstr ""
+
+#: inc/register-sidebars.php:83
+msgid "Contact Page Sidebar"
+msgstr ""
+
+#: inc/register-sidebars.php:85
+msgid "Sidebar on the contact us and make an appointment page"
+msgstr ""
+
+#: inc/register-sidebars.php:98
+msgid "Regular Page Sidebar"
+msgstr ""
+
+#: inc/register-sidebars.php:100
+msgid "Sidebar on the regular page"
+msgstr ""
+
+#: inc/register-sidebars.php:113
+msgid "Opening Time in Jumbotron"
+msgstr ""
+
+#: inc/register-sidebars.php:115
+msgid "Widget area in the jumbotron on the homepage for opening times"
+msgstr ""
+
+#: inc/register-sidebars.php:126
+msgid "Jumbotron Widgets"
+msgstr ""
+
+#: inc/register-sidebars.php:128
+msgid "Widget area for three widgets in the jumbotron on the homepage"
+msgstr ""
+
+#: inc/register-sidebars.php:139
+msgid "Home Page - above Google maps"
+msgstr ""
+
+#: inc/register-sidebars.php:141
+msgid "Sidebar above the Google maps on the homepage"
+msgstr ""
+
+#: inc/register-sidebars.php:152
+msgid "Home Page - under Google maps"
+msgstr ""
+
+#: inc/register-sidebars.php:154
+msgid "Sidebar under the Google maps on the homepage"
+msgstr ""
+
+#: inc/register-sidebars.php:165
+msgid "Footer"
+msgstr ""
+
+#: inc/register-sidebars.php:167
+msgid "Sidebar in the dark area at the bottom of the website"
+msgstr ""
+
+#: inc/tgm-plugin-activation.php:88
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/tgm-plugin-activation.php:89
+msgid "Install Plugins"
+msgstr ""
+
+#: inc/tgm-plugin-activation.php:90
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: inc/tgm-plugin-activation.php:91
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: inc/tgm-plugin-activation.php:92
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:93
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:94
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:95
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:96
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:97
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:98
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:99
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:100
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:101
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/tgm-plugin-activation.php:102
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/tgm-plugin-activation.php:103
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/tgm-plugin-activation.php:104
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: inc/theme-customizer.php:68
+msgid "Front Page &amp; Banners"
+msgstr ""
+
+#: inc/theme-customizer.php:69
+msgid "Settings for the home page and title area"
+msgstr ""
+
+#: inc/theme-customizer.php:73
+msgid "Images"
+msgstr ""
+
+#: inc/theme-customizer.php:74
+msgid "Images for the Carpress theme"
+msgstr ""
+
+#: inc/theme-customizer.php:78
+msgid "Contact Page"
+msgstr ""
+
+#: inc/theme-customizer.php:79
+msgid "Settings for contact page"
+msgstr ""
+
+#: inc/theme-customizer.php:83
+msgid "Other"
+msgstr ""
+
+#: inc/theme-customizer.php:84
+msgid "Other settings for the theme"
+msgstr ""
+
+#: inc/theme-customizer.php:89
+msgid "Shop"
+msgstr ""
+
+#: inc/theme-customizer.php:90
+msgid "Settings for shop"
+msgstr ""
+
+#: inc/theme-customizer.php:102
+msgid "Main Theme Color"
+msgstr ""
+
+#: inc/theme-customizer.php:112
+msgid "Buttons Color"
+msgstr ""
+
+#: inc/theme-customizer.php:122
+msgid "Base Text Color"
+msgstr ""
+
+#: inc/theme-customizer.php:132
+msgid "Navbar Color"
+msgstr ""
+
+#: inc/theme-customizer.php:142
+msgid "Navbar Text Color"
+msgstr ""
+
+#: inc/theme-customizer.php:152
+msgid "Color for Titles on Subpages"
+msgstr ""
+
+#: inc/theme-customizer.php:172
+msgid "Footer Text Color"
+msgstr ""
+
+#: inc/theme-customizer.php:182
+msgid "Boxed or wide version?"
+msgstr ""
+
+#: inc/theme-customizer.php:187
+msgid "Wide"
+msgstr ""
+
+#: inc/theme-customizer.php:188
+msgid "Boxed"
+msgstr ""
+
+#: inc/theme-customizer.php:196
+msgid "Logo image (recommended dimensions: 195(w) x 70(h))"
+msgstr ""
+
+#: inc/theme-customizer.php:205
+msgid "Force logo to be always 70px high"
+msgstr ""
+
+#: inc/theme-customizer.php:219
+msgid "Favicon image (16 x 16 px), format .ico"
+msgstr ""
+
+#: inc/theme-customizer.php:242
+msgid "Type of Google Maps"
+msgstr ""
+
+#: inc/theme-customizer.php:247
+msgid "Normal map"
+msgstr ""
+
+#: inc/theme-customizer.php:248
+msgid "Satellite"
+msgstr ""
+
+#: inc/theme-customizer.php:249
+msgid "Hybrid"
+msgstr ""
+
+#: inc/theme-customizer.php:250
+msgid "Terrain"
+msgstr ""
+
+#: inc/theme-customizer.php:258
+msgid "Style of Google Maps"
+msgstr ""
+
+#: inc/theme-customizer.php:263
+msgid "Default"
+msgstr ""
+
+#: inc/theme-customizer.php:264
+msgid "Lunar Landscape"
+msgstr ""
+
+#: inc/theme-customizer.php:265
+msgid "Snazzy Maps"
+msgstr ""
+
+#: inc/theme-customizer.php:266
+msgid "Midnight Commander"
+msgstr ""
+
+#: inc/theme-customizer.php:267
+msgid "Hints of Gold"
+msgstr ""
+
+#: inc/theme-customizer.php:284
+msgid "Zoom of Google Maps (more is closer view)"
+msgstr ""
+
+#: inc/theme-customizer.php:297
+msgid "Number of products per page"
+msgstr ""
+
+#: inc/theme-customizer.php:310
+msgid "Title for front page (without slider)"
+msgstr ""
+
+#: inc/theme-customizer.php:320
+msgid "Text for front page (without slider)"
+msgstr ""
+
+#: inc/theme-customizer.php:330
+msgid "Text for link button (without slider)"
+msgstr ""
+
+#: inc/theme-customizer.php:340
+msgid "Link for button (without slider)"
+msgstr ""
+
+#: inc/theme-customizer.php:350
+msgid "Open link in a new page (without slider)?"
+msgstr ""
+
+#: inc/theme-customizer.php:365
+msgid "Display Google Maps on the front page?"
+msgstr ""
+
+#: inc/theme-customizer.php:380
+msgid "Pattern for the background (without slider)"
+msgstr ""
+
+#: inc/theme-customizer.php:386
+msgid "No background pattern"
+msgstr ""
+
+#: inc/theme-customizer.php:387
+msgid "Pattern 1"
+msgstr ""
+
+#: inc/theme-customizer.php:388
+msgid "Pattern 2"
+msgstr ""
+
+#: inc/theme-customizer.php:389
+msgid "Pattern 3"
+msgstr ""
+
+#: inc/theme-customizer.php:390
+msgid "Pattern 4"
+msgstr ""
+
+#: inc/theme-customizer.php:391
+msgid "Pattern 5"
+msgstr ""
+
+#: inc/theme-customizer.php:392
+msgid "Pattern 6"
+msgstr ""
+
+#: inc/theme-customizer.php:400
+msgid "Upload custom pattern for the background (without slider)"
+msgstr ""
+
+#: inc/theme-customizer.php:410
+msgid "Slider interval (in miliseconds, 1s = 1000ms)"
+msgstr ""
+
+#: inc/theme-customizer.php:420
+msgid "Slider text background color"
+msgstr ""
+
+#: inc/theme-customizer.php:430
+msgid "Slider text background color opacity"
+msgstr ""
+
+#: inc/theme-customizer.php:456
+msgid "Character set for Google Fonts"
+msgstr ""
+
+#: inc/theme-customizer.php:472
+msgid "Tap to call number (will be seen on mobile phones)"
+msgstr ""
+
+#: inc/theme-customizer.php:481
+msgid "Tap to call button text (will be seen on mobile phones)"
+msgstr ""
+
+#: inc/theme-customizer.php:490
+msgid "Show tap to call just on mobile or also on desktop?"
+msgstr ""
+
+#: inc/theme-customizer.php:495
+msgid "Mobile"
+msgstr ""
+
+#: inc/theme-customizer.php:496
+msgid "Everywhere"
+msgstr ""
+
+#: inc/theme-customizer.php:504
+msgid "Pattern image for the footer"
+msgstr ""
+
+#: inc/theme-customizer.php:513
+msgid "Show breadcrumbs?"
+msgstr ""
+
+#: inc/theme-widgets.php:28
+msgid "Carpress: Opening Time"
+msgstr ""
+
+#: inc/theme-widgets.php:30
+msgid "Opening Time Widget for placing it into the sidebar or above the slider"
+msgstr ""
+
+#: inc/theme-widgets.php:38
+msgid "Sunday"
+msgstr ""
+
+#: inc/theme-widgets.php:39
+msgid "Monday"
+msgstr ""
+
+#: inc/theme-widgets.php:40
+msgid "Tuesday"
+msgstr ""
+
+#: inc/theme-widgets.php:41
+msgid "Wednesday"
+msgstr ""
+
+#: inc/theme-widgets.php:42
+msgid "Thursday"
+msgstr ""
+
+#: inc/theme-widgets.php:43
+msgid "Friday"
+msgstr ""
+
+#: inc/theme-widgets.php:44
+msgid "Saturday"
+msgstr ""
+
+#: inc/theme-widgets.php:174
+msgid "Opening Time"
+msgstr ""
+
+#: inc/theme-widgets.php:206
+msgid "-"
+msgstr ""
+
+#: inc/theme-widgets.php:213
+msgid "CLOSED"
+msgstr ""
+
+#: inc/theme-widgets.php:225 inc/theme-widgets.php:517
+#: inc/theme-widgets.php:698 inc/theme-widgets.php:837
+#: inc/theme-widgets.php:959 inc/theme-widgets.php:1063
+#: inc/theme-widgets.php:1215 inc/theme-widgets.php:1376
+msgid "Title:"
+msgstr ""
+
+#: inc/theme-widgets.php:232
+msgid "opened"
+msgstr ""
+
+#: inc/theme-widgets.php:234
+msgid "to"
+msgstr ""
+
+#: inc/theme-widgets.php:240
+msgid "Separator between hours"
+msgstr ""
+
+#: inc/theme-widgets.php:245
+msgid "Text used for closed days"
+msgstr ""
+
+#: inc/theme-widgets.php:250
+msgid "Text below the timetable for additional info (for example lunch time)"
+msgstr ""
+
+#: inc/theme-widgets.php:279
+msgid "Carpress: Our Services"
+msgstr ""
+
+#: inc/theme-widgets.php:281 inc/theme-widgets.php:413
+#: inc/theme-widgets.php:556 inc/theme-widgets.php:745
+#: inc/theme-widgets.php:872 inc/theme-widgets.php:1104
+#: inc/theme-widgets.php:1246
+msgid "Use this widget only on the home page of the Carpress theme"
+msgstr ""
+
+#: inc/theme-widgets.php:327
+msgid "Read more"
+msgstr ""
+
+#: inc/theme-widgets.php:337 inc/theme-widgets.php:457
+msgid "READ MORE"
+msgstr ""
+
+#: inc/theme-widgets.php:382
+msgid "Number of services to display:"
+msgstr ""
+
+#: inc/theme-widgets.php:411
+msgid "Carpress: Latest News"
+msgstr ""
+
+#: inc/theme-widgets.php:501
+msgid "Latest News // What is going on"
+msgstr ""
+
+#: inc/theme-widgets.php:521
+msgid "Number of news to display"
+msgstr ""
+
+#: inc/theme-widgets.php:525
+msgid "Text for the all posts's link"
+msgstr ""
+
+#: inc/theme-widgets.php:554
+msgid "Carpress: Latest Galleries"
+msgstr ""
+
+#: inc/theme-widgets.php:691
+msgid "Gallery // From the studio"
+msgstr ""
+
+#: inc/theme-widgets.php:702
+msgid "Number of galleries to display"
+msgstr ""
+
+#: inc/theme-widgets.php:706
+msgid "Max number of image per gallery"
+msgstr ""
+
+#: inc/theme-widgets.php:710
+msgid "Link images to:"
+msgstr ""
+
+#: inc/theme-widgets.php:712
+msgid "None"
+msgstr ""
+
+#: inc/theme-widgets.php:713
+msgid "Gallery page"
+msgstr ""
+
+#: inc/theme-widgets.php:714
+msgid "Image"
+msgstr ""
+
+#: inc/theme-widgets.php:743
+msgid "Carpress: Meet The Team"
+msgstr ""
+
+#: inc/theme-widgets.php:841
+msgid "Text for the link to all members (leave empty if don't want to show):"
+msgstr ""
+
+#: inc/theme-widgets.php:870
+msgid "Carpress: Text with Link"
+msgstr ""
+
+#: inc/theme-widgets.php:937
+msgid "About Us // Our interesting story"
+msgstr ""
+
+#: inc/theme-widgets.php:963
+msgid "Link text"
+msgstr ""
+
+#: inc/theme-widgets.php:967 inc/theme-widgets.php:1490
+msgid "Link"
+msgstr ""
+
+#: inc/theme-widgets.php:972
+msgid "Text block"
+msgstr ""
+
+#: inc/theme-widgets.php:997
+msgid "Carpress: Custom Width Text For Home Page"
+msgstr ""
+
+#: inc/theme-widgets.php:999
+msgid ""
+"Use this widget only on the home page of the Carpress theme. With this "
+"widget you can specify custom width of the text."
+msgstr ""
+
+#: inc/theme-widgets.php:1067
+msgid "Number of columns:"
+msgstr ""
+
+#: inc/theme-widgets.php:1076
+msgid "Automatically add paragraphs"
+msgstr ""
+
+#: inc/theme-widgets.php:1102
+msgid "Carpress: Testimonials"
+msgstr ""
+
+#: inc/theme-widgets.php:1211
+msgid "Testimonials // What other said about us"
+msgstr ""
+
+#: inc/theme-widgets.php:1244
+msgid "Carpress: Divider"
+msgstr ""
+
+#: inc/theme-widgets.php:1296
+msgid "Carpress: Facebook"
+msgstr ""
+
+#: inc/theme-widgets.php:1298
+msgid "Use this widget only in the footer of the Carpress theme"
+msgstr ""
+
+#: inc/theme-widgets.php:1366
+msgid "Facebook // Like us"
+msgstr ""
+
+#: inc/theme-widgets.php:1380
+msgid "FB Page to like"
+msgstr ""
+
+#: inc/theme-widgets.php:1407
+msgid "Carpress: Title with Icon"
+msgstr ""
+
+#: inc/theme-widgets.php:1409
+msgid "Widget for the front page in the head - select title, subtitle and icon"
+msgstr ""
+
+#: inc/theme-widgets.php:1482
+msgid "Title"
+msgstr ""
+
+#: inc/theme-widgets.php:1500
+msgctxt "backend"
+msgid "Text Color:"
+msgstr ""
+
+#: inc/theme-widgets.php:1505
+msgid "Icon"
+msgstr ""
+
+#: inc/theme-widgets.php:1506
+msgid "Click on the icon below or manually select from the %s website"
+msgstr ""
+
+#: index.php:41 single.php:40
+msgid "Author"
+msgstr ""
+
+#: index.php:42 single.php:41
+msgid "No comments"
+msgstr ""
+
+#: index.php:42 single.php:41
+msgid "One comment"
+msgstr ""
+
+#. translators: % represents the number, you must include it
+#: index.php:42 single.php:41
+msgid "% comments"
+msgstr ""
+
+#: index.php:43 single.php:42
+msgid "Categories"
+msgstr ""
+
+#: index.php:43 single.php:42
+msgid "Tags"
+msgstr ""
+
+#: index.php:53
+msgid "Read More"
+msgstr ""
+
+#: index.php:55
+msgid "Link to this post"
+msgstr ""
+
+#: index.php:73
+msgid "No posts found, sorry."
+msgstr ""
+
+#: searchform.php:4
+msgid "Go"
+msgstr ""
+
+#: single-services.php:66
+msgid "Back to services"
+msgstr ""
+
+#: single.php:51
+msgid "Pages:"
+msgstr ""
+
+#: titlearea.php:34
+msgid "Category"
+msgstr ""
+
+#: titlearea.php:36
+msgid "Tag"
+msgstr ""
+
+#: titlearea.php:38
+msgid "Search Results For"
+msgstr ""
+
+#: titlearea.php:44
+msgid "Meet the Team"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:16
+msgid "Cart Totals"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:21
+msgid "Cart Subtotal"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:27 woocommerce/cart/cart-totals.php:67
+msgid "Coupon:"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:75
+msgid "Order Total"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:87
+msgid " (taxes estimated for %s)"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:90
+msgid ""
+"Note: Shipping and taxes are estimated%s and will be updated during checkout "
+"based on your billing and shipping information."
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Carpress WP Theme"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://carpress.demo.proteusthemes.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Carpress WP Theme is perfect for car mechanics, car wash, handymans and "
+"other local business, but it serves as good for any other type of website as "
+"well."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "ProteusThemes"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.proteusthemes.com/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Appointment Page"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Contact Page without Sidebar"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Contact Page Template"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Front Page Template With Content"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Front Page Template With Widgets &amp; Slider"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Front Page Template With Widgets"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Regular Page without Sidebar"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Regular Page with a Sidebar on the Right"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Services Layout"
+msgstr ""

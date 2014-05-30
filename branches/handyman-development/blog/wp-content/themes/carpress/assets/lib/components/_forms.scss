@@ -1,0 +1,76 @@
+//  ==========
+//  = Forms for the Carpress HTML template =
+//  ==========
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  padding-top: 9px;
+  padding-bottom: 9px;
+  border-radius: 3px;
+
+  &:focus {
+    border-color: $theme-clr;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  }
+}
+
+
+.form,
+.wpcf7-form {
+  &.appointment { // appointment form
+    margin: 30px 0;
+  }
+
+  .icon {
+    vertical-align: baseline;
+    margin-left: 10px;
+  }
+
+  .pad-top {
+    padding-top: 36px;
+  }
+
+  .row {
+    margin-bottom: 20px;
+  }
+
+  label {
+    color: $grayDark;
+    font-weight: bold;
+    display: inline;
+  }
+}
+label {
+  font-weight: bold;
+}
+
+
+.textwidget .wpcf7 {
+  @include clearfix;
+
+  input,
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+
+    &.wpcf7-submit {
+      width: auto;
+      float: right;
+    }
+  }
+}

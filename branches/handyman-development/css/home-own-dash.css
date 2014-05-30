@@ -1,0 +1,89 @@
+/* Latest Interns */
+.latest-header{
+    background: #a90329; /* Old browsers */
+    background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+    box-shadow: 0 4px 0 rgba(255, 255, 255, 0.5) inset;
+}
+.header-padds{
+    padding:2%;
+}
+.latest-header h1{
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+}
+.latest-body{
+    border: 1px solid #CCCCCC;
+    margin-bottom: 20px;
+    border-radius: 0 0 5px 5px;
+}
+/* UL Posted job */
+.ul-posted-jobs{
+    margin-bottom: 0;
+    border-radius: 0 0 5px 5px;
+}
+.ul-posted-jobs li.li-latest-intern{
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0;
+}
+.ul-posted-jobs li.li-latest-intern:hover{
+    background: #fafafa;
+    box-shadow: 5px 0 0 #a90329 inset;
+}
+.ul-posted-jobs li.li-latest-intern{
+    padding:15px;
+}
+.ul-posted-jobs li:before,.ul-posted-jobs li:after,.ul-posted-jobs li a:before,.ul-posted-jobs li a:after{
+    content: "";
+    display: table;
+}
+.ul-posted-jobs li:after, .ul-posted-jobs li a:after{
+    clear: both;
+}
+.ul-posted-jobs li.li-latest-intern:last-child{
+    border-bottom: none;
+    border-radius: 0 0 5px 5px;
+}
+.content-job h3{
+    font-size: 16px;
+    margin: 4px 0;
+    padding: 0;
+}
+.desc-job{
+    color: #919191;
+    font-size: 14px;
+    margin: 4px 0;
+}
+.action-dash{
+    text-transform: capitalize;
+    line-height: 50px;
+}
+/* Job type */
+.meta-type{
+    margin: 7px 0 0;
+    padding: 0;
+    text-align: center;
+}
+.dateType.dateStyle {
+    background-color: #1E73BE;
+}
+.dateType {
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.date{
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+.ho-container{
+     padding-top: 20px;
+}

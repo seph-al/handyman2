@@ -1,0 +1,281 @@
+<?php
+
+class ContractorController extends Controller
+{
+ 
+    public $layout='/layouts/home';
+    public $cities = "";
+
+    public function missingAction($action)
+    {
+        $action=str_replace('-','_',$action);
+        $action='action'.ucfirst(strtolower($action));
+        if(method_exists($this,$action))
+            $this->$action();
+        else
+            $this->actionIndex();
+    }
+    
+    public function actionFind()
+    {
+    	$location = Yii::app()->Ini->getlocationbyip(Yii::app()->Ini->rip('ip'));
+    	$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+    	$states = States::model()->findAll(array('order' => 'Name ASC'));
+        $city =  Yii::app()->Ini->v('city');
+        $project =  Yii::app()->Ini->v('project');
+        $zipcode =  Yii::app()->Ini->v('zipcode');
+		$match = Yii::app()->Ini->v('match');
+		
+    	if ($city){
+    		
+    		 $details = Cities::model()->findByAttributes(array('RewriteUrl'=>$city."/"));
+    		  if (count($details)>0){ 
+	          	$city_name = $details->Name;
+	          }
+    		$criteria=new CDbCriteria();
+    		$criteria->condition = "City like '%$city_name%'";
+		    $count=Contractors::model()->count($criteria);
+		    $pages=new CPagination($count);
+
+		    // results per page
+		    $pages->pageSize=5;
+		    $pages->applyLimit($criteria);
+		    $models=Contractors::model()->findAll($criteria);
+    		
+		     $this->render('find_result', array(
+	            'models' => $models,
+	            'pages' => $pages,
+		        'projects'=>$projects,
+		        'records'=>$count,
+		        'city_name'=>$city_name,
+		        'location'=>$city_name.",USA"
+             ));
+             
+    	}else if($project && $zipcode){
+			 $details = Projecttypes::model()->findByAttributes(array('ProjectTypeId'=>$project));
+    		  if (count($details)>0){ 
+	          	
+				$oid =  $details->OID;
+				$city_name = $details->Name;
+					
+					$home_advisor = Yii::app()->Ini->searchhomeadvisor($zipcode,$oid);
+					  //$home_advisor = Yii::app()->Ini->searchhomeadvisor('11741','12005');
+					  $home_advisor_results = $home_advisor['contractor'];
+				
+			  }
+			  
+
+					$criteria=new CDbCriteria();
+					$criteria->condition = "ProjectTypeId=".$project." AND Zip=".$zipcode;
+					$count=Contractors::model()->count($criteria);
+					$pages=new CPagination($count);
+
+					// results per page
+					$pages->pageSize=5;
+					$pages->applyLimit($criteria);
+					$models=Contractors::model()->findAll($criteria);
+				
+				$this->render('match-result',array('pages' => $pages,'result' => $models,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location
+				,'city_name'=>$city_name.' In Zipcode '.$zipcode));
+			  
+			  
+			  
+			  
+		}else if ($project){
+    		 
+    	 $details = Projecttypes::model()->findByAttributes(array('ProjectTypeId'=>$project));
+    		  if (count($details)>0){ 
+	          	$city_name = $details->Name;
+	          }
+    		
+    		$criteria=new CDbCriteria();
+    		$criteria->condition = "ProjectTypeId=".$project;
+		    $count=Contractors::model()->count($criteria);
+		    $pages=new CPagination($count);
+
+		    // results per page
+		    $pages->pageSize=5;
+		    $pages->applyLimit($criteria);
+		    $models=Contractors::model()->findAll($criteria);
+    		
+		     $this->render('find_result', array(
+	            'models' => $models,
+	            'pages' => $pages,
+		        'projects'=>$projects,
+		        'records'=>$count,
+		        'city_name'=>$city_name,
+		        'location'=>$location
+             ));
+    	}else if ($zipcode){
+    		 
+    		$criteria=new CDbCriteria();
+    		$criteria->condition = "Zip='$zipcode'";
+		    $count=Contractors::model()->count($criteria);
+		    $pages=new CPagination($count);
+
+		    // results per page
+		    $pages->pageSize=5;
+		    $pages->applyLimit($criteria);
+		    $models=Contractors::model()->findAll($criteria);
+    		
+		     $this->render('find_result', array(
+	            'models' => $models,
+	            'pages' => $pages,
+		        'projects'=>$projects,
+		        'records'=>$count,
+		        'city_name'=>$zipcode
+             ));
+    	}else if($match){
+			$proj = Projects::model()->findByPk($match);
+			if (count($proj)>0){ 
+	          	$proj_zipcode = $proj->zipcode;
+	          	$project_type_id = $proj->project_type_id;
+				
+					$criteria=new CDbCriteria();
+					$criteria->condition = "ProjectTypeId='$project_type_id' AND Zip = '$proj_zipcode'";
+					$count = Contractors::model()->count($criteria);
+					$pages = new CPagination($count);
+					$result=Contractors::model()->findAll($criteria);
+					
+					$projecttypes = ProjectTypes::model()->findByPK($project_type_id);
+					
+					//$proj_zipcode = '11741';
+					$home_advisor = Yii::app()->Ini->searchhomeadvisor($proj_zipcode,$projecttypes->OID);
+					 $home_advisor_results = $home_advisor['contractor'];
+					
+					 /*$this->render('find_result', array(
+						'models' => $result,
+						'pages' => $pages,
+						'projects'=>$projects,
+						'records'=>$count,
+						'city_name'=>$this->getProjectTypeName($project_type_id).' In Zipcode '.$proj_zipcode
+					 ));*/
+					
+					$this->render('match-result',array('pages' => $pages,'result' => $result,'home_advisors' => $home_advisor,'projects'=>$projects,'states'=>$states,'location'=>$location,'city_name'=>$this->getProjectTypeName($project_type_id).' In Zipcode '.$proj_zipcode));
+			}else{
+				$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location));
+			}
+		}
+    	else {
+    		
+    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location));
+    	}
+    	
+    	
+    }
+	
+	public function getProjectTypeName($project_type_id){
+			$name = "";
+			$details = Projecttypes::model()->findByAttributes(array('ProjectTypeId'=>$project_type_id));
+    		  if (count($details)>0){ 
+	          	$name = $details->Name;
+	          }
+			  return $name;
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	public function actionProfile(){
+		$username = Yii::app()->Ini->v('user');
+		$profile_details = Contractors::model()->findByAttributes(array('Username'=>$username));
+		$current_userid = Yii::app()->user->getId();
+		$con_id = $profile_details->ContractorId;
+		$criteria=new CDbCriteria();
+		$criteria->condition = "contractor_id = '$con_id'";
+		$feedback = Feedback::model()->findAll($criteria);
+		
+		
+		
+		
+			if(count($profile_details)>0){
+		
+				$contractor_id = $con_id;
+				$company = $profile_details->Name;
+				$contact_name = $profile_details->ContactName;
+				$phone = $profile_details->Phone;
+				$fax = $profile_details->Fax;
+				$address1 = $profile_details->Address1;
+				$address2 = $profile_details->Address2;
+				$city = $profile_details->City;
+				$state = $profile_details->State;
+				$zipcode = $profile_details->Zip;
+				$email = $profile_details->Email;
+				$website = $profile_details->Website;
+				$about = $profile_details->AboutBusiness;
+				$services = $profile_details->Services;
+				$date_created = $profile_details->Created;
+				$username = $profile_details->Username;
+				$project_type = $this->getProjectTypeName($profile_details->ProjectTypeId);
+				
+					
+					
+					$is_my_profile = false;
+					if (!Yii::app()->user->isGuest){
+						if($contractor_id == $current_userid){
+							$is_my_profile = true;
+						}
+					}
+					
+					
+					$this->pageTitle = 'Handyman.com - Contractor - '.$company.' Profile';
+					$this->render('contractor-profile', array( 'profile_exists' => true,
+									'contractor_id' =>$contractor_id,
+									'company' => $company,
+								   'contact_name' => $contact_name,
+								   'phone' => $phone,
+								   'fax' => $fax,
+								   'address1' => $address1,
+								   'address2' => $address2,
+								   'city' => $city,
+								   'state' => $state,
+								   'zipcode' => $zipcode,
+								   'email' => $email,
+								   'website' => $website,
+								   'about' => $about,
+								   'services' => $services,
+								   'date_created' => date('F j, Y', strtotime($date_created)),
+								   'username' => $username,
+								   'project_type' => $project_type,
+								   'page' => 'profile',
+								   'param' => "",
+								   'logo' => $this->getContractorProfilePic($profile_details->ContractorId),
+								   'is_my_profile' => $is_my_profile,
+								   'feedback' => $feedback,
+								   'gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
+								   ));
+					
+			}else{
+				$this->redirect(Yii::app()->homeUrl.'home/error');
+			}
+			
+			
+		
+	}
+    
+	public function actionSignup(){
+		$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+		$this->render('signup',array('title'=>'Sign Up as contractor','projects'=>$projects));
+	}
+	
+	public function getContractorProfilePic($contractor_id){
+		$contractorphotos=Contractorphotos::model()->findByAttributes(array('contractor_id' => $contractor_id,'is_profile' => '1'));
+		
+			if (count($contractorphotos)>0){
+				return $contractorphotos->filename;
+			}else{
+				//return 'http://www.justmail.in/platinum/images/clapper.png'; //default avatar
+				return false;
+			}
+	 }
+	 
+	public function actionHomeadvisercall(){
+		/*test run HA API*/
+		$result = Yii::app()->Ini->searchhomeadvisor('11741','12070');
+		var_dump($result);
+		exit();
+	}
+    
+}
