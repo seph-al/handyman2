@@ -1,0 +1,198 @@
+.header-bckgrnd{
+    background: url(http://rdbuploads.s3.amazonaws.com/backgrounds/bg-handyman1.png) no-repeat scroll;
+    background-size: cover;
+    min-height: 410px;
+    padding-top: 260px;
+    background-position: bottom center;
+}
+.wrap-sub-bckgrnd{
+    background-color: rgba(0,0,0,0.25);
+    min-height: 150px;
+    padding:15px;
+}
+.wrap-sub-bckgrnd .img-circle{
+    background: #fff;
+    padding: 2px;
+    width: 60px;
+    height: 60px;
+}
+span.name{
+    color: #fff;
+    font-size: 25px;
+    line-height: normal;
+    text-align: left;
+    text-shadow: 0 3px 5px rgba(0, 0, 0, 0.35);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+.ul-profile{
+    margin-bottom: 10px;
+    color: #fff;
+}
+.ul-profile li{
+    background: rgba(0,0,0,0.35);
+    border-right: 1px solid #777;
+    padding: 10px 5px;
+    margin-right: -5px;
+}
+.ul-profile li:last-child{
+    border-right: none;
+}
+.ul-profile li i{
+    color: #999;
+}
+/* Profile Overlay */
+.top-overlay{
+    background: #f5f5f5;
+    border-radius: 3px;
+    padding: 22px 22px 13px;
+    border: 1px solid #E0E0E0;
+}
+.number-rank{
+    background: #a90329; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    border-radius: 500px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 42px;
+    line-height: 1.7em;
+    text-align: center;
+    text-shadow: 0 4px 2px #000000
+}
+.meta-hndymn{
+    font-size: 24px;
+    display: block;
+    text-align: center;
+}
+.meta-handyman,.meta-points{
+    display: block;
+    text-align: center;
+    font-size: 26px;
+    line-height: normal;
+}
+.wrap-number-rank{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 500px;
+    display: block;
+    overflow: hidden;
+    padding: 4px;
+}
+.back-1{
+    background: #F8F3E7;
+}
+.hnd-ranking-star li i{
+    color: #ffff32;
+    text-shadow: 0 0 1px #000;
+}
+.wrap-profile-info{
+    padding-top: 30px;
+    background: #FAF6F6;
+}
+.panel-style1{
+    box-shadow: 0 0 5px rgba(99, 99, 99, 0.2);
+}
+.panel-style1 > .panel-heading,.li-heading{
+    background: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #555;
+}
+.ul-under-panel li a{
+    font-size: 11px;
+    color: #428BCE;
+    display: block;
+    border: 1px solid #428BCE;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 2px;
+    text-transform: capitalize;
+}
+.ul-under-panel li a:hover{
+    background:#428bce;
+    box-shadow:  0 0 3px rgba(0,0,0,0.3);
+    color: #fff;
+}
+.ul-under-panel li a,.ul-under-panel li a:hover,.ul-under-panel li a:focus{
+    outline: none;
+    text-decoration: none;
+}
+.ratings{
+    font-weight: normal;
+    text-transform: lowercase;
+}
+.location{
+    font-size: 12px;
+}
+.panel-under-style2{
+    background-color: #EEEEEE;
+}
+.panel-under-style2 > .panel-heading{
+    border-bottom: 1px dotted #ccc;
+}
+/* Team */
+.description {
+    margin-top: 10px;
+}
+.team-member{
+    margin-bottom: 10px;
+}
+/* Key Business Information */
+#credentials .bz-badge {
+    padding: 0 5px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 90px;
+}
+#credentials .standard-badge {
+    background: url("http://d3flf7kkefqaeh.cloudfront.net/_assets/badgesx2.png") no-repeat scroll 0 0 / 190px 260px rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 60px;
+    margin: 10px 0;
+    width: 60px;
+}
+@media (min-width: 1200px) {
+    .profile-overlay {
+        margin-top: -70px;
+    }
+    .user-rvws{
+        text-align: center;
+    }
+    .user-rvws .img-circle{
+        width: 83px;
+        height: 83px;
+    }
+    .team-img .img-circle{
+        width: 60px;
+        height: 60px;
+    }
+}
+@media (max-width: 480px) {
+    .user-rvws .img-circle{
+        width: 50px;
+        height: 50px;
+    }
+    .team-member{
+        text-align: center;
+    }
+    #credentials{
+        text-align: center;
+    }
+}
+
+.ul-ed li:first-child{
+	border-right: 1px solid #999;
+}
+.ul-ed li a,.ul-ed li a:hover,.ul-ed li a:focus{
+	text-decoration: none;
+outline: none;
+}

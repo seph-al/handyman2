@@ -1,0 +1,247 @@
+// Jumbotron
+.jumbotron {
+  padding-top: 140px;
+  color: #fff;
+  background-position: center top;
+
+  &.pattern-1 {
+    background: image-url('pattern-1.png');
+  }
+
+  &.pattern-2 {
+    background: image-url('pattern-2.png');
+  }
+
+  &.pattern-3 {
+    background: image-url('pattern-3.png');
+  }
+
+  &.pattern-4 {
+    background: image-url('pattern-4.png');
+  }
+
+  &.pattern-5 {
+    background: image-url('pattern-5.png');
+  }
+
+  &.pattern-6 {
+    background: image-url('pattern-6.png');
+  }
+
+  .header-padding {
+    margin-left: 0;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px 30px;
+    border-radius: 3px;
+  }
+
+  .bottom-widgets {
+    background: $theme-clr;
+    margin-top: 20px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    overflow: hidden;
+
+    .widget {
+      float: left;
+      width: 33.3%;
+
+      &:last-of-type .widget-inner:after {
+        display: none;
+      }
+
+      .fa {
+        color: rgba(255,255,255,0.5);
+        transition: color 0.2s;
+      }
+    }
+    .widget-inner {
+      padding: 15px 25px 15px 30px;
+      position: relative;
+      display: block;
+
+      &:after {
+        position: absolute;
+        content: "";
+        top: -99px;
+        bottom: -99px;
+        right: 0;
+        border-left: 1px solid rgba(0,0,0,0.15);
+        border-right: 1px solid rgba(255,255,255,0.15);
+        transform: rotate(25deg);
+      }
+      &:hover {
+        text-decoration: none;
+
+        .fa {
+          color: rgba(255,255,255,1);
+        }
+      }
+    }
+    .widget-title {
+      color: $white;
+      font-size: 15px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .widget-text {
+      font-size: 12px;
+      margin: 0;
+      color: rgba(255,255,255,0.5);
+    }
+  }
+
+  .jumbotron-title {
+    color: $white;
+    font-size: 60px;
+    font-weight: normal;
+    margin-top: 0;
+  }
+
+  .jumbotron-text {
+    color: $white;
+    font-size: 16px;
+    font-family: $primary-font;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+}
+
+// time table
+.opening-time {
+  clear: both;
+
+  .time-table {
+    color: $dark-color;
+    background-color: $almost-white;
+    border-radius: 2px;
+    padding: 24px 30px;
+
+    .opening-time--title {
+      position: relative;
+      font-size: 22px;
+      color: $theme-clr;
+      text-transform: uppercase;
+      text-align: center;
+      padding-top: 0;
+      margin-top: 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding-bottom: 12px;
+    }
+
+    > .inner-bg {
+      padding-top: 2px;
+    }
+
+    > .additional-info {
+      padding: 4px 8px 0;
+      text-align: center;
+      font-style: italic;
+      font-weight: bold;
+      color: $theme-clr;
+    }
+  }
+
+  .week-day {
+    padding: 4px 0;
+    margin: 0;
+
+    dt {
+      width: 50%;
+      float: left;
+      font-weight: normal;
+    }
+
+    dd {
+      text-align: right;
+    }
+
+    &.closed {
+      dt,
+      dd {
+        color: darken($light-color, 5%);
+      }
+    }
+
+    &.today {
+      dt,
+      dd {
+        color: $btn-clr;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+
+// with slider
+.jumbotron--slider {
+  position: relative;
+  overflow: hidden;
+  background-color: $grayDark;
+
+  .carousel {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-bottom: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .carousel-control {
+    top: 50%;
+    border: none;
+    background: none;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    margin-top: -18px;
+
+    &.right {
+      right: 2%;
+    }
+    &.left {
+      left: 2%;
+    }
+
+    @media (max-width: 1337px) {
+      display: none;
+    }
+  }
+
+  .carousel-indicators {
+    left: 50%;
+    width: 320px;
+    margin-left: -160px;
+    top: 84%;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      float: none;
+      cursor: pointer;
+    }
+  }
+
+  .hidden-slide {
+    display: none;
+
+    &.shown {
+      display: block;
+    }
+  }
+}
