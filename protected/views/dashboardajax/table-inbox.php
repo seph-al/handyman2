@@ -1,7 +1,7 @@
 <?php if (count($messages)>0):?>
     <?php foreach ($messages as $k=>$v):?>
           <tr id="messagerow_<?php echo $v->message_id?>" >
-				                                
+
 				                                    <td class="inbox-small-cells">
 				                                        <div class="checker"><span><input type="checkbox" class="mail-checkbox" value="<?php echo $v->message_id?>"></span></div>
 				                                    </td>
@@ -9,7 +9,7 @@
 			                                        <i class="fa fa-star"></i>
 			                                    </td>
 				                                    <td class="view-message hidden-xs">
-				                                       <?php 
+				                                       <?php
 													                 if ($v->from_user_type == "homeowner"){
 													                 	 echo '<a href="'.Yii::app()->request->baseUrl .'/homeowner/profile/user/'.$v->hfrom->username.'" target="_blank">'.$v->hfrom->firstname." ".$v->hfrom->lastname ." - (homeowner)</a>";
 													                 }else {
@@ -20,10 +20,10 @@
 				                                    <td class="view-message view-message">
 				                                       <a href="javascript:void(0)" class="messageView" id="message_<?php echo $v->message_id?>"><?php echo $v->subject?></a>
 				                                    </td>
-				                                    <td class="view-message inbox-small-cells">
-				                                    </td>
 				                                    <td class="view-message text-right">
 				                                        <?php echo date("F d", strtotime($v->date_sent));?>
+				                                    </td>
+				                                    <td class="view-message inbox-small-cells">
 				                                    </td>
 				                                   </tr>
 				                                 <?php endforeach;?>

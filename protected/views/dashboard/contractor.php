@@ -23,14 +23,14 @@
                                 </a>
                             </div>
                         </div>
-                      <!--  <div class="col-lg-6">
+                      <div class="col-lg-6">
                             <div class="dashboard-stat red-intense">
                                 <div class="visual">
                                     <i class="fa fa-bar-chart-o"></i>
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        1,390
+                                        <?echo $views_count?>
                                     </div>
                                     <div class="desc">
                                         Profile Views
@@ -48,17 +48,17 @@
                                 </div>
                                 <div class="details">
                                     <div class="number">
-                                        549
+                                        <?echo $latest_project_count?>
                                     </div>
                                     <div class="desc">
-                                        Latest Projects
+                                        Latest Projects <?//echo " from  ".$from." ".$to?>
                                     </div>
                                 </div>
                                 <a href="/project/find" class="more">
                                 View more <i class="fa fa-arrow-circle-o-right"></i>
                                 </a>
                             </div>
-                        </div>-->
+                        </div>
                         <div class="col-lg-6">
                             <div class="dashboard-stat purple-plum">
                                 <div class="visual">

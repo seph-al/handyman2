@@ -7,7 +7,7 @@
 <?php if (count($answers) > 0):?>
 <?php foreach ($answers as $k=>$v):?>
 
-<div id="a<?echo $v->answer_id?>" class="qa-a-list-item">																			
+<div id="a-list-<?echo $v->answer_id?>" class="qa-a-list-item">																			
   
  <form action="javascript:processVoteAnswer('<?echo $v->answer_id?>');" method="post" id="vote-answer-form-<?echo $v->answer_id?>">																			
     <div id="voting_4430" class="qa-voting qa-voting-net">																			
@@ -43,15 +43,29 @@
     <input type="hidden" name="answer_id" id="answer_id" value="<?php echo $v->answer_id?>">			
     <input type="hidden" name="t" id="t" value="voteanswer">															
   </form>																			
-  <div class="qa-a-item-main">																			
-    <form action="" method="POST">																			
+  <div class="qa-a-item-main">			
+ 														
+   <form action="javascript:processBestAnswer('<?echo $v->answer_id?>');" method="post" id="best-answer-form-<?echo $v->answer_id?>">																		
       <div class="qa-a-selection">
       </div>																			
       <div class="qa-a-item-content">																			
         <a name="4430"></a>																			
-        <div class="entry-content">																			  
+        <div class="entry-content-<?php echo $v->answer_id?>">																			  
         <?php echo $v->answer?> 																			
-        </div>																			
+        </div>	
+        <div id="answer_form_<?php echo $v->answer_id?>" style="display:none">
+                 
+				   <div class="form-group">
+				     <label for="">Answer:</label>
+					<textarea class="form-control" rows="3" id="answer_<?php echo $v->answer_id?>" name="answer_<?php echo $v->answer_id?>"><?php echo $v->answer?></textarea>
+				   </div>
+					
+					<input type="hidden" name="t" value="updateanswer" id="t">
+					<input type="hidden" name="answer_id" id="answer_id" value="<?php echo $v->answer_id?>">
+					<button type="button" class="btn btn-danger" onclick="processUpdateAnswer('<?php echo $v->answer_id?>')">Update Answer</button>
+					<button class="btn btn-default" type="button" id="btn-cancel-answer" onclick="hideupdate('<?php echo $v->answer_id?>')">Cancel</button>
+			  
+	 </div>																		
       </div>																			
       <span class="qa-a-item-avatar-meta">																			
         <span class="qa-a-item-meta">																			
@@ -94,13 +108,33 @@
           </span>																			
         </span>																			
       </span>																			
-      <div class="qa-a-item-buttons">																			
-        <input class="qa-form-light-button qa-form-light-button-flag" type="submit" value="best answer">
+      <div class="qa-a-item-buttons">					
+       <?php if ($userid == $v->question->owner_id && $role == $v->question->owner_user_type):?>								
+	        <input type="hidden" name="answer_id" id="answer_id" value="<?php echo $v->answer_id?>">
+	        <input type="hidden" name="t" id="t" value="bestanswer">	
+	        <?php ($v->is_best == 1) ? $best= 'qa-form-light-button-flag-best-answer': $best= 'qa-form-light-button-flag'?>							
+	        <input class="qa-form-light-button-<?php echo $v->answer_id?> <?php echo $best?>" type="submit" value="<?php if ($v->is_best==0):?>choose as<?php endif?> best answer">
+	        
+	        <?php else:?>
+	        <?php if ($v->is_best == 1):?>
+	            <input class="qa-form-light-button-<?php echo $v->answer_id?> qa-form-light-button-flag-best-answer" type="submit" value="best answer" disabled>
+	        <?php endif?>
+        <?php endif?>
       </div>																			
       <div id="c4430_list" class="qa-a-item-c-list" style="display:none;">
       </div>																			  
       <!-- END qa-c-list -->																			
-    </form>																			
+    </form>								
+    	<div class="qa-act-btn pull-right">
+    	     
+    	     <?php if ($userid == $v->owner_id && $role == $v->owner_user_type):?>
+		      <a class="qa-button-edit" onclick="showupdateanswer('<?php echo $v->answer_id?>');"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+		     <?php endif;?> 
+               <?php if ($userid == $v->question->owner_id && $role == $v->question->owner_user_type):?>
+			     <a class="qa-button-delete" onclick="deleteanswer('<?php echo $v->answer_id?>');"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</a>
+			  <?php endif?>
+         </div>
+																														
     <div id="c4430" class="qa-c-form" style="display:none;">
     </div>																			  
     <!-- END qa-c-form -->																			
@@ -112,4 +146,6 @@
 </div>	
 <?php endforeach;?>
 <?php endif?>							
+				
+	
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/answers.js"></script>			

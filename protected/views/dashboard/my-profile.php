@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/profile.css">
-    <div class="header-bckgrnd ">
+    <div class="header-bckgrnd" 
+	<?php if($photo_cover != false):?>
+	style="background: url('/uploads/gallery/<?php echo $photo_cover?>') no-repeat scroll center bottom / cover transparent;"
+	<?php endif;?>>
         <div class="wrap-sub-bckgrnd">
             <div class="container">
                 <div class="row">
@@ -51,220 +54,60 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+				
+					 <?php $this->renderPartial('../contractorajax/uploadimage',array('my_gallery'=>$my_gallery,'is_my_profile'=>$is_my_profile,'is_public'=>false)); ?>
+				
                     <div class="panel panel-default panel-style1">
                         <div class="panel-heading">About the Contractor</div>
                         <div class="panel-body" id="profeditbtn1">
-                            <?echo $about?>
+                            <div id="about_content"><?echo $about?></div>
 							<button type="button" class="btn btn-info pull-right" id="profeditAboutbtn">Edit</button>	
                         </div>
 						<div class="panel-body" id="profeditAboutbtn_form" style="display:none">
                            <textarea class="editProfBox" name="editProfBox_about" id="editProfBox_about"><?echo $about?></textarea>	
 						  <div class="pull-right">
-							<a href="javascript:CancelEdit('profeditAboutbtn_form')" class="btn btn-warning btn-lg btn-block">Cancel</a>
+							<a href="javascript:CancelEdit('profeditAboutbtn_form')" class="btn btn-primary editButton3">Cancel</a>
 							<a href="javascript:void(0);" class="btn btn-primary editButton2" id="save_edit_about">Save</a>
 							<span class="postErrors editProfBox_about"></span>
 						</div>
                         </div>
 						 <div class="panel-heading">Services</div>
                         <div class="panel-body" id="profeditbtn1">
-                            <?echo $services?>
+                             <div id="services_content"><?echo $services?></div>
 							<button class="btn btn-info pull-right" id="profeditServicesbtn">Edit</button>	
                         </div>
 						 <div class="panel-body" id="profeditServicesbtn_form" style="display:none">
                            <textarea class="editProfBox" name="editProfBox_services" id="editProfBox_services"><?echo $services?></textarea>
 						   <div class="pull-right">
-								<a href="javascript:CancelEdit('profeditServicesbtn_form')" class="btn btn-warning btn-lg btn-block">Cancel</a>
+								<a href="javascript:CancelEdit('profeditServicesbtn_form')" class="btn btn-primary editButton3">Cancel</a>
 								<button class="btn btn-primary editButton2" id="save_edit_services">Save</button>
 								<span class="postErrors editProfBox_services"></span>
 							</div>
                         </div>
                     </div>
-              <?php $this->renderPartial('../contractorajax/feedback',array('feedback'=>$feedback,'is_my_profile'=>$is_my_profile)); ?>
+				<!------------------------------------------>
+					
+					<div class="panel panel-default panel-style1">
+						<div id="reviews" class="panel-heading">
+							Feedback
+							<span class="clearfix"></span>
+						</div>
+							<div id='errors2'></div>
+							<div class="panel-body">
+							<div id="feedbackmessages">
+							
+								 <?php $this->renderPartial('../contractorajax/feedback',array('feedback'=>$feedback,'is_my_profile' => $is_my_profile)); ?>
+							
+							</div>
+							
+						</div>
+					</div>
+					
+				<!------------------------------------------->
                 </div>
                 <div id="credentials" class="col-lg-4">
-                    <div class="panel panel-default panel-style1 back-1">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <span class="wrap-number-rank">
-                                        <span class="number-rank text-center ">
-                                            2997
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="col-lg-6">
-                                    <ul class="list-inline hnd-ranking-star text-center">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                    <span class="meta-handyman">HANDYMAN</span>
-                                    <span class="meta-points">POINTS</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default panel-style1">
-                        <div class="panel-heading">Key Business Information</div>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-lg-3 col-lg-12">
-                                        <div id="licensed-badge" class="bz-badge standard-badge"></div>
-                                    </div>
-                                    <div class="col-lg-9 col-lg-12">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                BuildZoom Score
-                                            </li>
-                                            <li>
-                                                <a href="">Learn how the BuildZoom Score is calculated</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="panel panel-default panel-style1">
+					 <?php $this->renderPartial('../contractor/information',array('contractor_license' => $contractor_license,'contractor_bond' => $contractor_bond,'social_accounts' => $social_accounts,'contractor_points'=>$contractor_points)); ?>
+                    <!--<div class="panel panel-default panel-style1">
                         <div class="panel-heading">Team</div>
                         <div class="panel-body">
                             <div class="row team-member">
@@ -286,11 +129,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
     </div>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/feedback.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/myprofile.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/plugins/fileupload/vendor/jquery.ui.widget.js"></script>
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/plugins/fileupload/jquery.iframe-transport.js"></script>
@@ -304,33 +149,7 @@ $(function () {
     'use strict';
  
     var base_url = $('#base_url').val();
-    $('#fileupload').fileupload({
-        url: base_url+'/fileuploadajax',
-        dataType: 'json',
-        done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo('#files');
-				$('#profile-pic').attr('src',base_url+'/uploads/profile/'+file.name);
-				$.post(base_url+'/contractorajax',{t:'saveProfilePic',filename:file.name},function(data){
-					if(data.success){
-						console.log("profile picture saved successfully.");
-						$('#display_picture').css("display","block");
-						$('#display_picture_edit').css("display","none");
-					}else{
-						console.log("An error occurred.");
-					}
-				});
-            });
-        },
-        progressall: function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .progress-bar').css(
-                'width',
-                progress + '%'
-            );
-        }
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+   
 		
 	$('#upload_multiple').fileupload({ 
 		url: base_url+'/fileuploadajax/uploadmultiple',
@@ -339,8 +158,9 @@ $(function () {
             $.each(data.result.files, function (index, file) {
 					$.post(base_url+'/dashboardajax/saveworkgallery',{filename:file.name},function(data){
 						if(data.success){
-							var html = '<li id="li-gallery-'+data.photo_id+'"><img src="'+base_url+'/uploads/gallery/'+file.name+'" alt="" class="img-thumbnail"/><input type="checkbox" name="select_from_gallery" id="select_from_gallery" value="'+data.photo_id+'" /></li>';
-							$('#workgallery ul').append(html);
+							$('#warning_messages2').css('display','none');
+							var html = '<div class="col-lg-4 marg-btm text-center" id="li-gallery-'+data.photo_id+'"><div class="checkbox ch-1"><label for="op1"><div><a href="javascript:;" class="set_cover" id="image_id_'+data.photo_id+'"><img class="img-responsive gallery-img" src="'+base_url+'/uploads/gallery/'+file.name+'" id="image_'+data.photo_id+'"></a></div><input type="checkbox" name="select_from_gallery" id="select_from_gallery" value="'+data.photo_id+'"></label></div></div>'; 
+							$('#gallery_action_result').append(html);
 							console.log("gallery saved.");
 						}
 					});
@@ -367,6 +187,23 @@ function cancelEditDP(){
 	$('#display_picture_edit').css("display","none");
 }
 
+  $(document).on('change', '.btn-file :file', function() {
+                var input = $(this),
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [numFiles, label]);
+        });
+        $(document).ready( function() {
+            $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+                var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+                if( input.length ) {
+                    input.val(log);
+                } else {
+                    if( log ) alert(log);
+                }
+            });
+        });
+
 
 </script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/myprofile.js"></script>

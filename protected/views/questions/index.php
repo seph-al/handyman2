@@ -31,11 +31,10 @@
 																		</div>
 																  </div>
 																<div class="col-md-7qa" id="recent-questions">
+																	
 																	<?$this->renderPartial('recent-questions',array('questions'=>$questions));?>
 																</div><!-- recent-questions -->
-																<div class="col-md-7qa" id="load_questions_container">
-																	&nbsp;
-																</div>
+																
 														</div>
 													</div>
 												</div>

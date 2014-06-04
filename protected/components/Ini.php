@@ -293,7 +293,7 @@ class Ini extends CApplicationComponent
     }
     
     public function getlocationbyip($ip){
-    	$result = file_get_contents('http://api.ipinfodb.com/v3/ip-city/?key=554fe86aa47fafc59f72559708f3b744ed4627d77d14b205a68f6086276a81f7&ip='.$ip);
+    	$result = @file_get_contents('http://api.ipinfodb.com/v3/ip-city/?key=554fe86aa47fafc59f72559708f3b744ed4627d77d14b205a68f6086276a81f7&ip='.$ip);
     	$vars = explode(';',$result);
     	$location = $vars[6].",".$vars[4];
     	return $location;
@@ -348,6 +348,8 @@ class Ini extends CApplicationComponent
    	 $url = "http://affiliate.renovationexperts.com/aff_testing/lemond_ping.asp";
    	 $url2 = "http://affiliate.renovationexperts.com/aff_testing/lemond_addlead_product.asp";
 
+   	 //$url = "http://affiliate.renovationexperts.com/pingpost/lemond_ping.asp";
+   	 //$url2 = "http://affiliate.renovationexperts.com/pingpost/lemond_addlead_product.asp";
    	 
    	 $pmodel = Projects::model()->findByPk($project_id);
    	 //$url = "http://affiliate.renovationexperts.com/pingpost/lemond_ping.asp";
@@ -505,15 +507,10 @@ class Ini extends CApplicationComponent
    	 $headers = array();
    	 $param = array();
      $result = @file_get_contents($url);
-	 if($result){
-		$xml = simplexml_load_string($result);
-		 $json = json_encode($xml);
-		 $array = json_decode($json,TRUE);
-		 return $array;
-	 }else{
-		 
-		 return false;
-	 }
+     $xml = simplexml_load_string($result);
+	 $json = json_encode($xml);
+	 $array = json_decode($json,TRUE);
+	 return $array;
    }
    
    

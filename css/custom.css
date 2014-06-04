@@ -427,7 +427,7 @@ padding-top: 20px;
 .findRiteUlNew {
     display: inline-block;
     width: 100%;
-    margin: 20px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     border: 1px solid rgb(247, 251, 255);
     border-radius: 5px 5px 5px 5px;
     background: rgb(229,229,229); /* Old browsers */
@@ -1068,7 +1068,7 @@ box-shadow: 0px 5px 5px #F4E070 inset;
 }
 .separatorCircle {
     position: absolute;
-    left: 40%;
+    left: 38.5%;
     bottom: -6px;
     border-bottom: 7px solid #4779BA;
     width: 23%;
@@ -2364,6 +2364,19 @@ content:url('http://icons.iconarchive.com/icons/umar123/build/32/0044-Carton-ico
 vertical-align:-8px;
 margin-right:3px;
 }
+
+ul.subul li:nth-child(4)::before { 
+content:url('images/my-account-bond-icon.png');
+vertical-align:-8px;
+margin-right:3px;
+}
+
+ul.subul li:nth-child(5)::before { 
+content:url('images/my-account-network-icon.png');
+vertical-align:-8px;
+margin-right:3px;
+}
+
 ul.subul li a {
     color: rgb(255, 255, 255);
     cursor: pointer;
@@ -2994,3 +3007,63 @@ text-decoration:none;
 background:red;
 color:#ffffff;
 }.times{	position: absolute; 	top: -11px; 	right: 0px;}
+.findJobRight ul.list-group {
+margin-top:-33px;
+}
+.findJobRight .list-group-item {
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+    margin-bottom: -4px;
+	margin-top: 2px;
+    border: 1px dotted #ccc;
+    width: 46%;
+    float: left;
+    margin-left: 10px;
+    height:40px;
+}
+ul.findRiteUlNew li {
+    position: relative;
+    display: block;
+    padding: 10px 0px;
+    margin-bottom: -4px;
+	margin-top: 2px;
+    border-bottom: 1px dotted #ccc;
+    width: 46%;
+    float: left;
+    margin-left: -20px;
+    margin-right:32px;
+    height:30px;
+    overflow:hidden;
+}
+.qna-side .list-group-item {
+	width:94%;
+	height:auto;
+	padding: 14px 0px 8px;
+}
+.qna-side .list-group-item p {
+	line-height:20px;
+}
+.qna-side .qna-side-title {
+	font-size:16px;
+	font-weight:bold;
+	clear:both;
+}
+.qna-side .qna-side-who {
+	clear:both;
+	margin-left: 21px;
+	font-size:13px;
+}
+.qna-side .list-group-item .glyphicon {
+	float:left;
+	height:20px;
+	color:#777;
+}
+.qna-side .list-group-item  a.qna-side-ask {
+	margin-left:2px;
+	color:#419641;
+	float:right;
+	width:305px;
+}
+
+

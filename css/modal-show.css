@@ -1,0 +1,92 @@
+/*------Modal------*/
+.logRegMain{
+    background: #fff;
+    border-radius: 0;
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.5);
+    border: 1px solid #ccc;
+}
+.logRegMain .logReg{
+    color: #fff;
+    padding: 15px 0;
+}
+.logReg small{
+    color: #ddd;
+    display: block;
+    font-size: 17px;
+    padding-top: 15px;
+}
+.logRegMain .modal-header{
+    background: #a90329; /* Old browsers */
+    background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+}
+.logRegMain .modal-footer{
+    background: #f5f5f5;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #ddd;
+    box-shadow: none;
+    border-radius: 0;
+    text-align: center;
+    margin-top: 2px;
+}
+.logRegMain .close,.logRegMain .close:focus,.logRegMain .close:hover{
+    color: #fff;
+    text-shadow: none;
+    outline: none;
+}
+.logRegMain .close{
+    opacity: 0.7;
+}
+.logRegMain .close:hover{
+    opacity: 1;
+}
+.logRegMain .modal-body{
+    padding: 0;
+}
+/*------Content------*/
+.wrap-content-lock{
+    padding: 30px 0;
+    background: url(http://rdbuploads.s3.amazonaws.com/backgrounds/bg-handyman1.png)no-repeat scroll center center rgba(0,0,0,0);
+    background: cover;
+    min-height: 244px;
+}
+.wrap-content-lock i{
+    font-size: 150px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    vertical-align: top;
+}
+/*------Extend footer-----*/
+.extnd-footer{
+    padding: 15px 0;
+}
+.ul-reset{
+    margin-bottom: 0;
+}
+
+.modal_social{
+	display:inline-block;margin-right:10px;
+}
+
+.modal_social .fb{
+	background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Facebook-icon.png) no-repeat left top;width:32px;min-height:32px;
+}
+
+.modal_social .twitter{
+	background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Twitter-icon.png) no-repeat left top;width:32px;min-height:32px;
+}
+.modal_social .gplus{
+	background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/GooglePlus-icon.png) no-repeat left top;width:32px;min-height:32px;
+}
+
+.modal_social .pinterest{
+	background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Pinterest-icon.png) no-repeat left top;width:32px;min-height:32px;
+}
+
+.modal_social .linkedin{
+	background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/LinkedIn-icon.png) no-repeat left top;width:32px;min-height:32px;
+}

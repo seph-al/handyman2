@@ -105,4 +105,14 @@ class HomeController extends Controller
 		    throw new CHttpException(404, 'Page not found.');
 	}
     
+	public function actionSitemap(){
+		 header('Content-Type: application/xml');
+		 $cities = Cities::model()->findAll(array(
+                'order'=>'Name ASC',
+               ));
+         $projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+         $contractors = Contractors::model()->findAll(array('order' => 'Name ASC'));      
+         $this->renderPartial('sitemapxml',array('cities'=>$cities,'projects'=>$projects,'contractors'=>$contractors));
+         
+	}
 }

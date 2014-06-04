@@ -1,4 +1,5 @@
-	<?php if(count($feedback)>0):?>
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/feedback2.js"></script>
+<?php if(count($feedback)>0):?>
 			<?php foreach($feedback as $k=>$v):?>
 			<input type="hidden" id="contractor_id" value="<?php echo $v->contractor_id?>"/>
 			<div class="row" id="feedback_<?php echo $v->feedback_id?>">
@@ -11,13 +12,12 @@
 						?>
 							<img src="http://d3flf7kkefqaeh.cloudfront.net/_assets/128x128_no_pht.png" class="img-circle" alt="default reviewer logo">
 						<?php else: ?>
-							<img src="<?php echo Yii::app()->request->baseUrl.'/uploads/profile/'.$fmodel->homeowner->photo?>" class="img-circle" alt="default reviewer logo">
+							<img src="<?php echo Yii::app()->request->baseUrl.'/uploads/homeowner/'.$fmodel->homeowner->photo?>" class="img-circle" alt="default reviewer logo">
 						<?php endif; ?>
 						</div>
 						<div class="col-lg-12 col-xs-9">
-							<strong><?php
-							
-									
+							<strong>
+							       <?php
 									$home_first = $fmodel->homeowner->firstname; 
 									echo $home_first;
 									?></strong>
@@ -36,21 +36,26 @@
 							<?php echo $v->message?>
 							
 							
-							<!-------------------------->
-							
-							<div>
-								
-								<ul class="pull-right list-inline ul-ed">
+								<div class="row">
+						   
+						   <div class="col-lg-7">
+							   <ul class="list-inline ul-ed">
 								<?php if(Yii::app()->user->getId() == $v->homeowner_id):?>
-								<li><a href="javascript:;" id="feededit_<?php echo $v->feedback_id?>" class="feededit2" ><i class="fa fa-edit"></i> Edit</a></li>
+								<li><a href="javascript:;" id="feededit_<?php echo $v->feedback_id?>" class="feededit" ><i class="fa fa-edit"></i> Edit</a></li>
 								<?php endif;?>
 								<?php if(Yii::app()->user->getId() == $v->homeowner_id || $is_my_profile == true):?>
-								<li><a href="javascript:;" id="feeddelete_<?php echo $v->feedback_id?>" class="feeddelete2"><i class="fa fa-trash-o"></i> Delete</a></li>
+								<li><a href="javascript:;" id="feeddelete_<?php echo $v->feedback_id?>" class="feeddelete"><i class="fa fa-trash-o"></i> Delete</a></li>
 								<?php endif;?>
 								</ul>
 							</div>
+					       
+					       <div class="col-lg-5">
+						      <?php $this->renderPartial('../contractorajax/feedback_rating',array('id'=>$v->feedback_id,'update'=>true),false,true); ?>
+						   </div>
+						  
+						</div>
 							
-							<!--------------------->
+							
 						</div>
 					</div>
 				</div>

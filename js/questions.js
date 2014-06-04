@@ -95,7 +95,7 @@ function deletequestion(id,proceed){
 	}
 }
 
-function getUnanswered(){
+/*function getUnanswered(){
 	var base_url = $('#base_url').val();
 	
 	$.post(base_url+'/questionsajax',{t:'getunsanswered'},function(html){
@@ -118,7 +118,7 @@ function getallactivity(){
 function showDefaultQuestions(){
 	$('#recent-questions').show();
 	$('#load_questions_container').hide();	
-}
+}*/
 
 function processVote(question_id){
 	var base_url = $('#base_url').val();
@@ -133,7 +133,7 @@ function processVote(question_id){
 
 $(document).ready(function(){
 	loadquestions(1);
-	$('#load_questions_container').hide();
+	//$('#load_questions_container').hide();
 	
 	$('.qa-vote-buttons-net').each(function(){
 		var base_url = $('#base_url').val();

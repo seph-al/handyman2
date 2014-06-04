@@ -188,13 +188,16 @@ class ContractorController extends Controller
 		$criteria=new CDbCriteria();
 		$criteria->condition = "contractor_id = '$con_id'";
 		$feedback = Feedback::model()->findAll($criteria);
-		
-		
-		
+		$criteria_social = new CDbCriteria();
+		$criteria_social->condition = "contractor_id = '$con_id'";
+		$social_accounts = ContractorSocials::model()->findAll($criteria_social);
+		$contractor_license = ContractorLicense::model()->findByAttributes(array('contractor_id'=>$con_id));
+		$contractor_bond = ContractorBond::model()->findByAttributes(array('contractor_id'=>$con_id));
+		$contractor_points = Contractors::model()->updatePoints($con_id);
 		
 			if(count($profile_details)>0){
-		
-				$contractor_id = $con_id;
+		        $profile_details->updatePoints($profile_details->ContractorId);
+		        $contractor_id = $con_id;
 				$company = $profile_details->Name;
 				$contact_name = $profile_details->ContactName;
 				$phone = $profile_details->Phone;
@@ -211,13 +214,30 @@ class ContractorController extends Controller
 				$date_created = $profile_details->Created;
 				$username = $profile_details->Username;
 				$project_type = $this->getProjectTypeName($profile_details->ProjectTypeId);
+				$photo_cover = $this->getProfileCover($profile_details->ContractorId);
 				
 					
 					
 					$is_my_profile = false;
+					$homeowner_projects = array();
 					if (!Yii::app()->user->isGuest){
 						if($contractor_id == $current_userid){
 							$is_my_profile = true;
+						}else{
+							
+							/*
+								if homeowner
+								can send message and attach project
+							*/
+							
+							 if(Yii::app()->user->role == 'homeowner'){
+									$criteria=new CDbCriteria();
+									$criteria->condition = "homeowner_id = ".$current_userid;
+									$homeowner_projects = Projects::model()->findAll($criteria);
+									
+							 }
+							
+							
 						}
 					}
 					
@@ -245,9 +265,32 @@ class ContractorController extends Controller
 								   'param' => "",
 								   'logo' => $this->getContractorProfilePic($profile_details->ContractorId),
 								   'is_my_profile' => $is_my_profile,
+								   'contractor_license' => $contractor_license,
+								   'contractor_bond' => $contractor_bond,
+								   'social_accounts' => $social_accounts,
+								   'contractor_points' => $contractor_points,
 								   'feedback' => $feedback,
-								   'gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
+								   'photo_cover' => $photo_cover,
+								   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
+								   ,'homeowner_projects'=>$homeowner_projects
 								   ));
+								   
+                //update views
+			    if (!Yii::app()->user->isGuest){
+			    	$userid = Yii::app()->user->getId();
+			    	$role = Yii::app()->user->role;
+                  $views = ContractorViews::model()->findByAttributes(array('viewed_by'=>$userid,'contractor_id'=>$contractor_id,'viewed_user_type'=>$role));
+                  if (count($views)> 0){
+                  }else {
+                     $views = new ContractorViews();
+                     $views->contractor_id = $contractor_id;
+                     $views->viewed_by = $userid;
+                     $views->viewed_user_type = $role;
+                     $views->save();	
+                  }
+               }
+				
+              
 					
 			}else{
 				$this->redirect(Yii::app()->homeUrl.'home/error');
@@ -278,6 +321,18 @@ class ContractorController extends Controller
 		$result = Yii::app()->Ini->searchhomeadvisor('11741','12070');
 		var_dump($result);
 		exit();
+	}
+	
+	public function getProfileCover($contractor_id){
+		$contractorphotos=Contractorphotos::model()->findByAttributes(array('contractor_id' => $contractor_id,'is_bg' => '1'));
+		
+			if (count($contractorphotos)>0){
+				return $contractorphotos->filename;
+			}else{
+				//return 'http://www.justmail.in/platinum/images/clapper.png'; //default avatar
+				return false;
+			}
+	
 	}
     
 }

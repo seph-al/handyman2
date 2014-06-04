@@ -1,3 +1,14 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		var is_guest = $('input#is_guest').val();
+		if(is_guest){
+			$('#myModal .modal-title').html(title);
+			$('#myModal .modal-body').html(content);
+			$('#myModal').modal('show');
+		}
+	});
+</script>	
+	
 	<div class="projBanner">
 		<div class="container">
 			<form class="marg0" name="findjobsearch" method="post" action="<?php echo Yii::app()->request->baseUrl; ?>/project/find">
@@ -73,7 +84,7 @@
   <div class="panel-body">
 <h3>Take on a project Today</h3>
 <?php if (Yii::app()->user->isGuest):?>
-<p><a title="register as a contractor for free" href="/contractor/signup" class="btn btn-danger btn-lg btn-block">Register as a Contractor</a></p>
+<input type="hidden" name="is_guest" id="is_guest" value="1" />
 <?php endif;?>		
   </div>
 
@@ -93,3 +104,30 @@
 			</div>
 		</div>
 	</div>
+	
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+                            <div class="logRegMain">
+                                <div class="modal-header">
+                                    <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                                    <h2 id="myModalLabel" class="text-center logReg">
+                                        <i class="fa fa-key"></i> Handymen
+                                        <small>
+                                           <strong>Home Products, Product Finder, Contractor Locator</strong>
+                                        </small>
+                                    </h2>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="wrap-content-lock text-center">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <p>
+                                        <button class="btn btn-primary"><i class="fa fa-lock"></i> Login to Dashboard</button>
+                                    </p>
+                                    Don't have an account? <a> Create one for free!</a>
+                                </div>
+                            </div>
+                        </div>
+</div>
+<!-- /.modal -->

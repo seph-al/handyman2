@@ -250,6 +250,9 @@ background:#fafafa;
     height: 24px;
     width: 24px;
 }
+.qa-vote-up-button:hover {
+	background: url("http://domaindirectory.com/template/handyman/images/thumbs-up-hover.png") no-repeat scroll 0% 0% transparent;
+}
 .qa-vote-up-button {
     text-indent: 9999px;
 }
@@ -442,6 +445,7 @@ background:#fafafa;
 .qa-form-light-button-flag, .qa-form-light-hover-flag {
     background: url("http://domaindirectory.com/template/handyman/images/flag-icon.png") no-repeat scroll left center transparent;
     padding-left: 18px;
+	height:22px;
 }
 .qa-form-light-button-answer, .qa-form-light-hover-answer {
     background: url("http://domaindirectory.com/template/handyman/images/answer-icon.png") no-repeat scroll left center transparent;
@@ -481,3 +485,57 @@ background:#fafafa;
 background:#efefef;
 border-radius:4px;
 }
+
+.qa-form-light-button-flag-best-answer {
+    padding-left: 18px;
+	background: url("http://domaindirectory.com/template/handyman/images/flag-icon.png") no-repeat scroll left center rgb(74, 162, 74);
+	border: 2px solid rgb(57, 132, 57);
+	/*box-shadow: 0px 0px 6px rgba(77, 165, 77, 0.85);*/
+	color: rgb(255, 255, 255);
+}
+a.qa-button-edit {	
+    padding: 2px 3px 0px 3px;
+	border:1px solid #ccc;
+	border-bottom:1px solid #999;
+	cursor:pointer;
+	text-decoration:none;
+	height:22px;
+}
+a.qa-button-delete {
+   padding: 2px 3px 0px 3px;
+	border:1px solid #ccc;
+	border-bottom:1px solid #999;
+	cursor:pointer;
+	text-decoration:none;
+	height:22px;
+}
+.qa-act-btn {
+	padding: 8px 0px 0px;
+margin-top: -28px;
+margin-left: 106px;
+}
+.containFAQ h3 {
+		 padding:5px 0;
+		 margin:0;
+		}
+		.containFAQ p.asks {
+		font-size:20px;
+		}
+		.containFAQ .ask-title {
+		margin-left:8px;
+		color:#419641;
+		}
+		.containFAQ .answers {
+		margin-left:25px;
+		margin-top:-10px;
+		}
+		.containFAQ .ask-con {
+		margin-top:5px;
+		}
+		.containFAQ .faq-intro {
+		border-bottom:1px solid #ccc;
+		margin-bottom:15px;
+		}
+		.containFAQ a.faq-contact {
+		font-size:15px;
+		}

@@ -1,8 +1,8 @@
-<table width="730" cellspacing="0" cellpadding="0" border="0" align="" style="border:50px solid #F3F0FF;font:normal 14px/15px Verdana">
+<table width="730" cellspacing="0" cellpadding="0" border="0" align="" style="font:normal 14px/15px Verdana">
 	<thead>
 		<tr>
 			<th align="center" style="padding:15px;background:#F0F2FF" colspan="3">
-				<img alt="http://handyman.com" src="http://d2qcctj8epnr7y.cloudfront.net/images/2013/logo-handyman-1.png"></img>
+				<img style="width: 200px;" alt="http://handyman.com" src="http://d2qcctj8epnr7y.cloudfront.net/images/2013/logo-handyman-1.png"></img>
 			</th>
 		</tr>
 	</thead>
@@ -64,11 +64,11 @@
 					<tbody>
 						<tr style="display:block;color:#000000;text-align:center">
 							<td style="text-align:center;display:block">
-								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Facebook-icon.png) no-repeat left top;width:32px;min-height:32px" href="#145dee6f61f9f443_"></a>
-								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Twitter-icon.png) no-repeat left top;width:32px;min-height:32px" href="#145dee6f61f9f443_"></a>
-								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/GooglePlus-icon.png) no-repeat left top;width:32px;min-height:32px" href="#145dee6f61f9f443_"></a>
-								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Pinterest-icon.png) no-repeat left top;width:32px;min-height:32px" href="#145dee6f61f9f443_"></a>
-								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/LinkedIn-icon.png) no-repeat left top;width:32px;min-height:32px" href="#145dee6f61f9f443_"></a>
+								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Facebook-icon.png) no-repeat left top;width:32px;min-height:32px" href="https://www.facebook.com/handymancom"></a>
+								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Twitter-icon.png) no-repeat left top;width:32px;min-height:32px" href="https://twitter.com/handymancom"></a>
+								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/GooglePlus-icon.png) no-repeat left top;width:32px;min-height:32px" href="https://plus.google.com/104922706084588776464/about"></a>
+								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/Pinterest-icon.png) no-repeat left top;width:32px;min-height:32px" href="http://www.pinterest.com/handyman14"></a>
+								<a style="display:inline-block;margin-right:10px;background:url(http://icons.iconarchive.com/icons/lunartemplates/modern-social-media-rounded/32/LinkedIn-icon.png) no-repeat left top;width:32px;min-height:32px" href="http://www.linkedin.com/company/handyman-com/"></a>
 							</td>
 						</tr>
 						<tr style="display:block;color:#000000;text-align:center;padding:10px 0">

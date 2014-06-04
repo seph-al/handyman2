@@ -1,9 +1,21 @@
 $(document).ready(function(){
 
 
-
+	$('#btfeed').click(function(){
 	
-	$('.feeddelete2').click(function(){
+		$('#feedbackform').css('display','block');
+		$('#btfeed').css('display','none');
+		
+	});
+	
+	$('#btcancel').click(function(){
+		
+		$('#feedbackform').css('display','none');
+		$('#btfeed').css('display','block');
+	
+	});
+	
+	$('.feeddelete').click(function(){
 		var str = $(this).attr('id');
 		var id = str.replace('feeddelete_',"");
 		var base_url = $('#base_url').val();
@@ -21,7 +33,7 @@ $(document).ready(function(){
 	
 	});
 	
-	$('.feededit2').click(function(){
+	$('.feededit').click(function(){
 	
 		var str = $(this).attr('id');
 		var id = str.replace('feededit_',"");
@@ -45,7 +57,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$('.btcanceledit2').click(function(){
+	$('.btcanceledit').click(function(){
 	
 		var str = $(this).attr('id');
 		var id = str.replace('btcanceledit_',"");
@@ -59,7 +71,7 @@ $(document).ready(function(){
 	
 	});
 	
-	$('.btedit2').click(function(){
+	$('.btedit').click(function(){
 	
 	
 		var str = $(this).attr('id');

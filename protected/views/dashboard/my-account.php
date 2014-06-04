@@ -2,10 +2,11 @@
 <!-- Contarctor My account changes -->
 	<div class="container">
 		<ul class="subul offset0" id="myaccountsub">
-			<li><a href="javascript:void(0)" class="active tabcontractor1" id="tabcontact">Contact Details</a>
-			</li>
-			<li><a href="javascript:void(0)" class="tabcontractor2" id="tabpassword">Change Password</a>
-			</li>
+			<li><a href="javascript:void(0)" class="active tabcontractor1" id="tabcontact">Contact Details</a></li>
+			<li><a href="javascript:void(0)" class="tabcontractor2" id="tabpassword">Change Password</a></li>
+			<li><a href="javascript:void(0)" class="tabcontractor3" id="tabplicense">License</a></li>
+			<li><a href="javascript:void(0)" class="tabcontractor4" id="tabbonded">Bond</a></li>
+			<li><a href="javascript:void(0)" class="tabcontractor5" id="tabsocials">Socials</a></li>
 		</ul>
 		<div id="errors2"></div>
 		<div class="row-fluid margTop10 margBot15">
@@ -183,6 +184,7 @@
 											</li>
 										</ul>
 									</div>
+									
 								</div>
 							</div>
 							<div class="tradRegMemBtn marBot10 margin2" style="margin-left:50px; margin-bottom:20px;">
@@ -191,53 +193,17 @@
 							</div>
 						</div>
 						</form>
+						<div class="contain" style="display: none" id="account-license">
+							<?$this->renderPartial('my-account-license',array('clicense'=>$clicense))?>
+						</div>
+						<div class="contain" style="display: none" id="account-bonded">
+							<?$this->renderPartial('my-account-bonded',array('cbond'=>$cbond))?>
+						</div>
+						<div class="contain" style="display: none" id="account-socials">
+							<?$this->renderPartial('my-account-socials',array('socials'=>$socials,'user_socials' => $user_socials))?>
+						</div>
 						<div class="contain" id="myprofcontractpassword" style="display: none">
-						<form class="form-horizontal" role="form"  id="caccountpasswordform">
-							
-								<div class="containNew">	<span class="postJobHead">Change Password</span>
-									<div class="contain">
-										<ul class="postProjUl">
-											<li class="control-group">
-												<div class="control-label" style="text-align:left;">
-													<label for="business_name">Old Password<span class="starcolor">*</span>
-													</label>
-												</div>
-												<div class="controls">
-													<input type="password" style="width:60%;" id="oldpassword" name="oldpassword" value="<?php echo $cmodel->Password?>" class="form-control" autocomplete="off" />	<span class="postErrors oldpassword"></span>
-												</div>
-											</li>
-											<li class="control-group">
-												<div class="control-label" style="text-align:left;">
-													<label for="business_name">New Password<span class="starcolor">*</span>
-													</label>
-												</div>
-												<div class="controls">
-													<input type="password" style="width:60%;" id="cuspassword" name="cuspassword" value="" class="form-control" autocomplete="off" />	<span class="postErrors cuspassword"></span>
-												</div>
-											</li>
-											<li class="control-group">
-												<div class="control-label" style="text-align:left;">
-													<label for="business_name">Confirm New Password<span class="starcolor">*</span>
-													</label>
-												</div>
-												<div class="controls">
-													<input type="password" style="width:60%;" id="cusconfpwd" name="cusconfpwd" value="" class="form-control" autocomplete="off" />	<span class="postErrors cusconfpwd"></span>
-												</div>
-											</li>
-											<li class="control-group marg0">
-												<div class="control-label empty">
-													<label for="business_name">&nbsp;</label>
-												</div>
-												<div class="controls">
-												      <input type="hidden" name="t" id="t" value="updatecontractorpassword">
-													<input type="button" class="btn btn-primary" value="Submit" id="change_pass" />
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
-							
-						</form>
+							<?$this->renderPartial('my-account-password',array('cmodel'=>$cmodel))?>
 						</div>
 					</div>
 					<!-- myaccount contact details end -->

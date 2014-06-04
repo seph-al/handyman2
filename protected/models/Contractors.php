@@ -76,6 +76,10 @@ class Contractors extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+		  'social'          => array(self::HAS_MANY, 'ContractorSocials','contractor_id'),
+		  'license'         => array(self::HAS_ONE, 'ContractorLicense','contractor_id'),
+		  'bond'         => array(self::HAS_ONE, 'ContractorBond','contractor_id'),
+		  'viewCount' => array(self::STAT, 'ContractorViews','contractor_id'),
 		);
 	}
 
@@ -143,5 +147,62 @@ class Contractors extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	public function updatePoints($userid){
+		$total = 0;
+		
+		
+		//profile completness
+		$attr = self::findByPk($userid);
+		$ps = $attr->attributes;
+		$size = count($ps);
+		
+		$profile_total = 0;
+		$ptotal = 0;
+		foreach ($ps as $key=>$val){
+			if ($val != null || $val != ""){
+				$ptotal++;
+			}
+		}
+		$profile_total = ($ptotal/$size) * 100;
+		
+		//inbox points
+		$inbox_total = 0;
+		$inbox = Messages::model()->countByAttributes(array('to_id'=>$userid,'to_user_type'=>'contractor'));
+		$outbox = Messages::model()->countByAttributes(array('from_id'=>$userid,'from_user_type'=>'contractor'));
+	    $inbox_total = ($inbox + $outbox) * 5;
+	    
+	    
+	    //questions
+	    $questions_total = Questions::model()->countByAttributes(array('owner_id'=>$userid,'owner_user_type'=>'contractor'));
+	    $questions_total = $questions_total * 5;
+	    
+	    //answers = 
+	    $answer_total = Answers::model()->countByAttributes(array('owner_id'=>$userid,'owner_user_type'=>'contractor'));
+	    $answer_total = $answer_total * 5;
+
+	    //answers won
+	    $awon =  Answers::model()->countByAttributes(array('owner_id'=>$userid,'owner_user_type'=>'contractor','is_best'=>1));
+	    $awon = $awon * 10;
+
+	    //profile views
+	    $views = ContractorViews::model()->countByAttributes(array('contractor_id'=>$userid));
+	    $views_total = $views * 1; 
+	    
+	    $total = ceil($profile_total + $inbox_total + $questions_total + $answer_total + $views_total + $awon);
+	   
+	    //save to points table
+	    $count = ContractorPoints::model()->countByAttributes(array('contractor_id'=>$userid));
+	    if ($count >0){
+	    	$details = ContractorPoints::model()->findByAttributes(array('contractor_id'=>$userid));
+	    }else {
+	    	$details = new ContractorPoints();
+	    }
+	    
+	    $details->points = $total;
+	    $details->contractor_id = $userid;
+	    $details->save();
+	    return $total;
 	}
 }

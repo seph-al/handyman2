@@ -30,7 +30,16 @@
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/global.js"></script>
 <input type="hidden" name="base_url" id="base_url" value = "<?php echo Yii::app()->request->baseUrl; ?>">
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-29828968-27', 'handyman.com');
+  ga('send', 'pageview');
+
+</script>
 
 </head>
 <body role="document">
@@ -129,11 +138,12 @@
 		<?if(Yii::app()->user->role=='contractor'):?>
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/project/find">Find Projects</a></li>
 		<?endif;?>	
-	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/questions">Question &amp; Answer</a></li>
 <?endif;?>
 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/referral">Referral Program</a></li>
 </ul>
+
 </li>
+<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/questions">Discussions</a></li>
 <?php if (Yii::app()->user->isGuest):?>
 
 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">SignUp <b class="caret"></b></a>
@@ -277,6 +287,9 @@
 </li>-->
 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/home/contactus">Contact Us</a>
 </li>
+<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/home/sitemap">Sitemap</a>
+</li>
+
 <li><a href="http://onlinerentersinsurance.org/" target="_blank">Renters Insurance</a>
 </li>
 
