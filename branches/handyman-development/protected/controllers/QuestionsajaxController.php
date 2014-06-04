@@ -32,24 +32,97 @@ private function renderJSON($array = array(), $status = true)
 	
 public function addquestion($post){
 		$status = true;
-        $role = Yii::app()->user->role;
-        $userid = Yii::app()->user->getId();
+		 if (!Yii::app()->user->isGuest){
+	          $role = Yii::app()->user->role;
+	          $userid = Yii::app()->user->getId();
+		 }else {
+		 	$role = $post['q_role'];
+		 	if ($role == 'homeowner'){
+		       $email = $post['q_hemail'];
+		       $count_email = Homeowners::model()->countByAttributes(array('email'=>$email));
+		       if ($count_email > 0){
+		       	  $details = Homeowners::model()->findByAttributes(array('email'=>$email));
+		       	  $userid = $details->homeowner_id;
+		       }else {
+		       	     $password = Yii::app()->Ini->generate_password();
+		       	     $huser = new Homeowners();
+        		     $huser->firstname       = $post['q_firstname'];
+		             $huser->lastname        = $post['q_lastname'];
+		             $huser->email  = $post['q_hemail'];
+		             $huser->username  = $post['q_husername'];
+		             $huser->password = $password;
+		             if ($huser->save()){
+		             	 Yii::app()->Ini-> savetovnoc($email);
+			             $userid = Yii::app()->db->getLastInsertId();
+			             Yii::app()->Ini->savetoaffiliate($userid,'homeowner');   
+			             $this->SendMailAfterSignUp($userid);
+		             }else {
+		             	 $status = false; 
+        			     $return['message'] = $huser->getErrors();
+		             }
+		             
+		       }	
+		       	
+		 	}else{
+		 		$email = $post['q_cemail'];
+		 		$password  = $post['q_password'];
+		        $count_email = Contractors::model()->countByAttributes(array('Email'=>$email));
+		        if ($count_email > 0){
+		        	$details = Contractors::model()->findByAttributes(array('Email'=>$email));
+		       	    $userid = $details->ContractorId;
+		        }else {
+		        	
+		        	 $cont = new Contractors();
+                     $cont->Name = $post['q_company'];
+                     $cont->ContactName = $post['q_contactname'];
+                     $cont->Email = $post['q_cemail'];
+                     $cont->Username = $post['q_cusername'];
+                     $cont->Password = $post['q_password'];
+                     if ($cont->save()){
+                     	Yii::app()->Ini->savetovnoc($email);
+                     	$userid = Yii::app()->db->getLastInsertId();
+                     	 
+                     }else {
+                        $status = false; 
+        			    $return['message'] = $cont->getErrors();	
+                     }
+                     
+                     
+		        }
+		 	} 
+		 	
+		 }
          
-           $q = new Questions();
-           $q->title = $post['q_title'];
-           $q->content = $post['q_content'];
-           $q->owner_id = $userid;
-           $q->owner_user_type = $role;
-           $q->project_type_id = $post['q_category'];
-           
-           if ($q->save()){
-	           $return['url'] = 'questions/details/id/'.Yii::app()->db->getLastInsertId().'/n/'.Yii::app()->Ini->slugstring($q->title);
-           }else {
-           	   $status = false; 
-        	   $return['message'] = $q->getErrors();
-           }
-           
-           
+		   if ($status){
+		   
+		   	if (Yii::app()->user->isGuest){
+		   	   $identity=new UserIdentity($email,$password,$role);
+		   	    if($identity->authenticate()){
+		   	    	   Yii::app()->user->login($identity);
+					   $owner_id = Yii::app()->user->getId();
+					   Yii::app()->Ini->savetoaffiliate($owner_id,$role);  
+		   	    }
+		   	}	
+			  
+					    
+				   	
+			           $q = new Questions();
+			           $q->title = $post['q_title'];
+			           $q->content = $post['q_content'];
+			           $q->owner_id = $userid;
+			           $q->owner_user_type = $role;
+			           $q->project_type_id = $post['q_category'];
+			           
+			           if ($q->save()){
+				           $return['url'] = 'questions/details/id/'.Yii::app()->db->getLastInsertId().'/n/'.Yii::app()->Ini->slugstring($q->title);
+			           }else {
+			           	   $status = false; 
+			        	   $return['message'] = $q->getErrors();
+			           }
+	           
+		   }   
+          
+		   
         $return['status'] = $status;
         $this->renderJSON($return, $status);
 	}
@@ -82,11 +155,16 @@ public function addquestion($post){
 	$login = false;
 	if (!Yii::app()->user->isGuest){
 		$login = true;
+		$userid = Yii::app()->user->getId();
+   	    $role = Yii::app()->user->role;
+    
+	}else {
+		$userid = 0;
+		$role = 'guest';
 	}
 	
-	$userid = Yii::app()->user->getId();
-   	$role = Yii::app()->user->role;
-    
+	
+	
    	$cur_page = $page;
    	
    	 $criteria=new CDbCriteria();
@@ -291,6 +369,95 @@ public function votequestion($post){
         $return['id'] = $answer_id;
         $this->renderJSON($return, $status);
 	}
+	
+	
+   public function bestanswer($post){
+	 	 $role = Yii::app()->user->role;
+	     $userid = Yii::app()->user->getId();
+	     $answer_id =  $post['answer_id'];
+	        
+           $v = Answers::model()->findByPk($answer_id);
+           
+           $question_id = $v->question->question_id;
+           
+           $past = Answers::model()->findByAttributes(array('question_id'=>$question_id,'is_best'=>1));
+           if (count($past)>0){
+             $old_answer = $past->answer_id;	
+           }else {
+           	  $old_answer =0;
+           }
+            
+           
+           Answers::model()->updateAll(array( 'is_best' => 0 ), "question_id = $question_id AND is_best = 1 " );
+           
+           $v->is_best = 1;
+           
+           if ($v->save()){
+	        $status = true;
+	       }else {
+           	   $status = false; 
+        	   $return['message'] = $q->getErrors();
+           }
+
+        $return['status'] = $status;
+        $return['id'] = $answer_id;
+        $return['old'] = $old_answer;
+        
+        $this->renderJSON($return, $status);
+	}
+	
+	public function deleteanswer($post){
+		$answer_id = $post['id'];
+		$details = Answers::model()->findByPk($answer_id);
+		
+		if ($details->delete()){
+	        $status = true;
+	       }else {
+           	   $status = false; 
+        	   $return['message'] = $q->getErrors();
+           }
+
+        $return['status'] = $status;
+        $return['id'] = $answer_id;
+        $this->renderJSON($return, $status);
+	}
+	
+	public function showupdateform($post){
+		$answer_id = $post['id'];
+		$details = Answers::model()->findByPk($answer_id);
+		$htmlParams['answer'] = $details;
+        $return['html']  = $this->renderPartial('answers-update', $htmlParams, true);
+        $this->renderJSON($return, true);
+	}
+	
+	public function updateanswer($post){
+		$answer_id = $post['answer_id'];
+		$answer = $post['answer'];
+		$v = Answers::model()->findByPk($answer_id);
+		$v->answer = $answer;
+		if ($v->save()){
+			$return['status']= true;
+		}else {
+			$return['status']= false;
+		}
+		$return['id'] = $answer_id;
+		$return['ans'] = $answer;
+		$this->renderJSON($return, true);
+	}
+	
+	
+   private function SendMailAfterSignUp($userid)
+    {  
+    	$hmodel          = Homeowners::model()->findByPk($userid);
+    	$subject    = Yii::app()->name.' Account Details For Home Owner';
+    	$content = $this->renderPartial('../projectajax/signup', array('huser' => $hmodel), true);
+    	$headers="From: admin <admin@>".Yii::app()->name."\r\n".
+					"MIME-Version: 1.0\r\n".
+					"Content-type: text/html; charset=UTF-8";
+    	
+    	mail($hmodel->email,$subject,$content,$headers);
+	       
+    }
     
 }//end class
 

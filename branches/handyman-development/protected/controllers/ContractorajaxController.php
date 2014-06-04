@@ -124,7 +124,21 @@ class ContractorajaxController extends Controller
 			}
 		
 		$contractor->save(); // save the change to database
-		$status = array('success' => true);
+		$contractor_edit = Contractors::model()->findByPk($contractor_id);
+		
+			switch($column)
+			{
+				case 'AboutBusiness':
+					$message = $contractor_edit->AboutBusiness;
+					break;
+				case 'Services':
+					$message =  $contractor_edit->Services;
+					break;
+				default:
+					$message = $contractor_edit->AboutBusiness;
+			}
+		
+		$status = array('success' => true,'message' => $message);
 		$this->renderJSON($status);
 	}
 	
@@ -247,6 +261,71 @@ class ContractorajaxController extends Controller
 	
 	}
 	
+	public function savemessagewithAttachedProject(){
+		$subject = Yii::app()->Ini->v('subject');
+		$message = Yii::app()->Ini->v('message');
+		$project_id = Yii::app()->Ini->v('project_id');
+		$receiver_id = Yii::app()->Ini->v('receiver_id');
+	
+		$from_id = Yii::app()->user->getId();
+		$from_user_type = Yii::app()->user->role;
+		$to_id = Yii::app()->Ini->v('receiver_id');
+		$sent_date = date("Y-m-d H:i:s");
+			
+		$homeowner_details = Homeowners::model()->findByPk($from_id);
+		
+		
+			/*
+				get project info
+			*/
+			$concat_message = "";
+			$proj_info = Projects::model()->findByPk($project_id);
+			if(count($proj_info) > 0){
+				$concat_message = "<br><br>Project Details:<br>
+				<b>Description: </b>".$proj_info->description."<br>
+				<b>Project Type: </b>".$this->getProjectTypeName($proj_info->project_type_id)."<br>
+				<b>Start Date: </b>".$proj_info->start_date."<br>
+				<b>Time Frame: </b>".$proj_info->time_frame."<br>
+				<b>Budget: </b>".$proj_info->budget."<br>
+				<b>Home Owner: </b> <a href='http://handyman.com/homeowner/profile/user/".$homeowner_details->username."'>".$homeowner_details->firstname." ".$homeowner_details->lastname."</a><br>
+				Learn more <a href='http://handyman.com/project/jobdetails/pj_id/".$project_id."'>here</a>.<br>
+				";
+			}
+			
+		$messages = new Messages();
+		$messages->subject = $subject;
+		$messages->message = $message." ".$concat_message;
+		$messages->from_id = $from_id;
+		$messages->to_id = $to_id;
+		$messages->to_user_type = 'contractor';
+		$messages->from_user_type = $from_user_type;
+		$messages->date_sent = $sent_date;
+		
+		
+		
+		
+		$this->sendEmailNotification($subject,$message." ".$concat_message,$to_id,Yii::app()->name);
+		
+		if($messages->save())
+		{
+			$status = array('success' => true);
+		}else{
+			$status = array('success' => false,'error_message'=>print_r($messages->getErrors()));
+		}
+		
+		$this->renderJSON($status);
+		
+	}
+	
+	private function getProjectTypeName($project_type_id){
+			$name = "";
+			$details = Projecttypes::model()->findByAttributes(array('ProjectTypeId'=>$project_type_id));
+    		  if (count($details)>0){ 
+	          	$name = $details->Name;
+	          }
+			  return $name;
+	 }
+	
 	private function sendEmailNotification($subject,$message,$contractor_id,$domain_name){
 		$receiver_details = Contractors::model()->findByPk($contractor_id);
 		$receiver_name = $receiver_details->Name;
@@ -255,12 +334,76 @@ class ContractorajaxController extends Controller
 		
     	$subject = Yii::app()->name." - ".$subject;
     	$content = $this->renderPartial('message_notif_template', array('domain_name'=>$domain_name,'message' => $message,'receiver_name' =>$receiver_name), true);
-    	$headers="From: admin <admin@>".Yii::app()->name."\r\n".
+    	$headers="From: admin <admin@handymen.com>".Yii::app()->name."\r\n".
 					"MIME-Version: 1.0\r\n".
 					"Content-type: text/html; charset=UTF-8";
     	
+		/*$headers   = array();
+		$headers[] = "MIME-Version: 1.0";
+		$headers[] = 'Content-type: text/html; charset=utf-8' . "\r\n";
+		$headers[] = "From: Handyman.com <admin@handyman.com>";
+		$headers[] = "Bcc: Sheina Vi Paclibar <sheinavi@gmail.com>";
+		$headers[] = "Subject: ".$subject;
+		$headers[] = "X-Mailer: PHP/".phpversion();*/
+		
     	mail($receiver_email,$subject,$content,$headers);
 		
 	}
     
+	
+     public function actionRatefeedback()
+        {                       
+                if ( Yii::app()->request->isAjaxRequest )
+                {
+                
+                        $rating = FeedbackRating::model()->findByAttributes(array('feedback_id'=>$_GET['id']));
+                        if (count($rating)==0){
+                        	$rating = new FeedbackRating();
+                        	$rating->vote_count = 1;
+                        	$rating->feedback_id = $_GET['id'];
+	                        $rating->vote_sum =  $_GET['val'];
+	                        $rating->vote_average = round($rating->vote_sum / $rating->vote_count,2);
+                        }else { 
+	                        $rating->vote_count = $rating->vote_count + 1;
+	                        $rating->vote_sum = $rating->vote_sum + $_GET['val'];
+	                        $rating->vote_average = round($rating->vote_sum / $rating->vote_count,2);
+                        }
+                        if ( $rating->save() ) 
+                        {
+                        echo CJSON::encode( array (
+                        'status'=>'success', 
+                        'div'=>'Thank you for voting!', 
+                        'info'=>"Rating: " . $rating->vote_average ." " . $rating->vote_count . " votes",
+                        ) );
+                        }
+                }
+        }
+		
+	public function assignbg($post){
+		
+		$photo_id = $post['id'];
+		$contractor_id = Yii::app()->user->getId();
+		
+		
+		$contractorphotos=Contractorphotos::model()->findByAttributes(array('contractor_id' => $contractor_id,'is_bg' => '1'));	
+		
+		if (count($contractorphotos)>0){
+				$contractorphotos->is_bg = 0;
+				$contractorphotos->save();
+				
+			Contractorphotos::model()->updateByPk($photo_id, array(
+				'is_bg' => 1
+			));
+				
+			}
+		else{
+			Contractorphotos::model()->updateByPk($photo_id, array(
+				'is_bg' => 1
+			));
+		}
+		$status = array('success' => true);
+		$this->renderJSON($status);
+		
+	
+	}
 }

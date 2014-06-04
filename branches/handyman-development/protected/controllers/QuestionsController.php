@@ -28,26 +28,62 @@ class QuestionsController extends Controller
 				$count = Questions::model()->count($criteria);
 				$pages = new CPagination($count);
 				
+				$current_user_id = null;
+				$current_user_role = null;
+				
+				if (!Yii::app()->user->isGuest){
 						$current_user_id = Yii::app()->user->getId();
 						$current_user_role = Yii::app()->user->role;
+				}
 				
 			$param['questions'] = $questions;
 	    	$this->render('index',$param);
     	
     }
+	
+	
+	public function actionAll_activities(){
+		$this->pageTitle = 'Handyman.com - Question and Answer - All Activities';
+		$param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+		
+		$criteria=new CDbCriteria();
+		$criteria->distinct = true;
+		$criteria->alias = 'Q';
+		$criteria->join = 'LEFT JOIN answers ON Q.question_id = answers.question_id';
+    	$criteria->order = 'answers.answer_id DESC';
+			
+		$param['questions'] = Questions::model()->findAll($criteria);
+		
+		$param['title'] = "All activities";
+		$this->render('all_activities',$param);
+		
+	}
+	
+	public function actionUnanswered(){
+		$this->pageTitle = 'Handyman.com - Question and Answer - All Activities';
+		$param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+		
+		$param['questions'] = Questions::model()->findAll(array(
+                        'select'=>'*',
+                        'condition'=>'question_id NOT IN( SELECT question_id FROM answers)'
+                    ));
+		
+		$param['title'] = "Unanswered Questions";
+		$this->render('unanswered',$param);
+	}
+	
+	
     
   public function actionPost()
     {
-    	if (!Yii::app()->user->isGuest){
+    	
     		$q_title =  Yii::app()->Ini->v('q_title');
     		$this->pageTitle = 'Handyman.com - Post Question';
 	    	$param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 	    	$param['projects'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 	    	$param['q_title'] = $q_title;
 	    	$this->render('postquestion',$param);
-    	}else {
-    		$this->redirect(Yii::app()->homeUrl);
-    	}	
+    		
     	
     }
     
@@ -131,10 +167,7 @@ public function actionCategory()
 				
 				$count = Questions::model()->count($criteria);
 				$pages = new CPagination($count);
-				
-						$current_user_id = Yii::app()->user->getId();
-						$current_user_role = Yii::app()->user->role;
-				
+					
 			$param['questions'] = $questions;
 			$param['type'] = $category;
 			$this->render('index-by-category',$param);

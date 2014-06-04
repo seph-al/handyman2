@@ -35,6 +35,21 @@ class DashboardController extends Controller
 				$criteria=new CDbCriteria();
     		    $criteria->condition = "to_id=$contractor_id and to_user_type='contractor'";
 		        $param['message_count'] = Messages::model()->count($criteria); 
+				
+				$criteria2 = new CdbCriteria();
+				$criteria2->condition = "contractor_id = $contractor_id";
+				$param['views_count'] = ContractorViews::model()->count($criteria2);
+				 
+				
+				
+				$oneWeekAgo =	date("Y-m-d H:i:s", strtotime("-1 months"));
+				$criteria3 = new CdbCriteria();
+				$criteria3->addBetweenCondition('date_added', $oneWeekAgo, date("Y-m-d H:i:s"));
+				$param['latest_project_count'] = Projects::model()->count($criteria3);
+				$param['from'] = $oneWeekAgo;
+				$param['to'] = date("Y-m-d H:i:s");
+				
+				
 				$this->render('contractor', $param);
 				
 			}else{
@@ -117,14 +132,15 @@ class DashboardController extends Controller
 			$criteria=new CDbCriteria();
 			$criteria->condition = "contractor_id = '$contractor_id'";
 			$feedback = Feedback::model()->findAll($criteria);
-			$current_userid = Yii::app()->user->getId();
+			$criteria_social = new CDbCriteria();
+			$criteria_social->condition = "contractor_id = '$contractor_id'";
+			$social_accounts = ContractorSocials::model()->findAll($criteria_social);
+			$contractor_license = ContractorLicense::model()->findByAttributes(array('contractor_id'=>$contractor_id));
+			$contractor_bond = ContractorBond::model()->findByAttributes(array('contractor_id'=>$contractor_id));
+			$contractor_points = Contractors::model()->updatePoints($contractor_id);
 			
-			$is_my_profile = false;
-				if (!Yii::app()->user->isGuest){
-					if($contractor_id == $current_userid){
-						$is_my_profile = true;
-					}
-			}
+			
+			
 			
 			if (count($profile_details)>0){ 
 				$company = $profile_details->Name;
@@ -144,10 +160,17 @@ class DashboardController extends Controller
 				$username = $profile_details->Username;
 				$project_type = $this->getProjectTypeName($profile_details->ProjectTypeId);
 				$profile_pic = $this->getContractorProfilePic($contractor_id);
-				
+				$current_userid = $profile_details->ContractorId;
+				$photo_cover = $this->getProfileCover($contractor_id);
 			}
 			
 			$this->pageTitle = 'Handyman.com - '.$contact_name.' Profile';
+			$is_my_profile = false;
+			
+			
+				if($contractor_id == $current_userid){
+					$is_my_profile = true;
+				}
 			
 			
 
@@ -172,6 +195,11 @@ class DashboardController extends Controller
 						   'profile_pic' => $profile_pic,
 						   'feedback' => $feedback,
 						   'is_my_profile' => $is_my_profile,
+						   'contractor_license' => $contractor_license,
+						   'contractor_bond' => $contractor_bond,
+						   'social_accounts' => $social_accounts,
+						   'contractor_points' => $contractor_points,
+						   'photo_cover' => $photo_cover,
 						   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
 						   ));
 						   
@@ -183,7 +211,7 @@ class DashboardController extends Controller
     	}
 	}
 	
-	public function actionMy_profile2()
+	/*public function actionMy_profile2()
 	{
 		if (!Yii::app()->user->isGuest){
 		if(Yii::app()->user->role == 'contractor'){
@@ -207,6 +235,7 @@ class DashboardController extends Controller
 				$date_created = $profile_details->Created;
 				$username = $profile_details->Username;
 				$project_type = $this->getProjectTypeName($profile_details->ProjectTypeId);
+				$photo_cover = $this->getProfileCover($contractor_id);
 				$profile_pic = $this->getContractorProfilePic($contractor_id);
 				
 			}
@@ -233,7 +262,8 @@ class DashboardController extends Controller
 						   'project_type' => $project_type,
 						   'page' => 'profile',
 						   'param' => "",
-						   'profile_pic' => $profile_pic,			   
+						   'profile_pic' => $profile_pic,
+						   'photo_cover' => $photo_cover,
 						   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
 						   ));
 						   
@@ -243,7 +273,7 @@ class DashboardController extends Controller
 		}else {
     	 	$this->redirect(Yii::app()->homeUrl);
     	}
-	}
+	}*/
 	
 	 public function getProjectTypeName($project_type_id){
 			$name = "";
@@ -265,16 +295,45 @@ class DashboardController extends Controller
 			}
 	 }
 	
+	public function getProfileCover($contractor_id){
+		$contractorphotos=Contractorphotos::model()->findByAttributes(array('contractor_id' => $contractor_id,'is_bg' => '1'));
+		
+			if (count($contractorphotos)>0){
+				return $contractorphotos->filename;
+			}else{
+				//return 'http://www.justmail.in/platinum/images/clapper.png'; //default avatar
+				return false;
+			}
+	
+	}
+	
+	
 	public function actionMy_account()
 	{
 		if (!Yii::app()->user->isGuest){
 			if(Yii::app()->user->role == 'contractor'){
 			$contractor_id = Yii::app()->user->getId();
 			$this->pageTitle = 'Handyman.com - My Account';
+			
+			
 	    	$param['city'] = Cities::model()->findAll(array('order' => 'Name ASC'));
 			$param['state'] = States::model()->findAll(array('order' => 'Name ASC'));
 			$param['page'] = "account";
 			$param['cmodel'] = Contractors::model()->findByPk($contractor_id);
+			//$param['csocials'] = ContractorSocials::model()->findbyAttributes(array('contractor_id' => $contractor_id));
+			$socials = Socials::model()->findAll(array('order' => 'social ASC'));
+			$user_socials = array();
+			
+				foreach($socials AS $k=>$v){
+					$value = ContractorSocials::model()->findbyAttributes(array('contractor_id' => $contractor_id, 'social_id' => $v->social_id));
+					$user_socials[$v->social_id] = $value->value;
+				}
+				
+			$param['socials'] = $socials;
+			$param['user_socials'] = $user_socials;	
+			
+			$param['clicense'] = ContractorLicense::model()->findbyAttributes(array('contractor_id' => $contractor_id));
+			$param['cbond'] = ContractorBond::model()->findbyAttributes(array('contractor_id' => $contractor_id));
 			$param['projects'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 			$param['logo'] = $this->getContractorProfilePic($contractor_id);
 	        $this->render('my-account', $param);

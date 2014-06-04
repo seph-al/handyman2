@@ -58,6 +58,7 @@ class Homeowners extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+		  'viewCount' => array(self::STAT, 'HomeownerViews','homeowner_id'),
 		);
 	}
 
@@ -103,5 +104,64 @@ class Homeowners extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+public function updatePoints($userid){
+		$total = 0;
+		
+		
+		//profile completness
+		$attr = self::findByPk($userid);
+		$ps = $attr->attributes;
+		$size = count($ps);
+		
+		$profile_total = 0;
+		$ptotal = 0;
+		foreach ($ps as $key=>$val){
+			if ($val != null || $val != ""){
+				$ptotal++;
+			}
+		}
+		$profile_total = ($ptotal/$size) * 100;
+		
+		//inbox points
+		$inbox_total = 0;
+		$inbox = Messages::model()->countByAttributes(array('to_id'=>$userid,'to_user_type'=>'homeowner'));
+		$outbox = Messages::model()->countByAttributes(array('from_id'=>$userid,'from_user_type'=>'homeowner'));
+	    $inbox_total = ($inbox + $outbox) * 5;
+	    
+	    
+	    //questions
+	    $questions_total = Questions::model()->countByAttributes(array('owner_id'=>$userid,'owner_user_type'=>'homeowner'));
+	    $questions_total = $questions_total * 5;
+	    
+	    //answers = 
+	    $answer_total = Answers::model()->countByAttributes(array('owner_id'=>$userid,'owner_user_type'=>'homeowner'));
+	    $answer_total = $answer_total * 5;
+
+	    //answers won
+	    $awon =  Answers::model()->countByAttributes(array('owner_id'=>$userid,'owner_user_type'=>'homeowner','is_best'=>1));
+	    $awon = $awon * 10;
+
+	    //profile views
+	    $views = HomeownerViews::model()->countByAttributes(array('homeowner_id'=>$userid));
+	    $views_total = $views * 1; 
+	    
+	    $total = ceil($profile_total + $inbox_total + $questions_total + $answer_total + $views_total + $awon);
+	   
+	    //save to points table
+	    $count = HomeownerPoints::model()->countByAttributes(array('homeowner_id'=>$userid));
+	    
+	    if ($count >0){
+	    	$details = HomeownerPoints::model()->findByAttributes(array('homeowner_id'=>$userid));
+	    }else {
+	    	$details = new HomeownerPoints();
+	    }
+	    
+	    
+	    $details->points = $total;
+	    $details->homeowner_id = $userid;
+	    $details->save();
+	    return $total;
 	}
 }

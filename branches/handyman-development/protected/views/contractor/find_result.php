@@ -108,3 +108,22 @@
 			</div>
 		</div>
 	</div>
+	
+<?php if (Yii::app()->user->isGuest):?>
+	<input type="hidden" name="is_guest" id="is_guest" value="1" />
+	<?$this->renderPartial('logged_out_modal')?>
+<?php endif;?>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var is_guest = $('input#is_guest').val();
+		if(is_guest == '1'){
+			console.log("is guest.");
+			$('#myModal_loggedout').modal({
+								  backdrop: 'static',
+								  keyboard: false
+								});
+			$('#myModal_loggedout').modal('show');
+			
+		}
+	});
+</script>

@@ -1,8 +1,14 @@
 function resetcontent(){
 	$('#myprofcontractdetails').hide();
 	$('#myprofcontractpassword').hide();
+	$('#account-license').hide();
+	$('#account-bonded').hide();
+	$('#account-socials').hide();
 	$('.tabcontractor1').removeClass('active');
 	$('.tabcontractor2').removeClass('active');
+	$('.tabcontractor3').removeClass('active');
+	$('.tabcontractor4').removeClass('active');
+	$('.tabcontractor5').removeClass('active');
 }
 
 $(document).ready(function(){
@@ -17,6 +23,24 @@ $(document).ready(function(){
 		resetcontent();
 		$('#myprofcontractpassword').show();
 		$('.tabcontractor2').addClass('active');
+	});
+	
+	$('#myaccountsub #tabplicense').click(function(){
+		resetcontent();
+		$('#account-license').show();
+		$('.tabcontractor3').addClass('active');
+	});
+	
+	$('#myaccountsub #tabbonded').click(function(){
+		resetcontent();
+		$('#account-bonded').show();
+		$('.tabcontractor4').addClass('active');
+	});
+	
+	$('#myaccountsub #tabsocials').click(function(){
+		resetcontent();
+		$('#account-socials').show();
+		$('.tabcontractor5').addClass('active');
 	});
 
 		 $("#conzip").keypress(function (e) {
@@ -106,9 +130,70 @@ $(document).ready(function(){
 			    });
 				
 			}
+		});
+		
+		$('#update_socials').click(function(){
+			var base_url =  $('#base_url').val();
+			var cdata = $('#caccount-socials').serialize();
+				$.ajax({
+			        url: base_url+'/dashboardajax',
+			        type: 'POST',
+			        dataType:"JSON",
+			        data: cdata,
+			        success: function(response){
+			        	if (response.status){
+			   					$("#errors2").html('<div class="alert alert-success"> <button type="button" class="close" data-dismiss="alert">&times;</button>You successfully updated links to your social accounts.</div>');
+			   			}else {
+							$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+response.error_message+'</div>');
+						}
+		           },
+			        error: function(){
+			        	$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while updating license information.</div>');
+			        }
+			    });
+		});
+		
+		$('#update_license').click(function(){
+			var base_url =  $('#base_url').val();
+			var cdata = $('#caccount-license').serialize();
+				$.ajax({
+			        url: base_url+'/dashboardajax',
+			        type: 'POST',
+			        dataType:"JSON",
+			        data: cdata,
+			        success: function(response){
+			        	if (response.status){
+			   					$("#errors2").html('<div class="alert alert-success"> <button type="button" class="close" data-dismiss="alert">&times;</button>You successfully updated license info.</div>');
+			   			}else {
+							$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+response.error_message+'</div>');
+						}
+		           },
+			        error: function(){
+			        	$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while updating license information.</div>');
+			        }
+			    });
 			
+		});
 		
-		
+		$('#update_bond').click(function(){
+			var base_url =  $('#base_url').val();
+			var cdata = $('#caccount-bonded').serialize();
+			$.ajax({
+			        url: base_url+'/dashboardajax',
+			        type: 'POST',
+			        dataType:"JSON",
+			        data: cdata,
+			        success: function(response){
+			        	if (response.status){
+			   					$("#errors2").html('<div class="alert alert-success"> <button type="button" class="close" data-dismiss="alert">&times;</button>You successfully updated bond info.</div>');
+			   			}else {
+							$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+response.error_message+'</div>');
+						}
+		           },
+			        error: function(){
+			        	$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while submitting bond information</div>');
+			        }
+			    });
 		});
 		
 		

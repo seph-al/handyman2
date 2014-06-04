@@ -57,7 +57,117 @@ class DashboardajaxController extends Controller
 	    $return['status'] = $status;
         $this->renderJSON($return, $status);
     }
+	
+	
+	public function updatecontractorsocial($post){
+		$contractor_id = Yii::app()->user->getId();
+		$socials = Socials::model()->findAll(array('order' => 'social ASC'));
+		$return['error_message'] = "";
+		$status = false;
+		
+		foreach($socials AS $k=>$v){
+			$csocials = ContractorSocials::model()->findbyAttributes(array('contractor_id' => $contractor_id, 'social_id' => $v->social_id));
+			$var = 'social_'.$v->social_id;
+			if(count($csocials)){
+				$csocials->value = $post[$var];
+			}else{
+				$csocials = new ContractorSocials();
+				$csocials->value = $post[$var];
+				$csocials->contractor_id = $contractor_id;
+				$csocials->social_id = $v->social_id;
+			}
+			
+			if($csocials->save()){
+				$status = true;
+			}else{
+				$return['error_message'] = "unable to save social update.";
+			}
+			
+			
+		}
+		
+		$return['status'] = $status;
+		$this->renderJSON($return, $status);
+	}
+	
+	public function updatecontractorbond($post){
+		$contractor_id = Yii::app()->user->getId();
+		$bond_agent = $post['bond_agent'];
+		$bond_value = $post['bond_value'];
+		$bond_info = $post['bond_info'];
+	
+		$cbond = ContractorBond::model()->findbyAttributes(array('contractor_id' => $contractor_id));
+	
+		
+		$return['error_message'] = "";
+		$status = false;
+		
+		if(count($cbond) > 0){
+				$cbond->bond_agent = $bond_agent;
+				$cbond->bond_value = $bond_value;
+				$cbond->info = $bond_info;
+		}else{
+			$cbond = new ContractorBond();	
+			$cbond->bond_agent = $bond_agent;
+				$cbond->bond_value = $bond_value;
+				$cbond->info = $bond_info;
+			$cbond->contractor_id = $contractor_id;
+			
+		}
+	   if($cbond->save()){
+				$status = true;
+			}else{
+				$return['error_message'] = "unable to save update.";
+			}
+		$return['status'] = $status;
+        $this->renderJSON($return, $status);
+		
+	}
     
+	public function updatecontractorlicense($post){
+		
+		$contractor_id = Yii::app()->user->getId();
+		$license_num = $post['license_num'];
+		$license_status = $post['license_status'];
+		$license_type = $post['license_type'];
+		$license_dateissued = $post['license_dateissued'];
+		$license_info = $post['license_info'];
+	
+		$clicense = ContractorLicense::model()->findbyAttributes(array('contractor_id' => $contractor_id));
+	
+		
+		$return['error_message'] = "";
+		$status = false;
+				
+				
+		
+		if(count($clicense) > 0){
+				$clicense->license_no = $license_num;
+				$clicense->status = $license_status;
+				$clicense->type = $license_type;
+				$clicense->date_issued = $license_dateissued;
+				$clicense->info = $license_info;	
+			
+		}else{
+			$clicense = new ContractorLicense();	
+			$clicense->contractor_id = $contractor_id;
+			$clicense->license_no = $license_num;
+			$clicense->status = $license_status;
+			$clicense->type = $license_type;
+			$clicense->date_issued = $license_dateissued;
+			$clicense->info = $license_info;
+		
+		}
+	   if($clicense->save()){
+				$status = true;
+			}else{
+				$return['error_message'] = "unable to save license update.";
+			}
+		$return['status'] = $status;
+        $this->renderJSON($return, $status);
+	}
+	
+	
     private function renderJSON($array = array(), $status = true)
     {
         header('Content-Type: application/json');
@@ -517,8 +627,13 @@ public function loadquestions($post){
 	$per_page = 10;
 	$pagination = "";
 	
-	$userid = Yii::app()->user->getId();
-   	$role = Yii::app()->user->role;
+	if (!Yii::app()->user->isGuest){ 
+		$userid = Yii::app()->user->getId();
+	   	$role = Yii::app()->user->role;
+	}else {
+		$userid =0;
+		$role = 'guest';
+	}
     
    	$cur_page = $page;
    	

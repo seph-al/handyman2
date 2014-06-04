@@ -124,11 +124,25 @@ class ProjectController extends Controller
     
     
      public function actionPost(){
+		$project_type_id = Yii::app()->Ini->v('project');
+		$zipcode = Yii::app()->Ini->v('zipcode');
+		$from_index = false;
+		
+		if($project_type_id && $zipcode){
+			$from_index = true;
+		}
+		
      	$project_id = Yii::app()->Ini->v('pid');
      	$this->pageTitle = 'Handyman.com - Post Project';
     	$param['projects'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
     	$param['state'] = States::model()->findAll(array('order' => 'Name ASC'));
     	$param['default_project'] = $project_id;
+		
+		$param['from_index'] = $from_index;
+		$param['project_type_id'] = $project_type_id;
+		$param['zipcode'] = $zipcode;
+		
+		
     	$this->render('postproject', $param);
      }
    

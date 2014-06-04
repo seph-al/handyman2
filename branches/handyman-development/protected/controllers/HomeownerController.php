@@ -99,6 +99,22 @@ class HomeownerController extends Controller
 													  'current_user_id'=>$current_user_id,
 													  'current_user_role' => $current_user_role
 													 ));
+													 
+			 //update views
+			if (!Yii::app()->user->isGuest){
+			    	$userid = Yii::app()->user->getId();
+			    	$role = Yii::app()->user->role;
+                    $views = HomeownerViews::model()->findByAttributes(array('viewed_by'=>$userid,'homeowner_id'=>$model->homeowner_id,'viewed_user_type'=>$role));
+                  if (count($views)> 0){
+                  }else {
+                     $views = new HomeownerViews();
+                     $views->homeowner_id = $model->homeowner_id;
+                     $views->viewed_by = $userid;
+                     $views->viewed_user_type = $role;
+                     $views->save();	
+                  }
+            }
+               													 
 			}else{
 				$this->redirect(Yii::app()->homeUrl.'home/error');
 			}

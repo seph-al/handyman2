@@ -91,32 +91,57 @@
 									</div>
 								</div>
 								<!-- work image upload start-->
-								<div class="contain" id="workgallery">
-									<h1 class="contactHead">Work Photos<span class="starcolor">*</span></h1>		<span class="postErrors workPhoto"></span>	
-									<div id="progress_gallery" class="progress">
-										<div class="progress-bar progress-bar-success"></div>
-									</div>
-									
-									<p>
-										<input type="file" name="files[]" id="upload_multiple" class="btn btn-primary" multiple />
-										<button class="btn pull-right" id="delete_selected_gallery_btn"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Selected</button>
-									</p>
-									
-									<div id="gallery_action_result">&nbsp;</div>
-									
-									<ul class="uploadWorkUl row uploadWorkUlNew marg0">
-										<?if($my_gallery && count($my_gallery) > 0):?>
-											<?foreach($my_gallery as $k=>$v):?>
-												<li id="li-gallery-<?echo $v->photo_id?>">
-													<img src="<?php echo Yii::app()->request->baseUrl;?>/uploads/gallery/<?echo $v->filename?>" alt="" class="img-thumbnail manage_gallery_<?echo $v->photo_id?>"/>
-													<input type="checkbox" name="select_from_gallery" id="select_from_gallery" value="<?echo $v->photo_id?>" />
-												</li>
-											<?endforeach;?>
-										<?else:?>
-											<p class="bg-warning">You have not uploaded work photos</p>
-										<?endif;?>
-									</ul>
-								</div>
+								 <script type="text/javascript">
+      
+ </script> <!-- Include -->
+<div id="progress_gallery" class="progress">
+	<div class="progress-bar progress-bar-success"></div>
+</div>
+<div class="panel panel-default panel-style2">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-lg-7">
+				Work Samples
+			</div>
+			
+			<div class="col-lg-5">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<span class="btn btn-primary btn-file">
+							Select Photos <input type="file" name="files[]" id="upload_multiple" multiple>
+						</span>
+					</span>
+					<!--<button class="btn pull-right" id="delete_selected_gallery_btn"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Selected</button>-->
+					<input type="text" readonly="" class="form-control">
+				</div>
+				<div class="col-lg-3">
+					<a href="javascript:;" id="delete_selected_gallery_btn" class="btn btn-danger">
+						<i class="fa fa-trash-o"></i>
+					</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="row" id="gallery_action_result">
+			<!--<div id="gallery_action_result">&nbsp;</div>-->
+			
+			<?if($my_gallery && count($my_gallery) > 0):?>
+			<?foreach($my_gallery as $k=>$v):?>
+			
+				
+				<div class="col-lg-4 marg-btm text-center" id="li-gallery-<?echo $v->photo_id?>"><img src="<?php echo Yii::app()->request->baseUrl;?>/uploads/gallery/<?echo $v->filename?>" alt="" class="img-responsive gallery-img"></div>
+				<input type="checkbox" name="op1" id="select_from_gallery" value="<?echo $v->photo_id?>">
+			<?endforeach;?>
+		<?else:?>
+			<p class="bg-warning">You have not uploaded work photos</p>
+		<?endif;?>
+			
+			
+		</div>
+	</div>
+</div>
 								<!-- work image upload end-->
 							
 							</div>

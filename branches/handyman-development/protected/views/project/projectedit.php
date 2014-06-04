@@ -1,3 +1,9 @@
+<ol class="breadcrumb">
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/home-owner">My Projects</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/project/jobdetails/pj_id/<?echo $default_project?>/n/<?echo Yii::app()->Ini->slugstring($description)?>">Project Details</a></li>
+			<li class="active">Edit</li>
+</ol>
+	
 	<div class="container">
 	<div id="errors"></div>
 		<div class="row-fluid margTop20 margBot20" id="formcontent">

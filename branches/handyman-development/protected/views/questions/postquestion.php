@@ -56,7 +56,61 @@
 																				<label for="">More information for the question:</label>
 																				<textarea class="form-control" rows="3" id="q_content" name="q_content"></textarea>
 																			  </div>
+																			  <?php  if (Yii::app()->user->isGuest):?>
+																			  <div class="form-group">
+																				<label for="">User Type:</label>
+																				<select class="form-control" name="q_role" id="q_role">
+																				     <option value="">Select</option>
+																				      <option value="contractor">Contractor</option>
+																				      <option value="homeowner">Homeowner</option>
+																				</select>
+																			  </div>
+																			
+																			  <div id="register_homeowner" style="display:none">
+																			     <div class="form-group">
+																				 <label for="">Email:</label>
+																				  <input type="text" name="q_hemail" id="q_hemail" class="form-control"  value="">
+																			    </div>
+																			    <div class="form-group">
+																				 <label for="">First Name:</label>
+																				  <input type="text" name="q_firstname" id="q_firstname" class="form-control"  value="">
+																			    </div>
+																			    <div class="form-group">
+																				 <label for="">Last Name:</label>
+																				  <input type="text" name="q_lastname" id="q_lastname" class="form-control"  value="">
+																			    </div>
+																			    <div class="form-group">
+																				 <label for="">Username:</label>
+																				  <input type="text" name="q_husername" id="q_husername" class="form-control"  value="">
+																			    </div>
+																			  </div>
 																			  
+																			  <div id="register_contractor" style="display:none">
+																			   <div class="form-group">
+																				 <label for="">Email:</label>
+																				  <input type="text" name="q_cemail" id="q_cemail" class="form-control"  value="">
+																			    </div>
+																			    <div class="form-group">
+																				 <label for="">Company Name:</label>
+																				  <input type="text" name="q_company" id="q_company" class="form-control"  value="">
+																			    </div>
+																			    <div class="form-group">
+																				 <label for="">Contact Name:</label>
+																				  <input type="text" name="q_contactname" id="q_contactname" class="form-control"  value="">
+																			    </div>
+																			    <div class="form-group">
+																				 <label for="">Username:</label>
+																				  <input type="text" name="q_cusername" id="q_cusername" class="form-control"  value="">
+																			    </div>
+																			    <div class="form-group">
+																				 <label for="">Password:</label>
+																				  <input type="password" name="q_password" id="q_password" class="form-control"  value="">
+																			    </div>
+																			  </div>
+																			  
+																			     
+																			  <?php endif;?>
+																			  <input type="hidden" name="to-register" id="to-register" value="<?php if (Yii::app()->user->isGuest){ echo '1';} else {echo '0';}?>" id="t">
 																			  <input type="hidden" name="t" value="addquestion" id="t">
 																			  <button type="submit" class="btn btn-danger">Ask The Question</button>
 																			</form>
@@ -78,4 +132,4 @@
 			</div>
 		</div>
 		
-		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/questions.js"></script>
+		<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/postquestions.js"></script>

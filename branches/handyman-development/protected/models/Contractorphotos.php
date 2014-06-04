@@ -8,6 +8,7 @@
  * @property integer $contractor_id
  * @property string $filename
  * @property integer $is_profile
+ * @property integer $is_bg
  */
 class Contractorphotos extends CActiveRecord
 {
@@ -37,11 +38,11 @@ class Contractorphotos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('contractor_id, is_profile', 'numerical', 'integerOnly'=>true),
+			array('contractor_id, is_profile, is_bg', 'numerical', 'integerOnly'=>true),
 			array('filename', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('photo_id, contractor_id, filename, is_profile', 'safe', 'on'=>'search'),
+			array('photo_id, contractor_id, filename, is_profile, is_bg', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,6 +68,7 @@ class Contractorphotos extends CActiveRecord
 			'contractor_id' => 'Contractor',
 			'filename' => 'Filename',
 			'is_profile' => 'Is Profile',
+			'is_bg' => 'Is Bg',
 		);
 	}
 
@@ -85,6 +87,7 @@ class Contractorphotos extends CActiveRecord
 		$criteria->compare('contractor_id',$this->contractor_id);
 		$criteria->compare('filename',$this->filename,true);
 		$criteria->compare('is_profile',$this->is_profile);
+		$criteria->compare('is_bg',$this->is_bg);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
