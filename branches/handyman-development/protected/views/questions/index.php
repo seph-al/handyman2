@@ -32,7 +32,7 @@
 																  </div>
 																<div class="col-md-7qa" id="recent-questions">
 																	
-																	<?$this->renderPartial('recent-questions',array('questions'=>$questions));?>
+																	<?$this->renderPartial('recent-questions',array('questions'=>$questions,'pages' => $pages));?>
 																</div><!-- recent-questions -->
 																
 														</div>

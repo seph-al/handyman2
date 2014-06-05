@@ -1567,7 +1567,7 @@ ul.subul {
 }
 ul.subul li {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 5px 5px;
     cursor: pointer;
     -moz-box-sizing: border-box;
 }
@@ -2338,6 +2338,55 @@ li.view-more {
 .myAccntLeftUl li.last {
     border-bottom: 0px none;
 }
+.myAccntLeftUl li:nth-child(1) a::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/gear-m.png');
+display:block;
+}
+.myAccntLeftUl li:nth-child(2) a::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/full-folder-m.png');
+display:block;
+}
+.myAccntLeftUl li:nth-child(3) a::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/pencil-m.png');
+display:block;
+}
+.myAccntLeftUl li:nth-child(4) a::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/inbox-4-m.png');
+display:block;
+}
+.myAccntLeftUl li:nth-child(5) a::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/decision-m.png');
+display:block;
+}
+.myAccntLeftUl li:nth-child(6) a::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/workers-m.png');
+display:block;
+}
+.myAccntLeftUl li a {
+    font-size: 15px;
+    padding: 8px 15px 8px 15px;
+    width: 165px;
+    background: #fff;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+    border:1px solid #ccc;
+    border-radius:4px;
+    display: block;   
+}
+ul.subul li a {
+    color: #666;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    background: #eee;
+    display: block;
+    padding: 5px 10px 0px 10px;
+    border-radius: 10px;
+    border-bottom: 1px solid #ccc;
+}
+ul.subul li a.active, ul.subul li a:hover{
+    background:#888;
+    color:#ffffff;
+}
 ul.subul {
     background: #fafafa;
 	box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -2346,11 +2395,10 @@ ul.subul {
 }
 ul.subul li {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 5px 5px;
     cursor: pointer;
     -moz-box-sizing: border-box;
 }
-
 ul#myaccountsub li a#tabcontact::before {
 	content: url("http://domaindirectory.com/template/handyman/images/phone.png");
     margin-right: 3px;
@@ -2385,16 +2433,6 @@ ul#myaccountsub li a#tabsocials::before {
 	content: url("http://domaindirectory.com/template/handyman/images/social-monitor.png");
     margin-right: 3px;
     vertical-align: -8px;
-}
-
-ul.subul li a {
-    color: #888;
-    cursor: pointer;
-    font-size: 17px;
-	font-weight:bold;
-}
-ul.subul li a.active, ul.subul li a:hover {
-    color: #660506;
 }
 .margTop15 {
     margin-top: 15px !important;

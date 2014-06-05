@@ -539,6 +539,20 @@ class Ini extends CApplicationComponent
         return $location;
 		
 	}
+	
+	public function getaffiliatelogin($role,$userid){
+		Yii::app()->Ini->savetoaffiliate($userid,$role);
+		$aff = Affiliates::model()->findByAttributes(array('user_type'=>$role,'userid'=>$userid));
+		if (count($aff)>0){
+			$url = 'http://api2.contrib.com/request/getaffiliateloginurl?affiliate_id='.$aff->affiliate_id;
+		}else {
+			$url = 'http://api2.contrib.com/request/getaffiliateloginurl?affiliate_id=394';
+		}
+		   $response = @file_get_contents($url);
+		   $res = json_decode($response);
+		   $url = $res->data->url;
+		   return $url;
+	}
    
    
 }
