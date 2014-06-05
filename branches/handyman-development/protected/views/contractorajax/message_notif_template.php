@@ -45,15 +45,15 @@
 				<table style="width:630px;background:#F0F2FF;padding:15px;font:normal 11px/17px Verdana;text-align:center;">
 					<tbody>
 						<tr>
-							<td><a target="_blank" style="color:#000000;text-decoration:none;" href="">About us</a>
+							<td><a href="http://handyman.com/home/about" target="_blank" style="color:#000000;text-decoration:none;" href="">About us</a>
 							</td>
-							<td><a target="_blank" style="color:#000000;text-decoration:none" href="">Privacy Policy</a>
+							<td><a href="http://handyman.com/home/privacy" target="_blank" style="color:#000000;text-decoration:none" href="">Privacy Policy</a>
 							</td>
-							<td><a target="_blank" style="color:#000000;text-decoration:none" href="">Terms & Conditions</a>
+							<td><a href="http://handyman.com/home/terms" target="_blank" style="color:#000000;text-decoration:none" href="">Terms &amp; Conditions</a>
 							</td>
-							<td><a target="_blank" style="color:#000000;text-decoration:none" href="">Testimonial</a>
+							<td><a href="http://handyman.com/home/contactus" style="color:#000000;text-decoration:none" href="">Contact Us</a>
 							</td>
-							<td><a target="_blank" style="color:#000000;text-decoration:none" href="">Faq</a>
+							<td><a href="http://handyman.com/faq" style="color:#000000;text-decoration:none" href="">Faq</a>
 							</td>
 						</tr>
 					</tbody>
