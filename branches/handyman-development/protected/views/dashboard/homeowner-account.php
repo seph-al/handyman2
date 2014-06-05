@@ -65,7 +65,7 @@
 												</label>
 											</div>
 											<div class="controls">
-												<img style="width:200px;height:200px" class="img-thumbnail" src="<?echo empty($hmodel->photo) ? '':'/uploads/homeowner/'.$hmodel->photo?>" alt="Display photo" id="show_display_photo"/>
+												<img style="width:200px;height:200px" class="img-thumbnail" src="<?echo empty($hmodel->photo) ? 'http://rdbuploads.s3.amazonaws.com/icons/clapper.png':'/uploads/homeowner/'.$hmodel->photo?>" alt="Display photo" id="show_display_photo"/>
 												<input class="btn btn-primary" type="file" name="files[]" id="display_photo" class="form-control" />	<span class="postErrors cusphoto"></span>
 												<div id="progress_gallery" class="progress">
 													<div class="progress-bar progress-bar-success"></div>

@@ -20,6 +20,11 @@ class ContractorController extends Controller
     {
     	$location = Yii::app()->Ini->getlocationbyip(Yii::app()->Ini->rip('ip'));
     	$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+    	$criteria = new CDbCriteria();
+		$criteria->order = "question_id DESC";
+		$criteria->limit = 5;
+		$questions = Questions::model()->findAll($criteria); 
+				
     	$states = States::model()->findAll(array('order' => 'Name ASC'));
         $city =  Yii::app()->Ini->v('city');
         $project =  Yii::app()->Ini->v('project');
@@ -48,7 +53,8 @@ class ContractorController extends Controller
 		        'projects'=>$projects,
 		        'records'=>$count,
 		        'city_name'=>$city_name,
-		        'location'=>$city_name.",USA"
+		        'location'=>$city_name.",USA",
+		        'questions'=>$questions
              ));
              
     	}else if($project && $zipcode){
@@ -80,7 +86,7 @@ class ContractorController extends Controller
 					$models=Contractors::model()->findAll($criteria);
 				
 				$this->render('match-result',array('pages' => $pages,'result' => $models,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location
-				,'city_name'=>$city_name.' In Zipcode '.$zipcode));
+				,'city_name'=>$city_name.' In Zipcode '.$zipcode,'questions'=>$questions));
 			  
 			  
 			  
@@ -108,7 +114,8 @@ class ContractorController extends Controller
 		        'projects'=>$projects,
 		        'records'=>$count,
 		        'city_name'=>$city_name,
-		        'location'=>$location
+		        'location'=>$location,
+		        'questions'=>$questions
              ));
     	}else if ($zipcode){
     		 
@@ -127,7 +134,8 @@ class ContractorController extends Controller
 	            'pages' => $pages,
 		        'projects'=>$projects,
 		        'records'=>$count,
-		        'city_name'=>$zipcode
+		        'city_name'=>$zipcode,
+		        'questions'=>$questions
              ));
     	}else if($match){
 			$proj = Projects::model()->findByPk($match);
@@ -153,14 +161,14 @@ class ContractorController extends Controller
 						}
 					
 					
-					$this->render('match-result',array('pages' => $pages,'result' => $result,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location,'city_name'=>$this->getProjectTypeName($project_type_id).' In Zipcode '.$proj_zipcode));
+					$this->render('match-result',array('pages' => $pages,'result' => $result,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location,'city_name'=>$this->getProjectTypeName($project_type_id).' In Zipcode '.$proj_zipcode,'questions'=>$questions));
 			}else{
-				$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location));
+				$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions));
 			}
 		}
     	else {
     		
-    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location));
+    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions));
     	}
     	
     	
@@ -241,7 +249,12 @@ class ContractorController extends Controller
 						}
 					}
 					
+					//get map location
+					$address = urlencode($address1.','.$city.','.$state.",".$zipcode.",USA");
+					$l = explode(",",Yii::app()->Ini->GetMapLocation($address));
+					$point = array($address1.','.$city.','.$state,floatval($l[0]),floatval($l[1]),0); 
 					
+				
 					$this->pageTitle = 'Handyman.com - Contractor - '.$company.' Profile';
 					$this->render('contractor-profile', array( 'profile_exists' => true,
 									'contractor_id' =>$contractor_id,
@@ -272,7 +285,9 @@ class ContractorController extends Controller
 								   'feedback' => $feedback,
 								   'photo_cover' => $photo_cover,
 								   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
-								   ,'homeowner_projects'=>$homeowner_projects
+								   ,'homeowner_projects'=>$homeowner_projects,
+								   'point'=>$point,
+								   'map_location'=>$l
 								   ));
 								   
                 //update views

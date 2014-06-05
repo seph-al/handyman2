@@ -65,7 +65,7 @@
                                     <i class="fa fa-edit"></i>
                                 </div>
                                 <div class="details">
-                                    <div class="number"></div>
+                                    <div class="number"><?echo $points; ?>	Points</div>
                                     <div class="desc">
                                         Check out your <br>Profile
                                     </div>

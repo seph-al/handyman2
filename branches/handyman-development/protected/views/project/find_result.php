@@ -79,23 +79,56 @@
 	
 </div>
 			<!-- end find job left math -->				
-				<div class="findJobRight col-md-4" style="height:auto;">
-					<div class="contain margin1Btm">
-						<ul class="findRiteUlNew">
-							<h1 class="findRiteUlNewHead">Featured Projects</h1>
-							<?php if (count($projects)>0):?>
+			<div class="findJobRight col-md-4" style="height:auto;">
+    <?php if (Yii::app()->user->isGuest):?>
+<p><a title="register as a contractor for free" href="/contractor/signup" class="btn btn-danger btn-lg btn-block">Register as a Contractor</a></p>
+<p><H4 class='text-center'>or</H4></p>
+<p><a title="Post your homeowner project for free" href="/project/post" class="btn btn-warning btn-lg btn-block">Post Your Project</a></p>
+<?php endif;?>			
+			
+					<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Project Categories</div>
+  <div class="panel-body">
+
+  </div>
+
+  <!-- List group -->
+  <ul class="list-group">
+   	<?php if (count($projects)>0):?>
 									  <?php foreach($projects as $k=>$v):?>
-									      <li><a  href="<?php echo Yii::app()->request->baseUrl; ?>/project/find/project/<?php echo $v->ProjectTypeId?>/n/<?php echo Yii::app()->Ini->slugstring($v->Name)?>"><?php echo $v->Name?></a></li>
+									      <li class="list-group-item"><a  href="<?php echo Yii::app()->request->baseUrl; ?>/project/find/project/<?php echo $v->ProjectTypeId?>/n/<?php echo Yii::app()->Ini->slugstring($v->Name)?>"><?php echo $v->Name?></a></li>
 									  <?php endforeach;?>
 									<?php endif?>
-								</ul>
-						<ul class="findMore row-fluid offset0" style="display:none;">
-							<li>
-								<a class="more" onclick="$('.findRiteUlNew').css('height','auto');$('.more').hide();$('.hideMore').show();"> More</a>
-								<a class="hideMore" onclick="$('.findRiteUlNew').css('height','450px');$('.hideMore').hide();$('.more').show();" style="display:none;">Hide</a>
-							</li>
-						</ul>
-					</div>
+  </ul>
+<div style="clear:both"><br></div>
+</div>
+<div class="panel panel-default">
+						  <div class="panel-heading"><h4>Recent questions and answers</h4></div>
+						  <div class="panel-body"></div>
+						  <?if(count($questions) > 0):?>
+						  <ul class="list-group qna-side">
+							<?php foreach($questions as $k=>$v):?>
+								<li class="list-group-item">
+									<p class="qna-side-title">
+										<span class="glyphicon glyphicon glyphicon-question-sign"></span>
+										<a href="<?php echo Yii::app()->request->baseUrl; ?>/questions/details/id/<?php echo $v->question_id?>/n/<?php echo Yii::app()->Ini->slugstring($v->title)?>" class="qna-side-ask"><?php echo $v->title?></a>
+									</p>
+									<p class="qna-side-who"> posted <?php echo date("m/d/Y h:i a", strtotime($v->date_posted));?> in <a href="<?php echo Yii::app()->request->baseUrl; ?>/questions/category/cat/<?php echo $v->type->ProjectTypeId?>/n/<?php echo Yii::app()->Ini->slugstring($v->type->Name)?>"><?php echo $v->type->Name?></a> by 
+									 <?php if ($v->owner_user_type == 'homeowner'):?>
+										  <a class="qa-user-link" href="<?php echo Yii::app()->request->baseUrl; ?>/homeowner/profile/user/<?php echo $v->huser->username?>"><?php echo $v->huser->firstname ." ".$v->huser->lastname?></a>
+										 <?php else:?>
+										  <a class="qa-user-link" href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?php echo $v->cuser->Username?>"><?php echo $v->cuser->Name?></a>
+									  <?php endif?>
+									</p>
+								</li>
+						   <?php endforeach;?>
+						  </ul>
+						  <?php endif?>
+						  <div style="clear:both"><br></div>
+						</div>
+				
+
 				</div>
 			</div>
 		</div>

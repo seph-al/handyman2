@@ -64,6 +64,11 @@
                         <div class="panel-body">
                             <?echo $services?>
                         </div>
+                        <div class="panel-heading">Location</div>
+                        <div class="panel-body">
+                         <?php $this->renderPartial('contractor-map',array('point'=>$point,'map_location'=>$map_location)); ?>
+                            
+                        </div>
                        <!-- <ul class="list-group">
                             <li class="list-group-item li-heading">services</li>
                             <li class="list-group-item">
