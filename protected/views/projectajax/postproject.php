@@ -45,13 +45,13 @@
 				<table style="width:630px;background:#BDEDFF;padding:15px;font:normal 11px/17px Verdana;text-align:center;">
 					<tbody>
 						<tr>
-						    <td><a target="_blank" style="color:#000000;text-decoration:none;" href="<?php echo Yii::app()->request->baseUrl; ?>/home/about">About us</a>
+						    <td><a target="_blank" style="color:#000000;text-decoration:none;" href="http://www.handyman.com/home/about">About us</a>
 							</td>
-							<td><a target="_blank" style="color:#000000;text-decoration:none" href="<?php echo Yii::app()->request->baseUrl; ?>/home/privacy">Privacy Policy</a>
+							<td><a target="_blank" style="color:#000000;text-decoration:none" href="http://www.handyman.com/home/privacy">Privacy Policy</a>
 							</td>
-							<td><a target="_blank" style="color:#000000;text-decoration:none" href="<?php echo Yii::app()->request->baseUrl; ?>/home/terms">Terms & Conditions</a>
+							<td><a target="_blank" style="color:#000000;text-decoration:none" href="http://www.handyman.com/home/terms">Terms & Conditions</a>
 							</td>
-							<td><a target="_blank" style="color:#000000;text-decoration:none" href="<?php echo Yii::app()->request->baseUrl; ?>/faq">Faq</a>
+							<td><a target="_blank" style="color:#000000;text-decoration:none" href="http://www.handyman.com/faq">Faq</a>
 							</td>
 						</tr>
 					</tbody>
