@@ -23,6 +23,11 @@ class ProjectController extends Controller
     	$location = Yii::app()->Ini->getlocationbyip(Yii::app()->Ini->rip('ip'));
     	$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
     	$states = States::model()->findAll(array('order' => 'Name ASC'));
+    	$criteria = new CDbCriteria();
+		$criteria->order = "question_id DESC";
+		$criteria->limit = 5;
+		$questions = Questions::model()->findAll($criteria); 
+    	
         $city =  Yii::app()->Ini->v('city');
         $project =  Yii::app()->Ini->v('project');
         $zipcode =  Yii::app()->Ini->v('zipcode');
@@ -48,7 +53,8 @@ class ProjectController extends Controller
 		        'projects'=>$projects,
 		        'records'=>$count,
 		        'city_name'=>$city_name,
-		        'location'=>$city_name.",USA"
+		        'location'=>$city_name.",USA",
+		        'questions'=>$questions
              ));
              
     	}else if ($project){
@@ -82,7 +88,8 @@ class ProjectController extends Controller
 		        'projects'=>$projects,
 		        'records'=>$count,
 		        'search_name'=>$search_name,
-				 'location'=>"Albuquerque, New Mexico,USA"
+				 'location'=>"Albuquerque, New Mexico,USA",
+		        'questions'=>$questions
              ));
     	}else if ($zipcode){
     		
@@ -104,12 +111,13 @@ class ProjectController extends Controller
 		        'projects'=>$projects,
 		        'records'=>$count,
 		        'search_name'=>"Zipcode ".$zipcode,
-				 'location'=>"Albuquerque, New Mexico,USA"
+				'location'=>"Albuquerque, New Mexico,USA",
+		        'questions'=>$questions
              ));
     	}
     	else {
     		
-    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location));
+    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions));
     	}
 	}else{
 	

@@ -34,38 +34,38 @@ class ApiController extends Controller
        
    }
    
-   public function actionSaveproject($post){
+   public function actionSaveproject(){
    	   header('Access-Control-Allow-Origin: *');
    	   $rows = array();
-   	   if (Homeowners::model()->countByAttributes(array('email'=>$post['email']))==0){
-        		if (Homeowners::model()->countByAttributes(array('username'=>$post['username']))==0){
+   	   if (Homeowners::model()->countByAttributes(array('email'=>$_POST['email']))==0){
+        		if (Homeowners::model()->countByAttributes(array('username'=>$_POST['username']))==0){
         			 $password = Yii::app()->Ini->generate_password();
         			 $huser = new Homeowners();
-        		     $huser->firstname       = $post['firstname'];
-		             $huser->lastname        = $post['lastname'];
-		             $huser->email  = $post['email'];
-		             $huser->phone_number = $post['phone_number'];
-		             $huser->username  = $post['username'];
+        		     $huser->firstname       = $_POST['firstname'];
+		             $huser->lastname        = $_POST['lastname'];
+		             $huser->email  = $_POST['email'];
+		             $huser->phone_number = $_POST['phone_number'];
+		             $huser->username  = $_POST['username'];
 		             $huser->password = $password;
 		             
 		             if ($huser->save()){
-		             	 Yii::app()->Ini->savetovnoc($post['email']);
+		             	 Yii::app()->Ini->savetovnoc($_POST['email']);
 			             $owner_id = Yii::app()->db->getLastInsertId();
 			             Yii::app()->Ini->savetoaffiliate($owner_id,'homeowner');   
 			             $this->SendMailAfterSignUp($owner_id);
 			             
 			               $proj = new Projects();
-				           $proj->project_type_id = $post['projecttype'];
-				           $proj->description = $post['projectdesc'];
-				           $proj->start_date = $post['projectstart'];
-				           $proj->status_for_project = $post['projectstatus'];
-				           $proj->time_frame = $post['projecttimeframe'];
-				           $proj->owned_property = $post['won_pro'];
-				           $proj->address = $post['projectaddress'];
-				           $proj->state_id = $post['projectstate'];
-				           $proj->city = $post['city'];
-				           $proj->zipcode = $post['zip_code'];
-				           $proj->budget = $post['projectbudget'];
+				           $proj->project_type_id = $_POST['projecttype'];
+				           $proj->description = $_POST['projectdesc'];
+				           $proj->start_date = $_POST['projectstart'];
+				           $proj->status_for_project = $_POST['projectstatus'];
+				           $proj->time_frame = $_POST['projecttimeframe'];
+				           $proj->owned_property = $_POST['won_pro'];
+				           $proj->address = $_POST['projectaddress'];
+				           $proj->state_id = $_POST['projectstate'];
+				           $proj->city = $_POST['city'];
+				           $proj->zipcode = $_POST['zip_code'];
+				           $proj->budget = $_POST['projectbudget'];
 				           $proj->homeowner_id = $owner_id;
 				           if ($proj->save()){
 					           $proj_id = Yii::app()->db->getLastInsertId();	
@@ -101,6 +101,23 @@ class ApiController extends Controller
      	  $this->renderRequest($rows);
    } 
    
+   public function actionAutologin(){
+   	    $email = base64_decode(Yii::app()->Ini->v('code'));
+   	    $details = Homeowners::model()->findByAttributes(array('email'=>$email));
+   	    if (count($details)){
+   	    	  $identity=new UserIdentity($details->email,$details->password,'homeowner');
+        	  if($identity->authenticate()){
+			   Yii::app()->user->login($identity);
+               $owner_id = Yii::app()->user->getId();    
+               $this->redirect(Yii::app()->homeUrl); 			
+			 }else{
+			      $this->redirect(Yii::app()->homeUrl);
+			 }
+	    }else {
+   	    	$this->redirect(Yii::app()->homeUrl);
+   	    }
+   }
+   
  private function SendMailAfterSignUp($userid)
     {  
     	$hmodel          = Homeowners::model()->findByPk($userid);
@@ -126,5 +143,7 @@ private function SendMailAfterProject($projectid)
     	mail($pmodel->homeowner->email,$subject,$content,$headers);
 	       
     }
+    
+    
     
 }

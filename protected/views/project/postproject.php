@@ -1,23 +1,9 @@
 <style>
-	.btn-s1 {
-		padding: 14px 16px;
-		font-size: 26px;
-	}
-	.nav-tabs > li > a:hover,
-	.nav-tabs > li > a:focus {
-	  outline: none;
-	}
-
-	.nav-tabs .active > a,
-	.nav-tabs .active > a:hover,
-	.nav-tabs .active > a:focus {
-	  outline: none;
-	}
+.btn-s1 {
+padding: 14px 16px;
+font-size: 26px;
+}
 </style>
-
-
-
-
 <div class="section-header">
 	<div class="projBanner">
 		<div class="container">
@@ -89,163 +75,153 @@
 						<div id="form-field-div-client" class="contain"></div>
 					</div>
 					<div class="postJobBox col-md-12 offset0">
-						<span class="registerHead">Describe What Needs To Be Done.</span> <br><br>
-						<!-- <div class="tabbable tabs-left"> -->
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#need" data-toggle="tab">Needs to be Done</a></li>
-								<li><a href="#location" data-toggle="tab">Location</a></li>
-							</ul>
-							<div class="tab-content">
-								<div class="tab-pane active" id="need">
-									<div class="row">
-										<div class="col-lg-12">
-											<ul class="postProjUl">
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">Project Description  <span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<textarea class="form-control" rows="3" id="projectdesc" name="projectdesc"></textarea>
-														<label class="postProjErr projectdesc_message"></label>
-													</div>
-												</li>
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">Ideal Start Date<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<select class="form-control" name="projectstart" id="projectstart" size="1">
-															<option>Select</option>
-															<option value="Now">Now</option>
-															<option value="1-Week">1-Week</option>
-															<option value="2-Weeks">2-Weeks</option>
-															<option value="3-Weeks">3-Weeks</option>
-															<option value="1-2 Months">1-2 Months</option>
-															<option value="3-6 Months">3-6 Months</option>
-														</select>
-														<label class="postProjErr projectstart_message"></label>
-													</div>
-												</li>
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">Project Status<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<select class="form-control" name="projectstatus" id="projectstatus" size="1">
-															<option></option>
-															<option value="Ready to Hire">Ready to Hire</option>
-															<option value="Planning and Budgeting">Planning and Budgeting</option>
-														</select>
-														<label class="postProjErr projectstatus_message"></label>
-													</div>
-												</li>
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">Completion Time Frame<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<select class="form-control" name="projecttimeframe" id="projecttimeframe" size="1">
-															<option>Select</option>
-															<option value="Timing is Flexible">Timing is Flexible</option>
-															<option value="Less than 2 months">Less than 2 months</option>
-															<option value="More than 2 months">More than 2 months</option>
-														</select>
-														<label class="postProjErr projecttimeframe_messafe"></label>
-													</div>
-												</li>
-												<li class="control-group ">
-													<div class="">
-														<label for="business_name">Do You Own the Property<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<label class="checkbox pull-right" for="won_pro1">
-															<input class="radio" type="radio" id="projectown" value="1" name="won_pro" checked/>
-															Yes
-														</label>
-														<label class="checkbox pull-right padTop5" for="won_pro2">
-															<input class="radio" type="radio" id="projectown" value="0" name="won_pro" />
-															No
-														</label>
-														<label class="postProjErr projectown_message"></label>
-														<div style="clear:both;"><br></div>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
+						<span class="registerHead">Describe What Needs To Be Done.</span>
+						<ul class="postProjUl">
+							
+							<li class="control-group">
+								<div class="">
+									<label for="business_name">Project Description  <span class="starcolor">*</span></label>
 								</div>
-								<div class="tab-pane" id="location">
-									<div class="row">
-										<div class="col-lg-12">
-											<ul class="postProjUl">
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">Address<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<textarea class="form-control" id="projectaddress" name="projectaddress"></textarea>
-														<label class="postProjErr projectaddress_message"></label>
-													</div>
-												</li>
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">State<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<select  class="form-control" id="projectstate" name="projectstate" >
-															<option>Please select</option>
-															<?php foreach($state as $k=>$v): ?>
-																<option value="<?php echo $v->StateId ?>"  name="<?php echo $v->Name ?>"><?php echo $v->Name ?></option>
-															<?php endforeach; ?>
-														</select>
-														<label class="postProjErr projectstate_message"></label>
-													</div>
-												</li>
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">City<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<input type="text" value="" id="city" name="city" class="form-control" />
-														<label class="postProjErr homeown_fname"></label>
-													</div>
-												</li>
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">Zipcode<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<input type="text" value="<?echo $from_index == true ?  $zipcode:''?>" id="zip_code" name="zip_code" class="form-control"/>
-													</div>
-													<span id="errmsg" style="color:red"></span>
-												</li>
-												<li class="control-group">
-													<div class="">
-														<label for="business_name">Project Budget<span class="starcolor">*</span></label>
-													</div>
-													<div class="controls">
-														<select class="form-control" name="projectbudget" id="projectbudget" size="1">
-															<option value="">Select</option>
-															<option value="up to $500">up to $500</option>
-															<option value="$500 to $1000">$500 to $1000</option>
-															<option value="$1000 to $2500">$1000 to $2500</option>
-															<option value="$2500 to $5000">$2500 to $5000</option>
-															<option value="$5000 to $10000">$5000 to $10000</option>
-															<option value="$10000 to $25000">$10000 to $25000</option>
-															<option value="$25000 to $50000">$25000 to $50000</option>
-															<option value="$50000 to $100000">$50000 to $100000</option>
-															<option value="$100000 to $200000">$100000 to $200000</option>
-															<option value="$200000 +">$200000 +</option>
-														</select>
-														<label class="postProjErr projecttimeframe_messafe"></label>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
+								<div class="controls">
+									<textarea class="form-control" rows="3" id="projectdesc" name="projectdesc"></textarea>
+									<label class="postProjErr projectdesc_message"></label>
 								</div>
-							</div>
-						<!-- </div> -->
+							</li>
+							
+							
+							<li class="control-group">
+								<div class="">
+									<label for="business_name">Ideal Start Date<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<select class="form-control" name="projectstart" id="projectstart" size="1">
+										<option>Select</option>
+										<option value="Now">Now</option>	
+										<option value="1-Week">1-Week</option>
+										<option value="2-Weeks">2-Weeks</option>
+										<option value="3-Weeks">3-Weeks</option>
+										<option value="1-2 Months">1-2 Months</option>	
+										<option value="3-6 Months">3-6 Months</option>	
+									</select>
+									<label class="postProjErr projectstart_message"></label>
+								</div>
+							</li>
+							
+							
+							<li class="control-group">
+								<div class="">
+									<label for="business_name">Project Status<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<select class="form-control" name="projectstatus" id="projectstatus" size="1">
+										<option></option>
+										<option value="Ready to Hire">Ready to Hire</option>	
+										<option value="Planning and Budgeting">Planning and Budgeting</option>
+									</select>
+									<label class="postProjErr projectstatus_message"></label>
+								</div>
+							</li>
+							
+							
+							<li class="control-group">
+								<div class="">
+									<label for="business_name">Completion Time Frame<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<select class="form-control" name="projecttimeframe" id="projecttimeframe" size="1">
+										<option>Select</option>
+										<option value="Timing is Flexible">Timing is Flexible</option>	
+										<option value="Less than 2 months">Less than 2 months</option>
+										<option value="More than 2 months">More than 2 months</option>	
+									</select>
+									<label class="postProjErr projecttimeframe_messafe"></label>
+								</div>
+							</li>
+							<li class="control-group ">
+								<div class="">
+									<label for="business_name">Do You Own the Property<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<label class="checkbox pull-right" for="won_pro1">
+										<input class="radio" type="radio" id="projectown" value="1" name="won_pro" checked/>
+										Yes
+									</label>
+									<label class="checkbox pull-right padTop5" for="won_pro2">
+										<input class="radio" type="radio" id="projectown" value="0" name="won_pro" />
+										No
+									</label>
+									<label class="postProjErr projectown_message"></label>
+									<div style="clear:both;"><br></div>
+								</div>
+							</li>
+							<li class="control-group">
+								<div class="">
+									<label for="business_name">Address<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<textarea class="form-control" id="projectaddress" name="projectaddress"></textarea>
+									<label class="postProjErr projectaddress_message"></label>
+								</div>
+							</li>
+							<li class="control-group">
+								<div class="">
+									<label for="business_name">State<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<select  class="form-control" id="projectstate" name="projectstate" >
+										<option>Please select</option>
+										<?php foreach($state as $k=>$v): ?>
+										<option value="<?php echo $v->StateId ?>"  name="<?php echo $v->Name ?>"><?php echo $v->Name ?></option>
+										<?php endforeach; ?>
+									</select>
+									<label class="postProjErr projectstate_message"></label>
+								</div>
+							</li>
+							<li class="control-group">
+								<div class="">
+									<label for="business_name">City<span class="starcolor">*</span></label>
+								</div>
+									<div class="controls">
+										<input type="text" value="" id="city" name="city" class="form-control" />
+									 <label class="postProjErr homeown_fname"></label>
+									</div>
+							</li>
+							<li class="control-group">
+								<div class="">
+									
+									<label for="business_name">Zipcode<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<input type="text" value="<?echo $from_index == true ?  $zipcode:''?>" id="zip_code" name="zip_code" class="form-control"/>
+									
+								</div>
+								<span id="errmsg" style="color:red"></span>
+								
+							</li>
+							
+								<li class="control-group">
+								<div class="">
+									<label for="business_name">Project Budget<span class="starcolor">*</span></label>
+								</div>
+								<div class="controls">
+									<select class="form-control" name="projectbudget" id="projectbudget" size="1">
+										<option value="">Select</option>
+										<option value="up to $500">up to $500</option>	
+										<option value="$500 to $1000">$500 to $1000</option>
+										<option value="$1000 to $2500">$1000 to $2500</option>
+										<option value="$2500 to $5000">$2500 to $5000</option>
+										<option value="$5000 to $10000">$5000 to $10000</option>
+										<option value="$10000 to $25000">$10000 to $25000</option>
+										<option value="$25000 to $50000">$25000 to $50000</option>
+										<option value="$50000 to $100000">$50000 to $100000</option>
+										<option value="$100000 to $200000">$100000 to $200000</option>
+										<option value="$200000 +">$200000 +</option>	
+									</select>
+									<label class="postProjErr projecttimeframe_messafe"></label>
+								</div>
+							</li>
+						</ul>
+					
 					</div>
 
 

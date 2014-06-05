@@ -102,8 +102,34 @@
 									  <?php endforeach;?>
 									<?php endif?>
   </ul>
-
+<div style="clear:both"><br></div>
 </div>
+<div class="panel panel-default">
+						  <div class="panel-heading"><h4>Recent questions and answers</h4></div>
+						  <div class="panel-body"></div>
+						  <?if(count($questions) > 0):?>
+						  <ul class="list-group qna-side">
+							<?php foreach($questions as $k=>$v):?>
+								<li class="list-group-item">
+									<p class="qna-side-title">
+										<span class="glyphicon glyphicon glyphicon-question-sign"></span>
+										<a href="<?php echo Yii::app()->request->baseUrl; ?>/questions/details/id/<?php echo $v->question_id?>/n/<?php echo Yii::app()->Ini->slugstring($v->title)?>" class="qna-side-ask"><?php echo $v->title?></a>
+									</p>
+									<p class="qna-side-who"> posted <?php echo date("m/d/Y h:i a", strtotime($v->date_posted));?> in <a href="<?php echo Yii::app()->request->baseUrl; ?>/questions/category/cat/<?php echo $v->type->ProjectTypeId?>/n/<?php echo Yii::app()->Ini->slugstring($v->type->Name)?>"><?php echo $v->type->Name?></a> by 
+									 <?php if ($v->owner_user_type == 'homeowner'):?>
+										  <a class="qa-user-link" href="<?php echo Yii::app()->request->baseUrl; ?>/homeowner/profile/user/<?php echo $v->huser->username?>"><?php echo $v->huser->firstname ." ".$v->huser->lastname?></a>
+										 <?php else:?>
+										  <a class="qa-user-link" href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?php echo $v->cuser->Username?>"><?php echo $v->cuser->Name?></a>
+									  <?php endif?>
+									</p>
+								</li>
+						   <?php endforeach;?>
+						  </ul>
+						  <?php endif?>
+						  <div style="clear:both"><br></div>
+						</div>
+				
+
 				</div>
 			</div>
 		</div>

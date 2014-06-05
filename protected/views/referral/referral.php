@@ -24,12 +24,25 @@
                         <a name="top"></a>
 
 
-
+						
+						
 
                         <div class="padd-banner">
                             <iframe src="http://referrals.contrib.com/aff_index.php?affiliate=<?=$domain?>" width="800px" height="800px" scrolling="auto" frameborder="0" seamless></iframe>
                            
-                            <div class="banner-main">
+						   <?foreach($banners AS $banner):?>
+								<div class="banner-main">
+									<div class="floating text-center banner-img-cont">
+										<a href="<?echo $redirect?>" target="_blank"><img style="border:0px" src="<?echo $banner?>" width="200" height="200" alt="Handyman.com"></a>
+									</div>
+									<p class="text-center banner-source">Source Code - Copy/Paste Into Your Website</p>
+									<textarea class="text-left input-block-level" rows="3" onclick="this.focus();this.select()" readonly="readonly">
+										<a href="<?echo $redirect?>" target="_blank"><img style="border:0px" src="<?echo $banner?>" width="200" height="200" alt="Handyman.com"></a>
+									</textarea>
+								</div><!-- banner-main -->
+							<?endforeach;?>
+                            
+							<!-- div class="banner-main">
                                 <dl class="dl-horizontal banner-info">
                                     <dt>Marketing Group</dt><dd>Contrib</dd>
                                     <dt>Banner Size</dt><dd>728 x 90</dd>
@@ -40,8 +53,8 @@
                                 <div class="floating text-center banner-img-cont">
                                     <div class="wrap-allbanner">
                                         <div class="wrap-bannerLeft">
-                                            <p href="" class="aBnnrP ellipsis" style="<!--display:none;-->">
-                                                <!--wellnesschallenge.com-->
+                                            <p href="" class="aBnnrP ellipsis">
+                                              
                                                 <img class="logo-banners1" src="<?echo $logo?>" alt="<?echo $domain?>">
                                             </p>
                                         </div>
@@ -89,7 +102,10 @@
                                 <textarea class="text-left input-block-level" rows="3" onclick="this.focus();this.select()" readonly="readonly">
                                     <script type="text/javascript" src="http://www.contrib.com/widgets/roundleadbanner/<?echo $domain?>/<?echo $domainid?>"></script>
                                 </textarea>
-                            </div>
+                            </div -->
+							
+							
+							
                         </div>
                     </div>
 </div>

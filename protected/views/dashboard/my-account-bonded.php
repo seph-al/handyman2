@@ -7,7 +7,7 @@
 					<label for="">Bonded Agent</label>
 				</div>
 				<div class="controls">
-					<input type="text" style="width:60%;" id="bond_agent" name="bond_agent" value="<?echo $cbond->bond_agent?>" class="form-control" />	<span class="postErrors bond_agent"></span>
+					<input type="text" style="width:60%;" id="bond_agent" name="bond_agent" value="<?echo $cbond!=null ? $cbond->bond_agent:''?>" class="form-control" />	<span class="postErrors bond_agent"></span>
 				</div>
 			</li>
 			<li class="control-group">
@@ -15,7 +15,7 @@
 					<label for="">Bond Value</label>
 				</div>
 				<div class="controls">
-					<input type="text" style="width:60%;" id="bond_value" name="bond_value" value="<?echo $cbond->bond_value?>" class="form-control" />	<span class="postErrors bond_value"></span>
+					<input type="text" style="width:60%;" id="bond_value" name="bond_value" value="<?echo $cbond!=null ? $cbond->bond_value:''?>" class="form-control" />	<span class="postErrors bond_value"></span>
 				</div>
 			</li>
 			<li class="control-group">
@@ -23,7 +23,7 @@
 					<label for="">Bond Info</label>
 				</div>
 				<div class="controls">
-					<textarea class="form-control" id="bond_info" name="bond_info" style="width:60%"><?echo $cbond->info?></textarea>
+					<textarea class="form-control" id="bond_info" name="bond_info" style="width:60%"><?echo $cbond!=null ? $cbond->info:''?></textarea>
 					<label class="postProjErr bond_info"></label>
 				</div>
 			</li>

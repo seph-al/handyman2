@@ -152,17 +152,6 @@ private function SendMailAfterProject($projectid)
 	       
     }
     
-private function renderJSON($array = array(), $status = true)
-    {
-        header('Content-Type: application/json');
-        if(!is_array($array))
-            $array = array('r'=>$array);
-        if($status)
-            echo CJSON::encode(array_merge(array('s'=>1), $array));
-        else
-            echo CJSON::encode(array_merge(array('s'=>0), $array));
-        Yii::app()->Ini->end();
-    }
 	
 	
 
@@ -212,10 +201,10 @@ public function editproject($post){
         }    
            
         $return['status'] = $status;
-        $this->renderJSON2($return, $status);
+        $this->renderJSON($return, $status);
 	}
 	
-private function renderJSON2($array = array(), $status = true)
+/*private function renderJSON2($array = array(), $status = true)
     {
         header('Content-Type: application/json');
         if(!is_array($array))
@@ -225,7 +214,7 @@ private function renderJSON2($array = array(), $status = true)
         else
             echo CJSON::encode(array_merge(array('s'=>0), $array));
         Yii::app()->Ini->end();
-    }
+    }*/
 	
 public function saveprojectphotos($post){
 
@@ -364,7 +353,19 @@ public function deletepicture($post){
 
 
 }
-	
+
+private function renderJSON($array = array(), $status = true)
+    {
+        header('Content-Type: application/json');
+        if(!is_array($array))
+            $array = array('r'=>$array);
+        if($status)
+            echo CJSON::encode(array_merge(array('s'=>1), $array));
+        else
+            echo CJSON::encode(array_merge(array('s'=>0), $array));
+        Yii::app()->Ini->end();
+    }
+
     
 }//end class
 

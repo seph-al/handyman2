@@ -49,6 +49,11 @@ class DashboardController extends Controller
 				$param['from'] = $oneWeekAgo;
 				$param['to'] = date("Y-m-d H:i:s");
 				
+			
+				
+				$points = ContractorPoints::model()->findByAttributes(array('contractor_id' => $contractor_id));
+				$param['points'] = $points->points;
+				
 				
 				$this->render('contractor', $param);
 				
@@ -326,7 +331,12 @@ class DashboardController extends Controller
 			
 				foreach($socials AS $k=>$v){
 					$value = ContractorSocials::model()->findbyAttributes(array('contractor_id' => $contractor_id, 'social_id' => $v->social_id));
-					$user_socials[$v->social_id] = $value->value;
+					if(count($value) > 0){
+						$user_socials[$v->social_id] = $value->value;
+						
+					}else{
+						$user_socials[$v->social_id] = "";
+					}
 				}
 				
 			$param['socials'] = $socials;
