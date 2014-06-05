@@ -32,7 +32,7 @@
 																  </div>
 															
 																<div class="col-md-7qa" id="load_questions_container">
-																	<?$this->renderPartial('/questionsajax/questions-list',array('questions' => $questions,'title' => $title));?>
+																	<?$this->renderPartial('/questionsajax/questions-list',array('questions' => $questions,'title' => $title, 'pages' => $pages));?>
 																</div>
 														</div>
 													</div>

@@ -23,10 +23,15 @@ class QuestionsController extends Controller
 				
 				$criteria = new CDbCriteria();
 				$criteria->order = "question_id DESC";
-				$questions = Questions::model()->findAll($criteria); 
+				
 				
 				$count = Questions::model()->count($criteria);
 				$pages = new CPagination($count);
+				// results per page
+				$pages->pageSize=2;
+				$pages->applyLimit($criteria);
+				
+				$questions = Questions::model()->findAll($criteria); 
 				
 				$current_user_id = null;
 				$current_user_role = null;
@@ -37,6 +42,7 @@ class QuestionsController extends Controller
 				}
 				
 			$param['questions'] = $questions;
+			$param['pages'] = $pages;
 	    	$this->render('index',$param);
     	
     }
@@ -52,9 +58,17 @@ class QuestionsController extends Controller
 		$criteria->join = 'LEFT JOIN answers ON Q.question_id = answers.question_id';
     	$criteria->order = 'answers.answer_id DESC';
 			
-		$param['questions'] = Questions::model()->findAll($criteria);
+			$count = Questions::model()->count($criteria);
+				$pages = new CPagination($count);
+				// results per page
+				$pages->pageSize=2;
+				$pages->applyLimit($criteria);
+				
+				$questions = Questions::model()->findAll($criteria); 
 		
 		$param['title'] = "All activities";
+		$param['questions'] = $questions;
+		$param['pages'] = $pages;
 		$this->render('all_activities',$param);
 		
 	}
@@ -63,11 +77,23 @@ class QuestionsController extends Controller
 		$this->pageTitle = 'Handyman.com - Question and Answer - All Activities';
 		$param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 		
-		$param['questions'] = Questions::model()->findAll(array(
+		
+		 $criteria = array(
                         'select'=>'*',
                         'condition'=>'question_id NOT IN( SELECT question_id FROM answers)'
-                    ));
+                    );
+					
+		 $count = Questions::model()->count($criteria);
+				$pages = new CPagination($count);
+				// results per page
+				$pages->pageSize=2;
+				$pages->applyLimit($criteria);
+				
+		 $questions = Questions::model()->findAll($criteria);
 		
+		
+		$param['questions'] = $questions;
+		$param['pages'] = $pages;
 		$param['title'] = "Unanswered Questions";
 		$this->render('unanswered',$param);
 	}

@@ -73,7 +73,18 @@
 						<div class="qa-q-item-clear"></div>
 					</div>
 				</div>
+				
+					
+					
 				   <?php endforeach;?>
+				   
+				   <?$this->widget('CLinkPager',array(
+						'pages'=>$pages,
+						'cssFile'=>Yii::app()->request->baseUrl.'/css/pagination.css',
+						'currentPage'=>1,
+						'header'=>''		
+					))?>
+					<br /><br />
 			<?else:?>
 				<div class="alert alert-info alert-dismissable">
 				  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

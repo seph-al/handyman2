@@ -77,6 +77,7 @@ $(document).ready(function(){
 			var homeown_email = $('#homeown_email').val();
 			var home_loginEmail = $('#home_loginEmail').val();
 			var emailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			var specialcharsfilter = /[^a-zA-Z 0-9]+/g;
 			var home_loginPassword = $('#home_loginPassword').val();
 			var projectbudget = $('#projectbudget').val();
 			var project_id = $('#project_id').val();
@@ -116,6 +117,10 @@ $(document).ready(function(){
 				else if(!emailfilter.test(homeown_email)){
 					$("#errors2").html('<div class="alert alert-danger">Invalid email address <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 					$("#homeown_email").focus();
+				}
+				else if(specialcharsfilter.test(howeown_pname)){
+					$("#errors2").html('<div class="alert alert-danger">Cannot input special characters <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+					$("#howeown_pname").focus();
 				}
 				else if(howeown_pname.length < 5 || howeown_pname.length > 10){
 					$("#errors2").html('<div class="alert alert-danger">Public name must be 5 to 10 characters. <button type="button" class="close" data-dismiss="alert">&times;</button></div>');

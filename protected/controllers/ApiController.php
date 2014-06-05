@@ -71,8 +71,9 @@ class ApiController extends Controller
 					           $proj_id = Yii::app()->db->getLastInsertId();	
 					           $this->SendMailAfterProject($proj_id);
 					           Yii::app()->Ini->renovationapi($proj_id);
-					           $rows['project_id'] = $proj_id;
-					           $this->renderRequest($rows);
+					           $this->renderRequest(array('success'=>true));
+				           }else {
+				           	$this->renderRequest(false, $proj->getErrors());	
 				           }
 				     }else {
 		             	$this->renderRequest(false, $huser->getErrors());	
@@ -122,7 +123,7 @@ class ApiController extends Controller
     {  
     	$hmodel          = Homeowners::model()->findByPk($userid);
     	$subject    = Yii::app()->name.' Account Details For Home Owner';
-    	$content = $this->renderPartial('../projectajax/signup', array('huser' => $hmodel), true);
+    	$content = $this->renderPartial('signup', array('huser' => $hmodel), true);
     	$headers="From: admin <admin@>".Yii::app()->name."\r\n".
 					"MIME-Version: 1.0\r\n".
 					"Content-type: text/html; charset=UTF-8";
@@ -135,7 +136,7 @@ private function SendMailAfterProject($projectid)
     {  
     	$pmodel          = Projects::model()->findByPk($projectid);
     	$subject    = Yii::app()->name.' Project Details';
-    	$content = $this->renderPartial('../projectajax/postproject', array('proj' => $pmodel), true);
+    	$content = $this->renderPartial('postproject', array('proj' => $pmodel), true);
     	$headers="From: admin <admin@>".Yii::app()->name."\r\n".
 					"MIME-Version: 1.0\r\n".
 					"Content-type: text/html; charset=UTF-8";
