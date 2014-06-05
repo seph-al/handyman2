@@ -50,10 +50,11 @@ class DashboardController extends Controller
 				$param['to'] = date("Y-m-d H:i:s");
 				
 			
-				
+				$param['points'] = 0;
 				$points = ContractorPoints::model()->findByAttributes(array('contractor_id' => $contractor_id));
-				$param['points'] = $points->points;
-				
+				if(count($points) > 0){
+					$param['points'] = $points->points;
+				}
 				
 				$this->render('contractor', $param);
 				

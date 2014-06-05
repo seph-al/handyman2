@@ -83,13 +83,13 @@
                         <div class="wrap-rltv-noti">
                             <div class="ic_color_tab"></div>
                             <div class="ic_avatar_wrapper">
-                                <img class="ic_avatar" alt="handymen" src="http://d2qcctj8epnr7y.cloudfront.net/images/2013/logo-handyman-1.png"/>
+                                <img class="ic_avatar" alt="Handyman" src="http://d2qcctj8epnr7y.cloudfront.net/images/2013/logo-handyman-1.png"/>
                             </div>
                             <div class="noti-content-wrap-ic">
                                 <div class="ic_message_body_wrapper">
                                     <div class="ic_message_body">
                                         <div class="ic_content_wrapper">
-                                            <h1>Welcome to Handymen</h1>
+                                            <h1>Welcome to Handyman</h1>
                                             <p>Hey there!,</p>
                                             <p>
                                                 Your Contractor profile allows you to promote your Contractor business and service within your community and to homeowners that are in need of your services.
