@@ -14,6 +14,10 @@ if (ENV == "staging"){
 			'password' => '',
 			'charset' => 'utf8',
 		);
+	$fb_callback = 'http://localhost/handyman/login/fbcallback';	
+	$fb_callback = 'http://localhost/handyman/login/fbcallback';	
+	$fb_appid = '882745951739071';
+	$fb_secret = '769fd178acd7ea9c2e106c66d5a6440f';
 }else {
 	$db = array(
 			'connectionString' => 'mysql:host=localhost;dbname=handymen_handyman',
@@ -22,6 +26,9 @@ if (ENV == "staging"){
 			'password' => 'bing2k',
 			'charset' => 'utf8',
 		);
+	$fb_callback = 'http://beta.handymen.com/login/fbcallback';		
+	$fb_appid = '258545007666648';
+	$fb_secret = '9a2bb484ab95a354697a2244a6c3b3dd';
 }
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
@@ -39,6 +46,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'application.extensions.crugeconnector.*'
 	),
 
 	'modules'=>array(
@@ -103,6 +111,25 @@ return array(
 				*/
 			),
 		),
+		
+		'crugeconnector'=>array(
+        'class'=>'ext.crugeconnector.CrugeConnector',
+        'hostcontrollername'=>'login',
+        'onSuccess'=>array('login/fbsuccess'),
+        'onError'=>array('login/fberror'),
+        'clients'=>array(
+            'facebook'=>array(
+                // required by crugeconnector:
+                'enabled'=>true,
+                'class'=>'ext.crugeconnector.clients.Facebook',
+                'callback'=>$fb_callback,
+                // required by remote interface:
+                'client_id'=>$fb_appid,
+                'client_secret'=>$fb_secret,
+                'scope'=>'email, read_stream',
+            ),  
+        ),
+    ),
 	
 	),
 

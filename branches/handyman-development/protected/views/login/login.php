@@ -37,7 +37,17 @@
 						  <div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 							  <button type="button" id="homeowner_sign_in" class="btn btn-default">Sign in</button>
-							  &nbsp;&nbsp;&nbsp;Or Login To&nbsp;<a href=""><img src="http://icons.iconarchive.com/icons/martz90/circle/48/fb-icon.png"></a>
+							  &nbsp;&nbsp;&nbsp;Or Login To&nbsp;
+							  <?php if(Yii::app()->crugeconnector->hasEnabledClients):?>
+							      <?php 
+							            $cc = Yii::app()->crugeconnector;
+							            foreach($cc->enabledClients as $key=>$config){
+							                $image = CHtml::image($cc->getClientDefaultImage($key));
+							                echo CHtml::link($image,
+							                    $cc->getClientLoginUrl($key));
+							            }
+							        ?>
+							  <?php endif;?>
 							</div>
 						  </div>
 						  <input type="hidden" name="t" id="t" value="loginhomeowner">
