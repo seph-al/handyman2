@@ -34,7 +34,7 @@
 							<td valign="top" align="left">Thanks</td>
 						</tr>
 						<tr style="display:block;padding:0 25px;color:#407012">
-							<td valign="top" align="left">Handymen</td>
+							<td valign="top" align="left">Handyman</td>
 						</tr>
 						<tr style="display:block;padding:0 25px;margin-top:15px">
 							<td valign="top" align="left" colspan="3"><a target="_blank" href="" style="text-decoration:none;color:#1576ac">http://www.<?php echo CHtml::encode(Yii::app()->name);?></a>
@@ -70,7 +70,7 @@
 							</td>
 						</tr>
 						<tr style="display:block;color:#000000;text-align:center;padding:10px 0">
-							<td style="text-align:center;display:block">Powered by Copyright@2014 - Handymen.Com</td>
+							<td style="text-align:center;display:block">Powered by Copyright@2014 - Handyman.Com</td>
 						</tr>
 					</tbody>
 				</table>
