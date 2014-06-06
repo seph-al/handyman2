@@ -134,23 +134,42 @@ $(document).ready(function(){
 		
 		$('#update_socials').click(function(){
 			var base_url =  $('#base_url').val();
-			var cdata = $('#caccount-socials').serialize();
-				$.ajax({
-			        url: base_url+'/dashboardajax',
-			        type: 'POST',
-			        dataType:"JSON",
-			        data: cdata,
-			        success: function(response){
-			        	if (response.status){
-			   					$("#errors2").html('<div class="alert alert-success"> <button type="button" class="close" data-dismiss="alert">&times;</button>You successfully updated links to your social accounts.</div>');
-			   			}else {
-							$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+response.error_message+'</div>');
+			var errors = 0;
+			$('input.socials').each(function(){
+				var thisid = $(this).attr('id');
+				var id = thisid.split("_").pop();
+				var input_social_url = $(this).val();
+				
+				if(input_social_url != ""){
+					if(ValidURL(input_social_url) == false){
+						$("#social_notif_"+id).css('display','block');
+						$("#social_notif_"+id).text("Please enter a valid URL");
+						errors++;
+						console.log("social error "+errors);
+					}
+				}
+			});
+			
+			if(errors == 0){
+				$('.alert').css('display','none');
+				var cdata = $('#caccount-socials').serialize();
+					$.ajax({
+						url: base_url+'/dashboardajax',
+						type: 'POST',
+						dataType:"JSON",
+						data: cdata,
+						success: function(response){
+							if (response.status){
+									$("#errors2").html('<div class="alert alert-success"> <button type="button" class="close" data-dismiss="alert">&times;</button>You successfully updated links to your social accounts.</div>');
+							}else {
+								$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+response.error_message+'</div>');
+							}
+					   },
+						error: function(){
+							$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while updating license information.</div>');
 						}
-		           },
-			        error: function(){
-			        	$("#errors2").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while updating license information.</div>');
-			        }
-			    });
+					});
+			}
 		});
 		
 		$('#update_license').click(function(){
@@ -289,3 +308,19 @@ $("#cusconfpwd").keypress(function(event) {
 
 
 });
+
+function ValidURL(str) {
+var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator 
+	
+ //var pattern = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|((\d{1,3}\.){3}\d{1,3}))(\:\d+)?(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
+  if(!pattern.test(str)) {
+    return false;
+  } else {
+    return true;
+  }
+}
