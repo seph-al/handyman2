@@ -9,7 +9,8 @@
 													<label for="business_name"><?echo $v->social?></label>
 												</div>
 												<div class="controls">
-													<input type="text" style="width:60%;" id="social_<?echo $v->social_id?>" name="social_<?echo $v->social_id?>" value="<?echo $user_socials[$v->social_id]?>" class="form-control" autocomplete="off" />	<span class="postErrors oldpassword"></span>
+													<input type="text" style="width:60%;" id="social_<?echo $v->social_id?>" name="social_<?echo $v->social_id?>" value="<?echo $user_socials[$v->social_id]?>" class="form-control socials" autocomplete="off" />
+													<div class="alert alert-danger" style="display:none;width:60%" id="social_notif_<?echo $v->social_id?>">...</div>
 												</div>
 											</li>
 											<?endforeach;?>
