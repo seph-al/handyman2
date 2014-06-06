@@ -15,7 +15,7 @@
 								
 								<li><a class="<?echo $pages == 'profile' ? 'active':''?>" href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-profile">My Profile</a>
 								</li>
-								<li>	<a class="<?echo $pages == 'account' ? 'active':''?>" href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-account">My Account</a>
+								<li>	<a class="<?echo $pages == 'account' ? 'active':''?>" href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-account">Edit</a>
 								</li>
 								<!--<li><a class="<?echo $pages == 'reviews' ? 'active':''?>" href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-reviews">My Reviews</a>
 								</li>-->
