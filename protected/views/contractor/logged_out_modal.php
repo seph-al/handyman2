@@ -6,7 +6,7 @@
                                 <div class="modal-header">
                                     <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
                                     <h2 id="myModalLabel" class="text-center logReg">
-                                        <i class="fa fa-key"></i> Handymen
+                                        <i class="fa fa-key"></i> Handyman
                                         <small>
                                            <strong>Home Products, Product Finder, Contractor Locator</strong>
                                         </small>
