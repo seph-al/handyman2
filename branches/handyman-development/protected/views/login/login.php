@@ -44,7 +44,7 @@
 							            foreach($cc->enabledClients as $key=>$config){
 							                $image = CHtml::image($cc->getClientDefaultImage($key));
 							                echo CHtml::link($image,
-							                    $cc->getClientLoginUrl($key));
+							                    $cc->getClientLoginUrl($key,'homeowner'));
 							            }
 							        ?>
 							  <?php endif;?>

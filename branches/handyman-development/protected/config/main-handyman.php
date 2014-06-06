@@ -26,7 +26,6 @@ if (ENV == "staging"){
 			'charset' => 'utf8',
 		);
 	$fb_callback = 'http://handyman.com/login/fbcallback';
-	$fb_callback = 'http://localhost/handyman/login/fbcallback';	
 	$fb_appid = '882745951739071';
 	$fb_secret = '769fd178acd7ea9c2e106c66d5a6440f';		
 }
@@ -126,7 +125,6 @@ return array(
                 // required by remote interface:
                 'client_id'=>$fb_appid,
                 'client_secret'=>$fb_secret,
-              
                 'scope'=>'email, read_stream',
             ),  
         ),
