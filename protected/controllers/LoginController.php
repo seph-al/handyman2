@@ -42,16 +42,47 @@ class LoginController extends Controller
      public function actionFbSuccess($key){
 
         $loginData = Yii::app()->crugeconnector->getStoredData();
-        // loginData: remote user information in JSON format.
-
         $info = json_decode($loginData,true);
         $email = $info['email'];
+        $fb_id = $info['id'];
         $firstname = $info['first_name'];
         $lastname = $info['last_name'];
         $link = $info['link'];
-        
-        
-        $this->renderText('<h1>Welcome!</h1><p>'.var_dump($info).'</p> key='.$key);
+
+        $details = Homeowners::model()->findByAttributes(array('email'=>$email));
+        if (count($details)>0){
+            $identity=new UserIdentity($email,$details->password,'homeowner');
+        	if($identity->authenticate()){
+			   Yii::app()->user->login($identity);
+               $owner_id = Yii::app()->user->getId();    		
+               $this->redirect(Yii::app()->homeUrl.'dashboard/home-owner');
+               exit;	
+			}
+        }else {
+        	  $password = Yii::app()->Ini->generate_password();
+        	  $details = new Homeowners();
+        	  $details->firstname = $firstname;
+              $details->lastname = $lastname;
+              $details->email = $email;
+              $details->username = 'fb-'.$id;
+              $details->password = $password;
+              if ($details->save()){
+	              	 Yii::app()->Ini-> savetovnoc($email);
+				     $owner_id = Yii::app()->db->getLastInsertId();
+				     Yii::app()->Ini->savetoaffiliate($owner_id,'homeowner');   
+				     $this->SendMailAfterSignUp($owner_id);
+				     
+	               $identity=new UserIdentity($email,$details->password,'homeowner');
+	        	   if($identity->authenticate()){
+				   Yii::app()->user->login($identity);
+	               $owner_id = Yii::app()->user->getId();    		
+	               $this->redirect(Yii::app()->homeUrl.'dashboard/home-owner');
+	               exit;	
+				   }
+				     
+			     
+              } 	
+        }
     }
 
     public function actionFbError($key, $message=''){
@@ -66,5 +97,18 @@ class LoginController extends Controller
     	 foreach($_GET as $key=>$val)
          $url .= "&".$key."=".urlencode($val);
          header("Location: ".$url);
-    	     }
+    }
+    
+   private function SendMailAfterSignUp($userid)
+    {  
+    	$hmodel          = Homeowners::model()->findByPk($userid);
+    	$subject    = Yii::app()->name.' Account Details For Home Owner';
+    	$content = $this->renderPartial('signup', array('huser' => $hmodel), true);
+    	$headers="From: admin <admin@>".Yii::app()->name."\r\n".
+					"MIME-Version: 1.0\r\n".
+					"Content-type: text/html; charset=UTF-8";
+    	
+    	mail($hmodel->email,$subject,$content,$headers);
+	       
+    }
 }

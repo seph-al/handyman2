@@ -221,10 +221,10 @@ class CrugeConnector extends CApplicationComponent {
 	 * @access public
 	 * @return string the login URL ready to be used in a CHtml::link.
 	 */
-	public function getClientLoginUrl($key) {
+	public function getClientLoginUrl($key,$role='homeowner') {
 		if($c = $this->getKey($key)) {
 			return array('/'.$this->hostcontrollername.'/'.$this->actionconnector
-					,'crugekey'=>$key,'crugemode'=>'login');
+					,'crugekey'=>$key,'crugemode'=>'login','role'=>$role);
 		}else
 		return '';
 	}
