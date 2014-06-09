@@ -406,4 +406,58 @@ class ContractorajaxController extends Controller
 		
 	
 	}
+	
+	public function addtoteam(){
+		$invited_id = Yii::app()->Ini->v('contractor_id');
+		$contractor_id = Yii::app()->user->getId();
+		
+		$contractor_team = ContractorTeam::model()->findByAttributes(array('contractor_id' => $contractor_id, 'invited_id' => $invited_id));
+		if(count($contractor_team) == 0){
+			$contractor_team = new ContractorTeam();
+			$contractor_team->contractor_id = $contractor_id;
+			$contractor_team->invited_id = $invited_id;
+			$contractor_team->invited_date = date("Y-m-d H:i:s");
+			if($contractor_team->save() == true){
+				$this->sendEmailNotifAddTeam($model->id,$invited_id);
+				$return = array('success' => true);
+			}else{
+				$return = array('success' => false,'error_message'=>print_r($contractor_team->getErrors()));
+			}
+		}else{
+			$return = array('success' => false, 'error_message' => 'Already invited.');
+		}
+		
+		$this->renderJSON($return);
+	}
+	
+	private function sendEmailNotifAddTeam($insert_id,$invited_id){
+		$contractor_id = Yii::app()->user->getId();
+		
+		$contractor_details = Contractors::model()->findbyPk($contractor_id);
+		$invited_details = Contractors::model()->findbyPk($invited_id);
+		
+		$receiver_name = $invited_details->Name;
+		$receiver_email = $invited_details->Email;
+		//$receiver_email = 'sheinavi@gmail.com';
+		
+		$message = "
+			<a href='http://handyman.com/contractor/profile/user/".$contractor_details->Username."'>".$contractor_details->Name."</a> requested to add you to their handyman team.
+			To confirm, login to your account and hit &lsquo;Accept&rsquo; in your dashboard invites page.<br><br>
+			Handyman
+		";
+		
+		
+		 
+		
+    	$subject = Yii::app()->name." - You have been added in a contractor team";
+		$domain_name = "Handyman.com";
+    	$content = $this->renderPartial('message_notif_template', array('domain_name'=>$domain_name,'message' => $message,'receiver_name' =>$receiver_name), true);
+    	$headers="From: admin <admin@handymen.com>".Yii::app()->name."\r\n".
+					"MIME-Version: 1.0\r\n".
+					"Content-type: text/html; charset=UTF-8";
+    	
+    	mail($receiver_email,$subject,$content,$headers);
+		
+	}
+	
 }

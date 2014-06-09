@@ -80,6 +80,8 @@ class Contractors extends CActiveRecord
 		  'license'         => array(self::HAS_ONE, 'ContractorLicense','contractor_id'),
 		  'bond'         => array(self::HAS_ONE, 'ContractorBond','contractor_id'),
 		  'viewCount' => array(self::STAT, 'ContractorViews','contractor_id'),
+		  'isTeam' => array(self::HAS_ONE, 'ContractorTeam','contractor_id'),
+		  'picture' => array(self::HAS_ONE, 'Contractorphotos', 'contractor_id')
 		);
 	}
 
