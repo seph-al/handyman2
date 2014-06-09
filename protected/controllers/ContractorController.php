@@ -349,5 +349,96 @@ class ContractorController extends Controller
 			}
 	
 	}
+	
+	public function actionInvite(){
+		if (!Yii::app()->user->isGuest){
+			 $userid = Yii::app()->user->getId();
+			 $role = Yii::app()->user->role;
+			 
+			 if ($role == 'contractor'){
+			 	$details = Contractors::model()->findByPk($userid);
+			 	$this->render('contractor-invite', array('details'=>$details));
+			 }else {
+			 	$this->redirect(Yii::app()->homeUrl.'dashboard/home-owner');
+			 } 	
+			    	
+		}else {
+			$this->redirect(Yii::app()->homeUrl);
+		}		    	
+	}
+	
+	
+public function actionInvite_To_Team2(){
+		if (!Yii::app()->user->isGuest){
+			 $userid = Yii::app()->user->getId();
+			 $role = Yii::app()->user->role;
+			 $keyword =  Yii::app()->Ini->v('keyword');
+			 
+			 if ($role == 'contractor'){
+			 	$details = Contractors::model()->findByPk($userid);
+			 	$criteria = new CDbCriteria();
+			 	
+			 	/*if ($keyword !=""){
+			 		$criteria->condition = "ContractorId!=$userid and (`Name` LIKE '%$keyword%' OR ContactName LIKE '%$keyword%' OR Address1 LIKE '%$keyword%' OR City like '%$keyword%' OR State like '%$keyword%')";
+			 	}else {
+			 		$criteria->condition = "ContractorId!=$userid";
+			 	}*/
+				$criteria->order = "ContractorId DESC";
+			
+				
+				$count = Contractors::model()->count($criteria);
+				$pages = new CPagination($count);
+				// results per page
+				$pages->pageSize=10;
+				$pages->applyLimit($criteria);
+				
+				$result = Contractors::model()->findAll($criteria);
+				$param['details'] = $details;
+				$param['result'] = $result;
+				$param['pages'] = $pages;
+				
+				
+			 	$this->render('contractor-invite-team', $param);
+			 }else {
+			 	$this->redirect(Yii::app()->homeUrl.'dashboard/home-owner');
+			 } 	
+			    	
+		}else {
+			$this->redirect(Yii::app()->homeUrl);
+		}		    	
+	}
     
+	
+	public function actionInviteTeam(){
+		if (!Yii::app()->user->isGuest){
+		
+			$keyword =  Yii::app()->Ini->v('keyword');
+			$userid = Yii::app()->user->getId();
+			$limit = 6;
+			
+			$criteria = new CDbCriteria();
+				if ($keyword !=""){
+					$criteria->condition = "ContractorId!=$userid and (`Name` LIKE '%$keyword%' OR ContactName LIKE '%$keyword%' OR Address1 LIKE '%$keyword%' OR City like '%$keyword%' OR State like '%$keyword%') AND ContractorId NOT IN(SELECT invited_id FROM `contractor_team` WHERE contractor_id = $userid)";
+				}else {
+						$criteria->condition = "ContractorId!=$userid AND ContractorId NOT IN(SELECT invited_id FROM `contractor_team` WHERE contractor_id = $userid)";
+				}
+				
+			$criteria->order = "ContractorId DESC";
+			$count = Contractors::model()->count($criteria);
+			$pages = new CPagination($count);
+			$pages->pageSize=$limit;
+			$pages->applyLimit($criteria);
+			$result = Contractors::model()->findAll($criteria);
+					
+					$param['result'] = $result;
+					$param['pages'] = $pages;
+				
+					
+			$this->render('contractor-invite-team', $param);
+		
+		}else {
+			$this->redirect(Yii::app()->homeUrl);
+		}	
+	}
+	
 }
