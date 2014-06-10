@@ -77,14 +77,14 @@
 					
 					
 				   <?php endforeach;?>
-				   <?if(count($questions) > 5):?>
+				  
 					   <?$this->widget('CLinkPager',array(
 							'pages'=>$pages,
 							'cssFile'=>Yii::app()->request->baseUrl.'/css/pagination.css',
 							'currentPage'=>1,
 							'header'=>''		
 						))?>
-					<?endif;?>
+					
 					<br /><br />
 			<?else:?>
 				<div class="alert alert-info alert-dismissable">

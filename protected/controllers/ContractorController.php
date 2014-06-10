@@ -449,6 +449,22 @@ public function actionInvite_To_Team2(){
 		}	
 	}
 	
+	public function actionRefer(){
+		if (!Yii::app()->user->isGuest){
+		
+			
+			$userid = Yii::app()->user->getId();
+			$details = Contractors::model()->findbyPk($userid);
+			
+			$param['username'] = $details->Username;	
+					
+			$this->render('get-refer-link', $param);
+		
+		}else {
+			$this->redirect(Yii::app()->homeUrl);
+		}	
+	}
+	
 public function actionTeamRequests(){
 		if (!Yii::app()->user->isGuest){
 		
