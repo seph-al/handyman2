@@ -1,32 +1,49 @@
 	<style type="text/css">
-		.btn-s1{
-			padding: 14px 16px;
-			font-size: 26px;
-		}
-		.form-s1 {
-		    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
-		   
-		    box-shadow: 0 0 8px #FFFFFF;
-		    padding: 20px 0;
-		}
-		.input-s1{
-			border-radius: 6px;
-		    font-size: 21px;
-		    height: 65px;
-		    line-height: 1.33;
-		    padding: 18px 16px;
-		}
-		select.input-s1{
-			height: 65px;
-    		line-height: 46px;
-		}
+		
+		
+	.col-md-8a {
+		width: 100%;
+	}
+	.find-form {
+		text-align: center;
+	}
+	.font1 {
+		margin-top: 120px;
+	}
+	.btn-s1 {
+		padding: 14px 40px;
+		font-size: 26px;
+	}
+	.form-s1 {
+		background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0 8px #FFFFFF;
+		padding: 20px 10px;
+		display: inline-block;
+	}
+	.input-s1 {
+		border-radius: 6px;
+		font-size: 21px;
+		height: 65px;
+		line-height: 1.33;
+		padding: 18px 10px 15px 10px;
+	}
+	select.input-s1 {
+		height: 65px;
+		line-height: 46px;
+	}
 	</style>
 	<div class="searchBg relative">
-		<div class="container">
+	<div class="container">
+		<div class="row-fluid">
 			<img class="bannerImg" src="http://rdbuploads.s3.amazonaws.com/backgrounds/bg-handyman1.png" alt="home banner image" />
 			<div class="container">
-				<div class="alignCenter indexZipcodOuterMarg">	<h1 class="font1">Find your hometown handyman today!</h1>
-					<div class="col-md-10 col-lg-offset-1">
+				<div class="row-fluid">
+					<div class="col-md-2"></div>
+					<div class="col-md-8a">
+						<div class="find-form">
+							<h1 class="font1">Find your hometown handyman today!</h1>
+							<div style="clear:both"></div>
+							
 					<?php foreach($projects as $k=>$v):?>
 						<form class="form-inline form-s1" role="form" action="<?php echo Yii::app()->request->baseUrl; ?>/project/post/pid/<?php echo $v->ProjectTypeId?>/n/<?php echo Yii::app()->Ini->slugstring($v->Name)?>" method="post">
 					<?endforeach;?>	
@@ -47,10 +64,15 @@
 						</form>
 						
 					</div>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+	
+	
 	<div class="indexHiwVideo">
 		<div class="container">
 			<div class="row-fluid">
