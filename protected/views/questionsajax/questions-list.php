@@ -76,9 +76,12 @@
 					</div>
 				</div>
 				   <?php endforeach;?>
-				   <?if($count > $page_limit):?>
-						<?//$this->widget('CLinkPager',array('pages'=>$pages))?>
-				  <?endif;?>											<br /><br />
+				  	 <?$this->widget('CLinkPager',array(
+							'pages'=>$pages,
+							'cssFile'=>Yii::app()->request->baseUrl.'/css/pagination.css',
+							'currentPage'=>1,
+							'header'=>''		
+						))?>
 				   
 			<?else:?>
 				<div class="alert alert-info alert-dismissable">

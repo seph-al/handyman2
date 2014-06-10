@@ -5,7 +5,6 @@ class QuestionsController extends Controller
  
     public $layout='/layouts/home';
     public $cities = "";
-	private $page_limit = 5;
 
     public function missingAction($action)
     {
@@ -29,7 +28,7 @@ class QuestionsController extends Controller
 				$count = Questions::model()->count($criteria);
 				$pages = new CPagination($count);
 				// results per page
-				$pages->pageSize=$this->page_limit;
+				$pages->pageSize=5;
 				$pages->applyLimit($criteria);
 				
 				$questions = Questions::model()->findAll($criteria); 
@@ -44,13 +43,12 @@ class QuestionsController extends Controller
 				
 			$param['questions'] = $questions;
 			$param['pages'] = $pages;
-			$param['page_limit'] = $this->page_limit;
 	    	$this->render('index',$param);
     	
     }
 	
 	
-	public function actionAll_activities(){
+	public function actionAllactivities(){
 		$this->pageTitle = 'Handyman.com - Question and Answer - All Activities';
 		$param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 		
@@ -63,7 +61,7 @@ class QuestionsController extends Controller
 			$count = Questions::model()->count($criteria);
 				$pages = new CPagination($count);
 				// results per page
-				$pages->pageSize=$this->page_limit;
+				$pages->pageSize=5;
 				$pages->applyLimit($criteria);
 				
 				$questions = Questions::model()->findAll($criteria); 
@@ -71,8 +69,6 @@ class QuestionsController extends Controller
 		$param['title'] = "All activities";
 		$param['questions'] = $questions;
 		$param['pages'] = $pages;
-		$param['count'] = $count;
-		$param['page_limit'] = $this->page_limit;
 		$this->render('all_activities',$param);
 		
 	}
@@ -88,7 +84,7 @@ class QuestionsController extends Controller
 		 $count = Questions::model()->count($criteria);
 				$pages = new CPagination($count);
 				// results per page
-				$pages->pageSize=$this->page_limit;
+				$pages->pageSize=5;
 				$pages->applyLimit($criteria);
 				
 		 $questions = Questions::model()->findAll($criteria);
@@ -97,8 +93,6 @@ class QuestionsController extends Controller
 		$param['questions'] = $questions;
 		$param['pages'] = $pages;
 		$param['title'] = "Unanswered Questions";
-		$param['count'] = $count;
-		$param['page_limit'] = $this->page_limit;
 		$this->render('unanswered',$param);
 	}
 	
