@@ -1,6 +1,6 @@
 <ul class="qa-nav-main-list"><br>
 		<li class="qa-nav-main-item qa-nav-main-activity">
-		<a class="qa-nav-main-link" href="<?php echo Yii::app()->request->baseUrl; ?>/questions/all-activities">
+		<a class="qa-nav-main-link" href="<?php echo Yii::app()->request->baseUrl; ?>/questions/allactivities">
 	  All Activity
 	</a>
 		</li>
