@@ -449,4 +449,32 @@ public function actionInvite_To_Team2(){
 		}	
 	}
 	
+public function actionTeamRequests(){
+		if (!Yii::app()->user->isGuest){
+		
+			$keyword =  Yii::app()->Ini->v('keyword');
+			$userid = Yii::app()->user->getId();
+			$limit = 6;
+			
+			$criteria = new CDbCriteria();
+		    $criteria->condition = "invited_id = $userid AND confirmed = 0";
+			$criteria->order = "member_id ASC";
+			
+			$count = ContractorTeam::model()->count($criteria);
+			$pages = new CPagination($count);
+			$pages->pageSize=$limit;
+			$pages->applyLimit($criteria);
+			$result = ContractorTeam::model()->findAll($criteria);
+					
+					$param['result'] = $result;
+					$param['pages'] = $pages;
+				
+					
+			$this->render('contractor-invite-requests', $param);
+		
+		}else {
+			$this->redirect(Yii::app()->homeUrl);
+		}	
+	}
+	
 }

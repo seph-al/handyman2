@@ -2,9 +2,18 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/dash-contractor.css">
 	<!-- Contarctor My account changes -->
 	  <div class="container dash-constr" id="my_dashboard">
-            <div class="row">
+            
+			
+			
+			<div class="row">
                 <div class="col-lg-7">
                     <div class="row">
+						<?
+							$team_invites_count = count($team_invites);
+							if($team_invites_count > 0):?>
+								<div class="alert alert-info">You have <strong><?echo $team_invites_count?> team invite<?echo $team_invites_count > 1 ? 's':''?></strong>.
+									<a href="/contractor/teamrequests" class="btn btn-warning">View all</a></div>
+						<?endif;?>
                         <div class="col-lg-6">
                             <div class="dashboard-stat blue-madison">
                                 <div class="visual">
