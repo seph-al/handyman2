@@ -25,11 +25,7 @@
 										echo "class = 'active'";
 									}
 								?>><span class="relative dispInBlock" id="quscounthide">My Questions </span></a></li>
-								<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/find" <?php
-									if($pages == "homeOwner"){
-										echo "class = 'active'";
-									}
-								?>><span class="relative dispInBlock">Find Contractors</span></a></li>
+								<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/find"><span class="relative dispInBlock">Find Contractors</span></a></li>
 								
 							</ul>
 						</div>

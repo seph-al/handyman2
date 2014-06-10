@@ -48,7 +48,9 @@ $(document).ready(function(){
 		var about_business = $('#about_business').val();
 		var primary_services = $('#primary_services').val();
 		var emailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		var refer_id = $('#refer_id').val();
 		
+			
 		if(company_name == ""){
 			$("#errors2").html('<div class="alert alert-danger">Company name is required <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			$("#company_name").focus();
@@ -149,7 +151,8 @@ $(document).ready(function(){
 					password:password,
 					website:website,
 					about_business:about_business,
-					primary_services:primary_services
+					primary_services:primary_services,
+					refer_id:refer_id
 					}
 					,function(data){
 						if(data.status){

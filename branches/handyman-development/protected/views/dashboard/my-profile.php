@@ -130,6 +130,8 @@
                             </div>
                         </div>
                     </div>-->
+                      <a class="btn btn-warning" href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/invite">INVITE PEOPLE INTO HANDYMAN.COM NETWORK</a>
+                          
                 </div>
             </div>
         </div>

@@ -15,8 +15,9 @@
         
         <?php if (count($cities)>0):?>
          <?php foreach($cities as $k=>$v):?>
+         <?php $city = str_replace('/', '', $v->RewriteUrl)?>
            <url>
-		        <loc><?php echo CHtml::encode($this->createAbsoluteUrl('contractor/find',array('city'=>$v->RewriteUrl))); ?></loc>
+		        <loc><?php echo  CHtml::encode($this->createAbsoluteUrl('contractor/find',array('city'=>$city))); ?></loc>
 		        <changefreq>weekly</changefreq>
 		        <priority>0.5</priority>
 		   </url>

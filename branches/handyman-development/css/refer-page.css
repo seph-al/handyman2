@@ -1,0 +1,104 @@
+.refer-page .header-bckgrnd {
+	margin-top: -30px;
+margin-bottom: 20px;
+}
+.refer-page .badge-col {
+				margin-bottom:40px;
+			}
+			.refer-head {
+				background: none repeat scroll 0% 0% rgb(231, 231, 231);
+				padding: 15px;
+				box-shadow: 0px 8px 8px rgb(195, 199, 205) inset;
+				margin-top: -30px;
+				margin-bottom:20px;
+			}
+			.refer-page .badge-col .bdg-in {
+				border-bottom:1px dotted #ccc;
+				padding:10px 0 0 0;
+			}
+			.refer-page .badge-col .bdg-in .bdg-img {
+				float:left;
+			}
+			.refer-page .badge-col .bdg-in .bdg-code {
+				float:left;
+			}
+			.refer-page .badge-col .bdg-in .bdg-code .bdg-title {
+				margin-left:10px;
+				font-size:17px;
+			}
+			.refer-page .badge-col .bdg-in p textarea{
+				width: 360px;
+				height: 187px;
+				margin-left: 9px;
+			}
+			.refer-page .badge-col a {
+				border:1px solid #ccc;
+				padding:4px;
+				display:inline-block;
+				margin-bottom:5px;
+				border-radius:4px;
+				cursor:pointer;
+			}
+			.refer-page .badge-col a span {
+				display:block;
+				text-align:center;
+				background:#eee;
+				font-size:19px;
+				background-color: #f0ad4e;
+				border:1px solid #eea236;
+				text-decoration:none;
+				padding:5px;
+				border-radius: 4px;
+				color:#000;
+			}
+			.refer-page .badge-col .collapse span {
+				display:block;
+				text-align:center;
+				width:170px;
+			}
+			.refer-page .wrap-number-rank .number-rank {
+				font-size:23px;
+			}
+			a.inv-btn {
+				color: #fff;
+				background-color: #f0ad4e;
+				border:1px solid #eea236;
+				display:block;
+				text-align:center;
+				text-decoration:none;
+				padding:10px;
+				border-radius: 4px;
+			}
+			a.inv-btn:hover {
+				color: #fff;
+				background-color: #ed9c28;
+				border:1px solid #d58512;
+				display:block;
+				text-align:center;
+				text-decoration:none;
+				padding:10px;
+			}
+			a.inv-signup img {
+				float:left;
+			}
+			a.inv-signup {
+				color: #fff;
+				background-color: #d9534f;
+				border:1px solid #d43f3a;
+				display:block;
+				text-align:center;
+				text-decoration:none;
+				padding:10px;
+				border-radius: 4px;
+				font-size:25px;
+				margin-bottom:20px;
+			}
+			a.inv-signup:hover {
+				color: #fff;
+				background-color: #d2322d;
+				border:1px solid #ac2925;
+				display:block;
+				text-align:center;
+				text-decoration:none;
+				padding:10px;
+			}
