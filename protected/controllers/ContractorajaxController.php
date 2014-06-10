@@ -27,6 +27,7 @@ class ContractorajaxController extends Controller
     }
 	
 	public function savecontractor(){
+		   $refer_id = $_POST['refer_id'];
 		   $cont = new Contractors();
            $cont->Name = $_POST['company_name'];
 		   $cont->ContactName = $_POST['your_name'];
@@ -43,6 +44,7 @@ class ContractorajaxController extends Controller
 			$cont->AboutBusiness = $_POST['about_business'];
 			$cont->ProjectTypeId = $_POST['projecttype'];
 			$cont->Services = $_POST['primary_services'];
+			
 				
 				$cont->insert();
 				Yii::app()->Ini-> savetovnoc($_POST['email']);
@@ -53,6 +55,19 @@ class ContractorajaxController extends Controller
 					   Yii::app()->user->login($identity);
 					   $owner_id = Yii::app()->user->getId();
 					   Yii::app()->Ini->savetoaffiliate($owner_id,'contractor');   
+					   if ($refer_id != ''){
+					   	     $rcont = Contractors::model()->findByPk($refer_id);
+					   	     if (count($rcont)>0){
+					            $t = ContractorTeam::model()->findByAttributes(array('contractor_id'=>$rcont->ContractorId,'invited_id'=>$owner_id));
+					            if (count($t)==0){
+					            	$team = new ContractorTeam();
+					            	$team->contractor_id = $rcont->ContractorId;
+					            	$team->invited_id = $owner_id;
+					            	$team->confirmed = 1;
+					            	$team->save();
+					            }
+					   	     }
+				       }
 					   $status = array('status' => true);
 					}else{
 						$status = false; 

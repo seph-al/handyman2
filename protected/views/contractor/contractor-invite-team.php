@@ -8,7 +8,7 @@
 						<div class="search-form">
 							<form class="form-inline frm-box" role="form">
 								 <div class="form-group">
-									<input type="text" class="form-control input-lg siw" id="" name="keyword" placeholder="Type your search here">
+									<input type="text" class="form-control input-lg siw" id="" placeholder="Type your search here">
 								  </div>
 								  <button type="submit" class="btn btn-danger btn-lg">Search</button>
 							</form>
@@ -18,77 +18,161 @@
 								<div class="row">
 									
 									<?if(count($result)):?>
-										
+										<?
+											$counter = 0;
+										?>
 										<?foreach($result AS $k=>$v):?>
-											
+											<?$counter++;?>
+											<?if($counter%2 > 0):?>
 												<div class="col-md-6">
+											<?endif;?>
+												
 												<div class="panel panel-danger">
 												  <div class="panel-body">
 													<div class="media">
 														  <a class="pull-left" href="#">
-															<img class="media-object mosize" src="<?echo count($v->picture) > 0 ? '/uploads/profile/'.$v->picture->filename:'http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png' ?>" alt="">
+															<img class="media-object mosize" src="http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png" alt="">
 														  </a>
 														  <div class="media-body">
 															<h4 class="media-heading"><a href=""><?echo $v->Name?></a></h4>
-															<span class="desc1">Services:</span>
-															<span class="desc2"><?echo substr($v->Services,0,75)?>..<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->Username?>">Read More</a></span>
+															<span class="desc1">Description</span>
+															<span class="desc2"><?echo substr($v->Services,0,100)?>..<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->Username?>">Read More</a></span>
 														  </div>
 														  <span class="pull-right">
-															<a href="javascript:;" id="addtoteam_<?echo $v->ContractorId?>" class="addtoteam">
-																<img class="btn-plus">
-															</a>
+															<a href=""><img class="btn-plus"></a>
 														  </span>
 													</div>
 												  </div>
 												  <div class="panel-footer">
-												  &nbsp;
+												  <a href="">Like</a><a href="">Comment</a>
 												  <span class="pull-right">
-													&nbsp;
+													<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/thumbs-up-m.png">&nbsp;5</a>
+													<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/comments-m.png">&nbsp;8</a>
 												  </span>
 												  </div>
 												</div>
-												</div>
-											
+												
+											<?if($counter%2 == 0):?>
+												</div><!-- col-md-6 -->
+											<?endif;?>
 										<?endforeach;?>
 										
-										
-									
-									<?endif;?>
-									
-								 <?$this->widget('CLinkPager',array(
+										 <?$this->widget('CLinkPager',array(
 											'pages'=>$pages,
 											'cssFile'=>Yii::app()->request->baseUrl.'/css/pagination.css',
 											'currentPage'=>1,
 											'header'=>''		
 										))?>
 									
+									<?endif;?>
+									
+								
+									<!-- div class="col-md-6">
+										<div class="panel panel-danger">
+										  <div class="panel-body">
+											<div class="media">
+												  <a class="pull-left" href="#">
+													<img class="media-object mosize" src="http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png" alt="">
+												  </a>
+												  <div class="media-body">
+													<h4 class="media-heading"><a href="">Juan Dela Cruz</a></h4>
+													<span class="desc1">Description</span>
+													<span class="desc2">This is a sample paragraph. Lorem ipsum dolor set amet. </span>
+												  </div>
+												  <span class="pull-right">
+													<a href=""><img class="btn-plus"></a>
+												  </span>
+											</div>
+										  </div>
+										  <div class="panel-footer">
+										  <a href="">Like</a><a href="">Comment</a>
+										  <span class="pull-right">
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/thumbs-up-m.png">&nbsp;5</a>
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/comments-m.png">&nbsp;8</a>
+										  </span>
+										  </div>
+										</div>
+										<div class="panel panel-danger">
+										  <div class="panel-body">
+											<div class="media">
+												  <a class="pull-left" href="#">
+													<img class="media-object mosize" src="http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png" alt="">
+												  </a>
+												  <div class="media-body">
+													<h4 class="media-heading"><a href="">Juan Dela Cruz</a></h4>
+													<span class="desc1">Description</span>
+													<span class="desc2">This is a sample paragraph. Lorem ipsum dolor set amet. </span>
+												  </div>
+												  <span class="pull-right">
+													<a href=""><img class="btn-plus"></a>
+												  </span>
+											</div>
+										  </div>
+										  <div class="panel-footer">
+										  <a href="">Like</a><a href="">Comment</a>
+										  <span class="pull-right">
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/thumbs-up-m.png">&nbsp;5</a>
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/comments-m.png">&nbsp;8</a>
+										  </span>
+										  </div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="panel panel-danger">
+										  <div class="panel-body">
+											<div class="media">
+												  <a class="pull-left" href="#">
+													<img class="media-object mosize" src="http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png" alt="">
+												  </a>
+												  <div class="media-body">
+													<h4 class="media-heading"><a href="">Juan Dela Cruz</a></h4>
+													<span class="desc1">Description</span>
+													<span class="desc2">This is a sample paragraph. </span>
+												  </div>
+												  <span class="pull-right">
+													<a href=""><img class="btn-plus"></a>
+												  </span>
+											</div>
+										  </div>
+										  <div class="panel-footer">
+										  <a href="">Like</a><a href="">Comment</a>
+										  <span class="pull-right">
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/thumbs-up-m.png">&nbsp;5</a>
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/comments-m.png">&nbsp;8</a>
+										  </span>
+										  </div>
+										</div>
+										<div class="panel panel-danger">
+										  <div class="panel-body">
+											<div class="media">
+												  <a class="pull-left" href="#">
+													<img class="media-object mosize" src="http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png" alt="">
+												  </a>
+												  <div class="media-body">
+													<h4 class="media-heading"><a href="">Juan Dela Cruz</a></h4>
+													<span class="desc1">Description</span>
+													<span class="desc2">This is a sample paragraph. </span>
+												  </div>
+												  <span class="pull-right">
+													<a href=""><img class="btn-plus"></a>
+												  </span>
+											</div>
+										  </div>
+										  <div class="panel-footer">
+										  <a href="">Like</a><a href="">Comment</a>
+										  <span class="pull-right">
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/thumbs-up-m.png">&nbsp;5</a>
+											<a href=""><img src="http://www.iconsdb.com/icons/preview/gray/comments-m.png">&nbsp;8</a>
+										  </span>
+										  </div>
+										</div -->
+										
 										
 									</div>
 								</div>
-							</div><!-- result box -->
-							
+							</div>
 						</div>
 					</div>
-				</div><!-- row -->
-			</div><!-- container -->	
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.addtoteam').click(function(){
-			var id = $(this).attr("id");
-			var contractor_id = (id.split("_")).pop();
-			console.log("Adding .."+contractor_id);
-			var base_url = $('#base_url').val();
-			$.post(base_url+'/contractorajax',{t:'addtoteam',contractor_id:contractor_id},function(data){
-				if(data.success){
-					$('#addtoteam_'+contractor_id).removeClass('addtoteam');
-					$('#addtoteam_'+contractor_id).html('<img src="http://d2qcctj8epnr7y.cloudfront.net/sheina/handyman/check-green-round.png" alt="already added" />');
-				}else{
-					console.log("Error occurred: "+data.error_message);
-				}
-			});
-		});
-	});
-	
-	
-</script>			
+				</div>
+			</div>			
+		</div>

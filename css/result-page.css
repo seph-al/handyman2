@@ -1,0 +1,75 @@
+.search-page {
+				margin-bottom:20px;
+			}
+			.search-form {
+				background:#fff;
+			}
+			.frm-box {
+				background:#eee;
+				padding:5px;
+				display:inline-block;
+			}
+			.frm-box .siw {
+				width:500px;
+			}
+			.result-box {
+				margin-top:20px;
+				background: linear-gradient(to bottom, rgb(247, 247, 247) 0%, rgb(232, 232, 232) 100%) repeat scroll 0% 0% transparent;
+				box-shadow: 0px 0px 5px rgba(99, 99, 99, 0.2);
+				border:1px solid #ccc;
+				border-radius: 4px;
+				padding:15px 0;
+			}
+			.result-box img.mosize {
+				width:85px;
+				border:1px solid #ccc;
+				padding:4px;
+				box-shadow: 0px 0px 5px rgba(99, 99, 99, 0.2);
+			}
+			.result-box .desc1 {
+				display:block;
+				font-style:italic;
+			}
+			.result-box .desc2 {
+				display:block;
+				width:350px;
+			}
+			.result-box img.btn-plus {
+				display: block;
+				width: 47px;
+				height: 47px;
+				background: url('http://www.iconsdb.com/icons/preview/gray/plus-7-l.png') bottom;
+				text-indent: -99999px;
+				margin-top:-120%;
+			}
+			.result-box img.btn-plus:hover {
+				display: block;
+				width: 47px;
+				height: 47px;
+				background: url('http://www.iconsdb.com/icons/preview/maroon/plus-7-l.png') bottom;
+				text-indent: -99999px;
+				margin-top:-120%;
+			}
+			.result-box .panel-footer a {
+				margin-right:5px;
+				color:#428BCA;
+			}
+			.result-box .panel-footer img {
+				width:15px;
+			}
+			.result-box .col-md-6 {
+				width: 48.6% !important;
+			}
+
+.invite-page 
+{
+	margin-bottom:20px;
+}
+.invite-box {
+				margin-top:20px;
+				background: linear-gradient(to bottom, rgb(247, 247, 247) 0%, rgb(232, 232, 232) 100%) repeat scroll 0% 0% transparent;
+				box-shadow: 0px 0px 5px rgba(99, 99, 99, 0.2);
+				border:1px solid #ccc;
+				border-radius: 4px;
+				padding:15px 15px;
+			}

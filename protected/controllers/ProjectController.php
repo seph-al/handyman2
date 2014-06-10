@@ -171,12 +171,15 @@ class ProjectController extends Controller
 				//$projectphotos = Projectphotos::model()->findByAttributes(array('project_id'=>$project_id));
 			
 				
-				if($main_photo->filename == NULL ){
+				if($main_photo){
 					
-					$main_photo = "http://www.justmail.in/platinum/images/work_noimage.jpg";
+					
+					
+					$main_photo = Yii::app()->request->baseUrl.'/uploads/projectphotos/'.$main_photo->filename;
 				
 				}else{
-					$main_photo = Yii::app()->request->baseUrl.'/uploads/projectphotos/'.$main_photo->filename;
+					
+					$main_photo = "http://www.justmail.in/platinum/images/work_noimage.jpg";
 				}
 				
 				

@@ -317,7 +317,15 @@ class ContractorController extends Controller
     
 	public function actionSignup(){
 		$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
-		$this->render('signup',array('title'=>'Sign Up as contractor','projects'=>$projects));
+		$refer = Yii::app()->Ini->v('refer');
+		$refer_id = '';
+		if ($refer != ''){
+			$details = Contractors::model()->findByAttributes(array('Username'=>$refer));
+			if (count($details >0)){
+				$refer_id = $details->ContractorId;
+			}
+		}
+		$this->render('signup',array('title'=>'Sign Up as contractor','projects'=>$projects,'refer_id'=>$refer_id));
 	}
 	
 	public function getContractorProfilePic($contractor_id){

@@ -162,6 +162,7 @@
 												<label class="postProjErr primary_services"></label>
 											</div>
 						</li>
+						  <input type="hidden" name="refer_id" id="refer_id" value="<?php echo $refer_id?>">
 						 <button type="button" id="submit_contractor" class="btn btn-default">Sign up</button>
 					</ul>
 		</li>

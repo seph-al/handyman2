@@ -11,7 +11,7 @@ font-size: 26px;
 		</div>
 	</div>
 </div>
-<br><br>
+
 
 
 <div class="container">

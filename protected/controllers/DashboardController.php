@@ -56,6 +56,10 @@ class DashboardController extends Controller
 					$param['points'] = $points->points;
 				}
 				
+				
+				$team_invites = ContractorTeam::model()->findbyAttributes(array('invited_id' => $contractor_id, 'confirmed' => 0));
+				$param['team_invites'] = $team_invites;
+				
 				$this->render('contractor', $param);
 				
 			}else{
