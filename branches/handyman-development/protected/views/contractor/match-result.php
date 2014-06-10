@@ -35,19 +35,28 @@
 	<div class="contain margTop20 margBot20">
 			<div class="row-fluid">
 					<div class="findJobLeft col-md-8 clearfix">
-							<div class="contMatched">	<span class="contain contMatchedTxt1"><?php echo count($result)?> Contractor<?echo count($result) > 1 ? 's':''?> Matched</span>
+							<?
+								if($home_advisors !== false){
+									$total_match = count($result) + count($home_advisors);
+								}else{
+									$total_match = count($result);
+								}
+								
+							?>
+							<div class="contMatched">	<span class="contain contMatchedTxt1"><?php echo $total_match?> Contractor<?echo $total_match > 1 ? 's':''?> Matched</span>
 								<span class="contain contMatchedTxt2"> <?php echo ucfirst($city_name)?></span>
+								
 							</div>
 							<br>
-								
-								<?if(!$home_advisors == false && count($home_advisors) > 0):?>
+							
+								<?if($home_advisors !== false && count($home_advisors) > 0):?>
 									<div class="alert alert-info"><h4><?echo count($home_advisors)?> Home Advisor Match<?echo count($home_advisors) > 1 ? 'es':''?></h4></div>
 									
 									<?foreach($home_advisors AS $ha):?>
 										<div class="findJobInner1 relative">
 											<div class="findJobHead row-fluid">
 												<div class="pull-left">
-													<a target="_blank" href="<?echo $ha['smUrl']?>"><?echo $ha['companyName']?></a>
+													<a target="_blank" href="http:://www.homeadvisor.com<?echo $ha['smUrl']?>"><?echo $ha['companyName']?></a>
 												</div>
 											</div>
 											<div class="tradePad">	
@@ -58,7 +67,7 @@
 												<div class="clr"></div>
 											</div>
 											<div class="contain alignCenter margTop10">	
-												<a class="InviteJob viewProfNew" target="_blank" href="<?echo $ha['smUrl']?>">
+												<a class="InviteJob viewProfNew" target="_blank" href="http:://www.homeadvisor.com<?echo $ha['smUrl']?>">
 																View Profile
 															</a>
 											</div>	<span class="separatorCircle"></span>
@@ -67,10 +76,6 @@
 										
 									<?endforeach;?>
 								<?endif;?>
-							
-							
-							
-							
 							
 							<div class="alert alert-info"><h4><?echo count($result)?> Handyman Match<?echo count($result) > 1 ? 'es':''?></h4></div>
 							<?php foreach($result as $model): ?>

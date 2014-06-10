@@ -13,11 +13,11 @@
 								<div class="row">
 										<p href="" class="inv-title">Invite To Your Team And Into Handyman.com Network</p>
 										<p>
-										  <a>
-										  <button type="button" class="btn btn-danger btn-lg btn-block">
-										  <img src="http://www.iconsdb.com/icons/preview/white/worker-xl.png">
-										  <span class="btitle">Contractor Into Your Team</span>
-										  </button>
+										  <a href="/contractor/refer">
+											  <button type="button" class="btn btn-danger btn-lg btn-block">
+											  <img src="http://www.iconsdb.com/icons/preview/white/worker-xl.png">
+											  <span class="btitle">Contractor Into Your Team</span>
+											  </button>
 										  </a>
 										</p>										
 										<p>
