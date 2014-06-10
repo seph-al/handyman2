@@ -11,9 +11,9 @@
 						<div class="invite-box">
 							<div class="container">
 								<div class="row">
-										<p class="inv-title">Invite To Your Team And Into Handyman.com Network</p>
+										<p href="" class="inv-title">Invite To Your Team And Into Handyman.com Network</p>
 										<p>
-										  <a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/invite-to-team">
+										  <a>
 										  <button type="button" class="btn btn-danger btn-lg btn-block">
 										  <img src="http://www.iconsdb.com/icons/preview/white/worker-xl.png">
 										  <span class="btitle">Contractor Into Your Team</span>
@@ -21,7 +21,7 @@
 										  </a>
 										</p>										
 										<p>
-										  <a href="">
+										  <a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/inviteteam">
 										  <button type="button" class="btn btn-danger btn-lg btn-block">
 										  <img src="http://www.iconsdb.com/icons/preview/white/database-xl.png">
 										  <span class="btitle">HandyMan Database</span>

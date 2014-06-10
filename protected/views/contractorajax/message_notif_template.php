@@ -7,24 +7,12 @@
 		</tr>
 	</thead>
 	<tbody style="display:block;font:normal 13px/17px Verdana;margin-top:15px">
-		<tr style="display:block;margin-bottom:10px;color:#f89b2e;font:normal 16px/17px Verdana;padding:0 25px">
+		<tr style="display:block;margin-bottom:10px;color:#000;font:normal 16px/17px Verdana;padding:0 25px">
 			<td align="left" style="font-weight:bold" colspan="3"><?php echo $receiver_name?>,</td>
 		</tr>
-		<tr style="display:block;margin-bottom:10px;padding:0 25px">
-			<td align="left" style="font:bold 16px/17px Verdana" colspan="3">
-			  Somebody sent you a message:
-			</td>
-		</tr>
+		
 		<tr style="display:block;margin:20px 0 10px;padding:0 25px">
-			<td width="25%" valign="top" align="left" style="display:inline-block;font-weight:bold">&nbsp;</td>
-			<td width="5%" valign="top" align="center" style="display:inline-block;font-weight:bold">&nbsp;</td>
-			<td width="60%" valign="top" align="left" style="display:inline-block">&nbsp;
-			</td>
-		</tr>
-		<tr style="display:block;margin:20px 0 10px;padding:0 25px">
-			<td width="25%" valign="top" align="left" style="display:inline-block;font-weight:bold">&nbsp;</td>
-			<td width="5%" valign="top" align="center" style="display:inline-block;font-weight:bold">&nbsp;</td>
-			<td width="60%" valign="top" align="left" style="display:inline-block"><?echo $message?><br><a href="http://beta.handymen.com/">Login</a> to your account to reply.</td>
+			<td width="95%" valign="top" align="left" style="display:inline-block;font-size:14px;"><?echo $message?><br><a href="http://beta.handymen.com/">Login</a> to your account to reply.</td>
 		</tr>
 		<tr style="display:block;margin:35px 0 20px;width:630px">
 			<td style="display:block"><span><font color="#888888"></font></span><span><font color="#888888"></font></span>

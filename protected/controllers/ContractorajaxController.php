@@ -475,4 +475,22 @@ class ContractorajaxController extends Controller
 		
 	}
 	
+	
+public function accepttoteam(){
+		$contractor_id = Yii::app()->Ini->v('contractor_id');
+		$invited_id = Yii::app()->user->getId();
+		$contractor_team = ContractorTeam::model()->findByAttributes(array('contractor_id' => $contractor_id, 'invited_id' => $invited_id));
+		if(count($contractor_team)>0){
+			$contractor_team->confirmed = 1;
+			if ($contractor_team->save()){
+			  $return = array('success' => true);
+			}else {
+              $return = array('success' => false,'error_message'=>$contractor_team->getErrors());				
+			}
+		}else{
+			$return = array('success' => false, 'error_message' => 'Not invited.');
+		}
+		
+		$this->renderJSON($return);
+	}
 }
