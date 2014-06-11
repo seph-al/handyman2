@@ -13,7 +13,7 @@
 								<div class="row">
 										<p href="" class="inv-title">Invite To Your Team And Into Handyman.com Network</p>
 										<p>
-										  <a href="/contractor/refer">
+										  <a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/refer">
 											  <button type="button" class="btn btn-danger btn-lg btn-block">
 											  <img src="http://www.iconsdb.com/icons/preview/white/worker-xl.png">
 											  <span class="btitle">Contractor Into Your Team</span>
@@ -29,7 +29,7 @@
 										  </a>
 										</p>
 										<p>
-										  <a href="">
+										  <a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/refer">
 										  <button type="button" class="btn btn-danger btn-lg btn-block">
 										  <img src="http://www.iconsdb.com/icons/preview/white/collaborator-xl.png">
 										  <span class="btitle">Homeowner</span>

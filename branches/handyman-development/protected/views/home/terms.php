@@ -4,6 +4,7 @@
     background: url("http://www.justmail.in/platinum/images/about-banner.png") no-repeat scroll center center #E7E7E7;
     box-shadow: 0 8px 8px #C3C7CD inset;
     text-align: center;
+	margin-top:-20px;
 }
 
 </style>

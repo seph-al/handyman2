@@ -149,7 +149,9 @@ class DashboardController extends Controller
 			$contractor_bond = ContractorBond::model()->findByAttributes(array('contractor_id'=>$contractor_id));
 			$contractor_points = Contractors::model()->updatePoints($contractor_id);
 			
-			
+			$team_members = new CDbCriteria();
+			$team_members->condition = "contractor_id = '$contractor_id' AND confirmed = '1' ORDER BY RAND() LIMIT 0,5";
+			$contractor_team = ContractorTeam::model()->findAll($team_members);
 			
 			
 			if (count($profile_details)>0){ 
@@ -210,7 +212,8 @@ class DashboardController extends Controller
 						   'social_accounts' => $social_accounts,
 						   'contractor_points' => $contractor_points,
 						   'photo_cover' => $photo_cover,
-						   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
+						   'contractor_team' => $contractor_team,
+						   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'),array('limit' => '6'))
 						   ));
 						   
 		}else{

@@ -54,7 +54,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-				  <?php $this->renderPartial('../contractorajax/uploadimage',array('my_gallery'=>$my_gallery,'is_my_profile'=>$is_my_profile,'is_public'=>true)); ?>
+				  <?php $this->renderPartial('../contractorajax/uploadimage',array('my_gallery'=>$my_gallery,'is_my_profile'=>$is_my_profile,'is_public'=>true,'username' => $username)); ?>
                     <div class="panel panel-default panel-style1">
                         <div class="panel-heading">About the Contractor</div>
                         <div class="panel-body">
@@ -136,6 +136,42 @@
                 </div>
                 <div id="credentials" class="col-lg-4">
                    <?php $this->renderPartial('../contractor/information',array('contractor_license' => $contractor_license,'contractor_bond' => $contractor_bond,'social_accounts' => $social_accounts,'contractor_points'=>$contractor_points)); ?>
+				   
+				   	<?php if(count($contractor_team)>0):?>
+					
+					
+                    <div class="panel panel-default panel-style1">
+                        <div class="panel-heading">Team</div>
+                        <div class="panel-body">
+						
+						<?php foreach($contractor_team as $k=>$v):?>
+						<?php
+								$team_name = Contractors::model()->findByAttributes(array('ContractorId' => $v->invited_id));
+								
+								
+								$contractorphotos = Contractorphotos::model()->findByAttributes(array('contractor_id' => $v->invited_id,'is_profile' => '1'));
+								
+								if (count($contractorphotos)>0){
+									$profile_pic =  Yii::app()->request->baseUrl."/uploads/profile/".$contractorphotos->filename;
+								}else{
+									$profile_pic = 'http://www.justmail.in/platinum/images/clapper.png';
+								}
+								
+							
+						?>
+                            <div class="row team-member">
+                                <div class="col-lg-3 col-lg-12 team-img">
+                                    <img src="<?php echo $profile_pic?>" class="img-circle" alt="team member image">
+                                </div>
+                                <div class="col-lg-9 col-lg-12 description">
+                                    <div><b><?php echo $team_name->Name?></b></div>
+                                </div>
+                            </div>
+						<?php endforeach; ?>
+							
+                        </div>
+                    </div>
+					<?php endif; ?>
 				   
 					<div class="panel panel-default panel-style1">
 					<div class="panel-heading">Connect with us</div>

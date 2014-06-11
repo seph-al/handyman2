@@ -65,6 +65,12 @@ class ContractorajaxController extends Controller
 					            	$team->invited_id = $owner_id;
 					            	$team->confirmed = 1;
 					            	$team->save();
+					            	
+					            	$team2 = new ContractorTeam();
+					            	$team2->contractor_id = $owner_id;
+					            	$team2->invited_id = $rcont->ContractorId;
+					            	$team2->confirmed = 1;
+					            	$team2->save();
 					            }
 					   	     }
 				       }
@@ -345,6 +351,7 @@ class ContractorajaxController extends Controller
 		$receiver_details = Contractors::model()->findByPk($contractor_id);
 		$receiver_name = $receiver_details->Name;
 		$receiver_email = $receiver_details->Email;
+		//$receiver_email = 'sheinavi@gmail.com';
 		 
 		
     	$subject = Yii::app()->name." - ".$subject;
@@ -353,13 +360,6 @@ class ContractorajaxController extends Controller
 					"MIME-Version: 1.0\r\n".
 					"Content-type: text/html; charset=UTF-8";
     	
-		/*$headers   = array();
-		$headers[] = "MIME-Version: 1.0";
-		$headers[] = 'Content-type: text/html; charset=utf-8' . "\r\n";
-		$headers[] = "From: Handyman.com <admin@handyman.com>";
-		$headers[] = "Bcc: Sheina Vi Paclibar <sheinavi@gmail.com>";
-		$headers[] = "Subject: ".$subject;
-		$headers[] = "X-Mailer: PHP/".phpversion();*/
 		
     	mail($receiver_email,$subject,$content,$headers);
 		
@@ -476,13 +476,20 @@ class ContractorajaxController extends Controller
 	}
 	
 	
-public function accepttoteam(){
+   public function accepttoteam(){
 		$contractor_id = Yii::app()->Ini->v('contractor_id');
 		$invited_id = Yii::app()->user->getId();
 		$contractor_team = ContractorTeam::model()->findByAttributes(array('contractor_id' => $contractor_id, 'invited_id' => $invited_id));
 		if(count($contractor_team)>0){
 			$contractor_team->confirmed = 1;
 			if ($contractor_team->save()){
+				
+              $team2 = new ContractorTeam();
+			        $team2->contractor_id = $invited_id;
+              $team2->invited_id = $contractor_id;
+              $team2->confirmed = 1;
+              $team2->save();
+				
 			  $return = array('success' => true);
 			}else {
               $return = array('success' => false,'error_message'=>$contractor_team->getErrors());				
