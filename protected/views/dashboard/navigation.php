@@ -29,6 +29,7 @@
 										</span>
 									</a>
 								</li>-->
+									<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/team"><span class="relative dispInBlock">My Team</span></a></li>
 							</ul>
 						</div>
 					</div>

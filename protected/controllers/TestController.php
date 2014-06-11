@@ -271,5 +271,55 @@ class TestController extends Controller
     	 }
     }
 	
+	
+	public function actionHomeadvisercall(){
+		/*test run HA API*/
+		$result = Yii::app()->Ini->searchhomeadvisor('8000','12070');
+		
+		/*foreach($result AS $r){
+			echo "Total records: ".$r['totalRecordsFound'];
+			$rows = $r['contractor'];
+			
+			var_dump($rows);
+		}*/
+		
+		//$rows = $result['totalRecordsFound'];
+		/*$rows = $result['contractor'];
+		foreach($rows AS $r){
+			
+			echo $r["@attributes"]['companyName']."<br><br>";
+		}*/
+		
+		var_dump($result);
+		echo "<br /><br />";
+		if($result === false){
+			echo "no match found";
+		}else{
+			$res = $result['serviceProvider'];
+			
+			foreach($res AS $r){
+				echo $r['companyName']."<br>";
+			}
+		}
+	
+	}
+	
+	public function actionRandomoid(){
+		$oid = Yii::app()->Ini->v('oid');
+		$zipcode = Yii::app()->Ini->v('zipcode');
+		
+		$result = Yii::app()->Ini->searchhomeadvisor('11741','12002');
+		var_dump($result);
+	}
+	
+	public function actionTesthomeadvisor(){
+		$result = Yii::app()->Ini->searchhomeadvisor('11741','12070');
+		var_dump($result);
+	}
+	
+	public function actionTestLink(){
+		$this->render('testlink');
+	}
+	
 }
 ?>

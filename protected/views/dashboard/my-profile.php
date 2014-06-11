@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-lg-8">
 				
-					 <?php $this->renderPartial('../contractorajax/uploadimage',array('my_gallery'=>$my_gallery,'is_my_profile'=>$is_my_profile,'is_public'=>false)); ?>
+					 <?php $this->renderPartial('../contractorajax/uploadimage',array('my_gallery'=>$my_gallery,'is_my_profile'=>$is_my_profile,'is_public'=>false,'username' => $username)); ?>
 				
                     <div class="panel panel-default panel-style1">
                         <div class="panel-heading">About the Contractor</div>
@@ -107,29 +107,52 @@
                 </div>
                 <div id="credentials" class="col-lg-4">
 					 <?php $this->renderPartial('../contractor/information',array('contractor_license' => $contractor_license,'contractor_bond' => $contractor_bond,'social_accounts' => $social_accounts,'contractor_points'=>$contractor_points)); ?>
-                    <!--<div class="panel panel-default panel-style1">
+					 
+					
+					
+						
+								
+						
+					
+					 
+					 
+					<?php if(count($contractor_team)>0):?>
+					
+					
+                    <div class="panel panel-default panel-style1">
                         <div class="panel-heading">Team</div>
                         <div class="panel-body">
+						
+						<?php foreach($contractor_team as $k=>$v):?>
+						<?php
+								$team_name = Contractors::model()->findByAttributes(array('ContractorId' => $v->invited_id));
+								
+								
+								$contractorphotos = Contractorphotos::model()->findByAttributes(array('contractor_id' => $v->invited_id,'is_profile' => '1'));
+								
+								if (count($contractorphotos)>0){
+									$profile_pic =  Yii::app()->request->baseUrl."/uploads/profile/".$contractorphotos->filename;
+								}else{
+									$profile_pic = 'http://www.justmail.in/platinum/images/clapper.png';
+								}
+								
+							
+						?>
                             <div class="row team-member">
                                 <div class="col-lg-3 col-lg-12 team-img">
-                                    <img src="http://d3uyjocb29uv4r.cloudfront.net/api/file/8OOUt4GRk6Do2baO7Jgm/convert?w=60&amp;h=60&amp;fit=crop&amp;quality=50&amp;cache=true&amp;compress=true&amp;align=faces" class="img-circle" alt="team member image">
+                                    <img src="<?php echo $profile_pic?>" class="img-circle" alt="team member image">
                                 </div>
                                 <div class="col-lg-9 col-lg-12 description">
-                                    <div><b>Dino</b></div>
-                                    <div>Owner</div>
+                                    <div><b><?php echo $team_name->Name?></b></div>
                                 </div>
                             </div>
-                            <div class="row team-member">
-                                <div class="col-lg-3 col-lg-12 team-img">
-                                    <img src="http://d3uyjocb29uv4r.cloudfront.net/api/file/SirBNlUuRGmWUBJrQND4/convert?w=60&h=60&fit=crop&quality=50&cache=true&compress=true&align=faces" class="img-circle" alt="team member image">
-                                </div>
-                                <div class="col-lg-9 col-lg-12 description">
-                                    <div><b>Luke</b></div>
-                                    <div>Co-Owner</div>
-                                </div>
-                            </div>
+						<?php endforeach; ?>
+						<?php if(count($contractor_team) == 5):?>
+						<div class="pull-right"><a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/team">view more..</a></div>
+						<?php endif;?>
                         </div>
-                    </div>-->
+                    </div>
+					<?php endif; ?>
                       <a class="btn btn-warning" href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/invite">INVITE PEOPLE INTO HANDYMAN.COM NETWORK</a>
                           
                 </div>

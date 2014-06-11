@@ -25,12 +25,20 @@
 												  <div class="panel-body">
 													<div class="media">
 														  <a class="pull-left" href="#">
-															<img class="media-object mosize" src="<?echo count($v->contractor->picture) > 0 ? '/uploads/profile/'.$v->contractor->picture->filename:'http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png' ?>" alt="">
+														   <?php 
+														     $pic= Contractorphotos::model()->findByAttributes(array('contractor_id'=>$v->contractor->ContractorId,'is_profile'=>1));
+														     if (count($pic)>0){
+														     	$picture = $pic->filename;
+														     }else {
+														     	$picture = '';
+														     }
+														   ?>
+															 <img class="media-object mosize" src="<?echo $picture !=''  ?  Yii::app()->request->baseUrl.'/uploads/profile/'.$picture:'http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png' ?>" alt="" >
 														  </a>
 														  <div class="media-body">
 															<h4 class="media-heading"><a href=""><?echo $v->contractor->Name?></a></h4>
 															<span class="desc1">Services:</span>
-															<span class="desc2"><?echo substr($v->contractor->Services,0,75)?>..<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->contractor->Username?>">Read More</a></span>
+															<span class="desc2"><?echo substr($v->contractor->Services,0,35)?>..<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->contractor->Username?>">Read More</a></span>
 														  </div>
 														  <span class="pull-right">
 															<a href="javascript:void(0)" id="addtoteam_<?echo $v->contractor->ContractorId?>" class="addtoteam">
@@ -53,7 +61,7 @@
 										
 									
 									<?endif;?>
-									
+									<div style="clear: both;"></div>
 								 <?$this->widget('CLinkPager',array(
 											'pages'=>$pages,
 											'cssFile'=>Yii::app()->request->baseUrl.'/css/pagination.css',

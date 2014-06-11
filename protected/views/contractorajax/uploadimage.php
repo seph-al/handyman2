@@ -75,6 +75,7 @@
 			
 			
 		</div>
+		<div class="pull-right" style="color:#FFFFFF"><h3><a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/photos/user/<?php echo $username?>">view all..</a></h3></div>
 	</div>
 </div>
 <?endif;?>

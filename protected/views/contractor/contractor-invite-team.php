@@ -25,13 +25,21 @@
 												<div class="panel panel-danger">
 												  <div class="panel-body">
 													<div class="media">
-														  <a class="pull-left" href="#">
-															<img class="media-object mosize" src="<?echo count($v->picture) > 0 ? '/uploads/profile/'.$v->picture->filename:'http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png' ?>" alt="">
+														  <a class="pull-left" href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->Username?>">
+														   <?php 
+														     $pic= Contractorphotos::model()->findByAttributes(array('contractor_id'=>$v->ContractorId,'is_profile'=>1));
+														     if (count($pic)>0){
+														     	$picture = $pic->filename;
+														     }else {
+														     	$picture = '';
+														     }
+														   ?>
+														    <img class="media-object mosize" src="<?echo $picture !=''  ?  Yii::app()->request->baseUrl.'/uploads/profile/'.$picture:'http://www.iconsdb.com/icons/preview/orange/businessman-xxl.png' ?>" alt="" >
 														  </a>
 														  <div class="media-body">
-															<h4 class="media-heading"><a href=""><?echo $v->Name?></a></h4>
+															<h4 class="media-heading"><a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->Username?>"><?echo $v->Name?></a></h4>
 															<span class="desc1">Services:</span>
-															<span class="desc2"><?echo substr($v->Services,0,75)?>..<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->Username?>">Read More</a></span>
+															<span class="desc2"><?echo substr($v->Services,0,35)?>..<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?echo $v->Username?>">Read More</a></span>
 														  </div>
 														  <span class="pull-right">
 															<a href="javascript:;" id="addtoteam_<?echo $v->ContractorId?>" class="addtoteam">
@@ -55,6 +63,7 @@
 									
 									<?endif;?>
 									
+									<div style="clear: both;"></div>
 								 <?$this->widget('CLinkPager',array(
 											'pages'=>$pages,
 											'cssFile'=>Yii::app()->request->baseUrl.'/css/pagination.css',

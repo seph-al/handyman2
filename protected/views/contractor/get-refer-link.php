@@ -1,4 +1,5 @@
 <?php $this->renderPartial('/dashboard/navigation',array('pages'=>'profile')); ?>
+<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/refer-page.css">
 <div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -16,9 +17,9 @@
 									</ol>
 									
 									<br>
-									<div class="col-md-8 text-center">	
+									<div class="col-md-8 col-md-offset-2 text-center rp">	
 										<ul class="nav nav-tabs">
-										  <li class="active"><a href="#to_team" data-toggle="tab">Contractor</a></li>
+										  <li class="contractor active"><a href="#to_team" data-toggle="tab">Contractor</a></li>
 										</ul>
 											
 											<div class="tab-content">
@@ -29,6 +30,7 @@
 											  </div>
 											  
 											 </div><!-- tab-content -->
+											 <div style="clear:both"></div>
 									</div>
 									
 									<br><br>

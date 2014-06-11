@@ -55,6 +55,7 @@ class ContractorTeam extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 		  'contractor' => array(self::BELONGS_TO, 'Contractors', 'contractor_id'),
+		  'invite' => array(self::BELONGS_TO, 'Contractors', 'invited_id'),
 		);
 	}
 

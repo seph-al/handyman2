@@ -16,6 +16,17 @@ class ContractorController extends Controller
             $this->actionIndex();
     }
     
+	
+	private function getHomeOwnerProjects(){
+		$return = array();
+		if(Yii::app()->user->role == 'homeowner'){
+			$criteria=new CDbCriteria();
+			$criteria->condition = "homeowner_id = ".Yii::app()->user->getId();
+			$return = Projects::model()->findAll($criteria);
+		}
+		return $return;
+	}
+	
     public function actionFind()
     {
     	$location = Yii::app()->Ini->getlocationbyip(Yii::app()->Ini->rip('ip'));
@@ -30,6 +41,8 @@ class ContractorController extends Controller
         $project =  Yii::app()->Ini->v('project');
         $zipcode =  Yii::app()->Ini->v('zipcode');
 		$match = Yii::app()->Ini->v('match');
+		
+		$homeowner_projects = $this->getHomeOwnerProjects();
 		
     	if ($city){
     		
@@ -54,7 +67,8 @@ class ContractorController extends Controller
 		        'records'=>$count,
 		        'city_name'=>$city_name,
 		        'location'=>$city_name.",USA",
-		        'questions'=>$questions
+		        'questions'=>$questions,
+				'homeowner_projects' => $homeowner_projects
              ));
              
     	}else if($project && $zipcode){
@@ -115,7 +129,8 @@ class ContractorController extends Controller
 		        'records'=>$count,
 		        'city_name'=>$city_name,
 		        'location'=>$location,
-		        'questions'=>$questions
+		        'questions'=>$questions,
+				'homeowner_projects' => $homeowner_projects
              ));
     	}else if ($zipcode){
     		 
@@ -135,7 +150,8 @@ class ContractorController extends Controller
 		        'projects'=>$projects,
 		        'records'=>$count,
 		        'city_name'=>$zipcode,
-		        'questions'=>$questions
+		        'questions'=>$questions,
+				'homeowner_projects' => $homeowner_projects
              ));
     	}else if($match){
 			$proj = Projects::model()->findByPk($match);
@@ -202,6 +218,10 @@ class ContractorController extends Controller
 		$contractor_license = ContractorLicense::model()->findByAttributes(array('contractor_id'=>$con_id));
 		$contractor_bond = ContractorBond::model()->findByAttributes(array('contractor_id'=>$con_id));
 		$contractor_points = Contractors::model()->updatePoints($con_id);
+		
+		$team_members = new CDbCriteria();
+		$team_members->condition = "contractor_id = '$con_id' AND confirmed = '1' ORDER BY RAND() LIMIT 0,5";
+		$contractor_team = ContractorTeam::model()->findAll($team_members);
 		
 			if(count($profile_details)>0){
 		        $profile_details->updatePoints($profile_details->ContractorId);
@@ -284,9 +304,10 @@ class ContractorController extends Controller
 								   'contractor_points' => $contractor_points,
 								   'feedback' => $feedback,
 								   'photo_cover' => $photo_cover,
-								   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
-								   ,'homeowner_projects'=>$homeowner_projects,
+								   'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'),array('limit' => '6', 'order'=>'RAND()')),
+								   'homeowner_projects'=>$homeowner_projects,
 								   'point'=>$point,
+								   'contractor_team' => $contractor_team,
 								   'map_location'=>$l
 								   ));
 								   
@@ -493,4 +514,61 @@ public function actionTeamRequests(){
 		}	
 	}
 	
+  public function actionTeam(){
+		if (!Yii::app()->user->isGuest){
+		
+			$keyword =  Yii::app()->Ini->v('keyword');
+			$userid = Yii::app()->user->getId();
+			$limit = 6;
+			
+			$criteria = new CDbCriteria();
+		    $criteria->condition = "contractor_id=$userid AND confirmed = 1";
+			$criteria->order = "member_id ASC";
+			
+			$count = ContractorTeam::model()->count($criteria);
+			$pages = new CPagination($count);
+			$pages->pageSize=$limit;
+			$pages->applyLimit($criteria);
+			$result = ContractorTeam::model()->findAll($criteria);
+					
+					$param['result'] = $result;
+					$param['pages'] = $pages;
+				
+					
+			$this->render('contractor-team', $param);
+		
+		}else {
+			$this->redirect(Yii::app()->homeUrl);
+		}	
+	}
+	
+	
+	public function actionPhotos(){
+		$username = Yii::app()->Ini->v('user');
+		$profile_details = Contractors::model()->findByAttributes(array('Username'=>$username));
+		$current_userid = Yii::app()->user->getId();
+		$contractor_id = $profile_details->ContractorId;
+		$company = $profile_details->Name;
+		
+		$is_my_profile = false;
+		
+		if (!Yii::app()->user->isGuest){
+			if($contractor_id == $current_userid){
+				$is_my_profile = true;
+			}
+		}
+		
+		
+		
+		$this->render('contractor-photos', array(
+						'is_my_profile' => $is_my_profile,
+						'company' => $company,
+						'my_gallery' => Contractorphotos::model()->findAllByAttributes(array('contractor_id'=>$contractor_id,'is_profile'=>'0'))
+		
+		));
+		
+	
+	
+	
+	}
 }

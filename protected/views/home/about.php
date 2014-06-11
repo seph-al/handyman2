@@ -4,8 +4,19 @@
     background: url("http://www.justmail.in/platinum/images/about-banner.png") no-repeat scroll center center #E7E7E7;
     box-shadow: 0 8px 8px #C3C7CD inset;
     text-align: center;
+	margin-top:-20px;
 }
-
+ul.otherdev {
+	margin-left:-20px;
+}
+ul.otherdev li {
+	float:left;
+	display:inline-block;
+	margin:5px;
+	border:1px solid #ccc;
+	padding:5px 10px;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.35);
+}
 </style>
 
 <div class="row-fluid staticBannerAbout">
@@ -28,27 +39,29 @@
 				<br><br>
 				Other developments planned.
 				<br><br>
-				PropertyManagement.com<br>
-				HomeManagement.com<br>
-				HomeChannel.com<br>
-				Renovated.com<br>
-				HomeTech.net<br>
-				LocalReferrals.com<br>
-				SmartHouse.com<br>
-				ServiceProviders.com<br>
-				ServiceDirectory.com<br>
-				RealtyLink.com<br>
-				LoanCenter.com<br>
-				ConstructionShop.com<br>
-				SubContracting.com<br>
-				PrivateContractors.com<br>
-				Lawn-Care.com<br>
-				PaintingServices.com<br>
-				LocalNetwork.com<br>
-				LocalProviders.com<br>
-				HomePainters.com<br><br>
-
-				Over 500 more construction, home improvement, renovations, service related projects.	
+				<ul class="otherdev">
+					<li>PropertyManagement.com</li>
+					<li>HomeManagement.com</li>
+					<li>HomeChannel.com</li>
+					<li>Renovated.com</li>
+					<li>HomeTech.net</li>
+					<li>LocalReferrals.com</li>
+					<li>SmartHouse.com</li>
+					<li>ServiceProviders.com</li>
+					<li>ServiceDirectory.com</li>
+					<li>RealtyLink.com</li>
+					<li>LoanCenter.com</li>
+					<li>ConstructionShop.com</li>
+					<li>SubContracting.com</li>
+					<li>PrivateContractors.com</li>
+					<li>Lawn-Care.com</li>
+					<li>PaintingServices.com</li>
+					<li>LocalNetwork.com</li>
+					<li>LocalProviders.com</li>
+					<li>HomePainters.com</li>
+				</ul>
+				<div style="clear:both;"></div>
+				<p style="margin-top:20px;">Over 500 more construction, home improvement, renovations, service related projects.</p>
 
 			</div>				
 								

@@ -237,7 +237,8 @@ class ProjectController extends Controller
 					'zipcode' => $details->zipcode,
 					'budget' => $details->budget,
 					'project_type_id' => $details->project_type_id,
-					'state_id' => $details->state_id
+					'state_id' => $details->state_id,
+          'default_project'=>$default_project
 	             ));
 		}else {
      		$this->redirect(Yii::app()->homeUrl);
