@@ -56,7 +56,7 @@
 										<div class="findJobInner1 relative">
 											<div class="findJobHead row-fluid">
 												<div class="pull-left">
-													<a target="_blank" href="http:://www.homeadvisor.com<?echo $ha['smUrl']?>"><?echo $ha['companyName']?></a>
+													<a target="_blank" href="http://www.homeadvisor.com<?echo $ha['smUrl']?>"><?echo $ha['companyName']?></a>
 												</div>
 											</div>
 											<div class="tradePad">	
@@ -67,7 +67,7 @@
 												<div class="clr"></div>
 											</div>
 											<div class="contain alignCenter margTop10">	
-												<a class="InviteJob viewProfNew" target="_blank" href="http:://www.homeadvisor.com<?echo $ha['smUrl']?>">
+												<a class="InviteJob viewProfNew" target="_blank" href="http://www.homeadvisor.com<?echo $ha['smUrl']?>">
 																View Profile
 															</a>
 											</div>	<span class="separatorCircle"></span>
@@ -93,7 +93,7 @@
 								</div>
 								<div class="tradePad">	
 								   <span class="contain">
-													<span class="feedbackRev"> Business</span>
+													<span class="feedbackRev"><?php echo $model->Address1?></span>
 									</span>
 									<p class="tradePara2"><?php echo $model->AboutBusiness?></p>
 									<div class="clr"></div>
