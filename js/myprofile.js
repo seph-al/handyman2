@@ -197,15 +197,15 @@ $(document).ready(function(){
 			
 			//var btn = $(this);
 			//btn.button('loading');
+			$('#invite_send_result').html('');
 		
-		
-			if(send_message_subject == ""){
-				$('#invite_send_result').html('<p class="bg-danger"><button type="button" class="close" aria-hidden="true">&times;</button>Subject is required.</p>');
-				$('#send_message_subject').focus();
+			if(invite_message_subject == ""){
+				$('#invite_send_result').html('<div class="alert alert-danger">Subject is required.</div>');
+				$('#invite_message_subject').focus();
 				//btn.button('reset');
-			}else if(send_message_content == ""){
-				$('#invite_send_result').html('<p class="bg-danger"><button type="button" class="close" aria-hidden="true">&times;</button>Oops! You forgot to write your message.</p>');
-				$('#send_message_content').focus();
+			}else if(invite_message_content == ""){
+				$('#invite_send_result').html('<div class="alert alert-danger">Oops! You forgot to write your message.</div>');
+				$('#invite_message_content').focus();
 				//btn.button('reset');
 			}else{
 				//btn.button('loading');

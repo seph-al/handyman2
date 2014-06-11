@@ -55,15 +55,20 @@
 		</div>
 		<div class="tradePad">	
 		   <span class="contain">
-							<span class="feedbackRev"> Business</span>
+							<span class="feedbackRev"><?php echo $model->Address1?></span>
 			</span>
 			<p class="tradePara2"><?php echo $model->AboutBusiness?></p>
 			<div class="clr"></div>
 		</div>
 		<div class="contain alignCenter margTop10">	
 			<a class="InviteJob viewProfNew" href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?php echo $model->Username?>">
-							View Profile
-						</a>
+				View Profile
+			</a>
+			
+			<a data-toggle="modal" data-target="<?echo count($homeowner_projects) > 0 ? '#messageAttachProject': '#messageModal' ?>" class="InviteJob inviteContractor" id="<?php echo $model->ContractorId?>" rel="<?php echo $model->Username?>">
+				Invite Contractor
+			</a>
+			
 		</div>	<span class="separatorCircle"></span>
 	</div>
 	<?php endforeach; ?>
@@ -134,11 +139,84 @@
 			</div>
 		</div>
 	</div>
+
+
 	
+<?if(count($homeowner_projects > 0)):?>
+	<div class="modal fade" id="messageAttachProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	   <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h4 class="modal-title">Send Message</h4>
+		  </div>
+		  <div class="modal-body">
+				<div id="invite_send_result">&nbsp;</div>
+				<form role="form">
+				  <div class="form-group">
+					<label for="exampleInputEmail1">Subject</label>
+					<input type="text" class="form-control"  id="invite_message_subject" name="invite_message_subject">
+				  </div>
+				  <div class="form-group">
+					<label for="exampleInputEmail1">Attach Project</label>
+					<select class="form-control" name="invite_project_attached" id="invite_project_attached">
+						<?foreach($homeowner_projects AS $key=>$value):?>
+							<option value="<?echo $value->project_id?>"><?echo substr($value->description,0,25)?></option>
+						<?endforeach;?>
+					</select>
+				  </div>
+				  <div class="form-group">
+					<label for="exampleInputPassword1">Message</label>
+					<textarea class="form-control" rows="5" placeholder="Write Message" id="invite_message_content" name="invite_message_content"></textarea>
+				  </div>
+				   
+				   <input type="hidden" name="invite_contractor_id" id="invite_contractor_id" value="" />
+				</form>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			<button type="button" class="btn btn-primary" data-loading-text="Verifying..." id="SendInvitetoContact"><span class="glyphicon glyphicon-envelope"></span> Send</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<?else:?>
+	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Send Message</h4>
+      </div>
+      <div class="modal-body">
+			<div id="send_result">&nbsp;</div>
+			<form role="form">
+			  <div class="form-group">
+				<label for="exampleInputEmail1">Subject</label>
+				<input type="text" class="form-control"  id="send_message_subject" name="send_message_subject">
+			  </div>
+			  <div class="form-group">
+				<label for="exampleInputPassword1">Message</label>
+				<textarea class="form-control" rows="5" placeholder="Write Message" id="send_message_content" name="send_message_content"></textarea>
+			  </div>
+			   <input type="hidden" name="contractor_id" id="contractor_id" value="" />
+			</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-loading-text="Verifying..." id="sendmessage"><span class="glyphicon glyphicon-envelope"></span> Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+	<?endif;?>
+
 <?php if (Yii::app()->user->isGuest):?>
 	<input type="hidden" name="is_guest" id="is_guest" value="1" />
 	<?$this->renderPartial('logged_out_modal')?>
 <?php endif;?>
+
+<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/myprofile.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var is_guest = $('input#is_guest').val();
@@ -151,5 +229,13 @@
 			$('#myModal_loggedout').modal('show');
 			
 		}
+		
+		$('.inviteContractor').click(function(){
+			var id = $(this).attr("id");
+			var rel = $(this).attr('rel');
+			$('input#invite_contractor_id, input#contractor_id').val(id);
+			$('h4.modal-title').text("Send Message to "+rel);
+		});
+		
 	});
 </script>
