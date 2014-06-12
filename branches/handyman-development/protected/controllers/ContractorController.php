@@ -19,7 +19,7 @@ class ContractorController extends Controller
 	
 	private function getHomeOwnerProjects(){
 		$return = array();
-		if(Yii::app()->user->role == 'homeowner'){
+		if(!Yii::app()->user->isGuest && Yii::app()->user->role == 'homeowner'){
 			$criteria=new CDbCriteria();
 			$criteria->condition = "homeowner_id = ".Yii::app()->user->getId();
 			$return = Projects::model()->findAll($criteria);
