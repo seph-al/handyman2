@@ -63,12 +63,16 @@
 								  </span>
 								</span>
 							 </span>
-							 <?if(!Yii::app()->user->isGuest && $v->owner_user_type == Yii::app()->user->role && $v->owner_id = Yii::app()->user->getId()):?>
-								  <div class="bread">
-									  <a href="<?php echo Yii::app()->request->baseUrl; ?>/questions/edit/id/<?php echo $v->question_id?>/n/<?php echo Yii::app()->Ini->slugstring($v->title)?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
-									  <a href="javascript:void(0)" onclick="deletequestion('<?php echo $v->question_id?>','0')"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</a>
-								  </div>
+							  <?if(!Yii::app()->user->isGuest):?>
+								 <?if($v->owner_user_type == Yii::app()->user->role && $v->owner_id == Yii::app()->user->getId()):?>
+									  <div class="bread">
+										  <a href="<?php echo Yii::app()->request->baseUrl; ?>/questions/edit/id/<?php echo $v->question_id?>/n/<?php echo Yii::app()->Ini->slugstring($v->title)?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+										  <a href="javascript:void(0)" onclick="deletequestion('<?php echo $v->question_id?>','0')"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</a>
+									  </div>
+								  <?endif;?>
 							  <?endif;?>
+							  
+							
 						 </div>																						
 						<div class="qa-q-item-clear"></div>
 					</div>
