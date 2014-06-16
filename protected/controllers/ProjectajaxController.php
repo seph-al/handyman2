@@ -47,6 +47,19 @@ class ProjectajaxController extends Controller
 			             $owner_id = Yii::app()->db->getLastInsertId();
 			             Yii::app()->Ini->savetoaffiliate($owner_id,'homeowner');   
 			             $this->SendMailAfterSignUp($owner_id);
+			             
+			             $refer_id = $post['refer_id'];
+			             
+			             if ($refer_id != ''){
+			             	$ref = new Referral();
+			             	$ref->userid = $owner_id;
+			             	$ref->user_type = 'homeowner';
+			             	$ref->referred_by = $refer_id;
+			             	$ref->referred_by_type = 'contractor';
+			             	$ref->save();
+			             }
+			             
+			             
 		             }else {
 		             	 $status = false; 
         			     $return['message'] = $huser->getErrors();

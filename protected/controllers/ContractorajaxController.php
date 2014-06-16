@@ -73,7 +73,15 @@ class ContractorajaxController extends Controller
 					            	$team2->save();
 					            }
 					   	     }
-				       }
+					   	     
+					   	    $ref = new Referral();
+			             	$ref->userid = $owner_id;
+			             	$ref->user_type = 'contractor';
+			             	$ref->referred_by = $refer_id;
+			             	$ref->referred_by_type = 'contractor';
+			             	$ref->save();
+			           }
+			           
 					   $status = array('status' => true);
 					}else{
 						$status = false; 
