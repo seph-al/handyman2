@@ -56,7 +56,7 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'school30',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
+			'ipFilters'=>array('127.0.0.1','120.28.195.174','::1'),
 		),
 		
 	),
@@ -81,8 +81,6 @@ return array(
             '<controller:\w+>/<id:\d+>'=>'<controller>/view',
 		    '<controller:\w+>/<action:\w+>/<id:\w+>'=>'<controller>/<action>',
 		    '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-
-        
    ),
   ),
 		

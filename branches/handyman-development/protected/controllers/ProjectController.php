@@ -134,6 +134,7 @@ class ProjectController extends Controller
      public function actionPost(){
 		$project_type_id = Yii::app()->Ini->v('project');
 		$zipcode = Yii::app()->Ini->v('zipcode');
+		$refer = Yii::app()->Ini->v('refer');
 		$from_index = false;
 		
 		if($project_type_id && $zipcode){
@@ -150,7 +151,16 @@ class ProjectController extends Controller
 		$param['project_type_id'] = $project_type_id;
 		$param['zipcode'] = $zipcode;
 		
+       if ($refer != ''){
+			$details = Contractors::model()->findByAttributes(array('Username'=>$refer));
+			if (count($details >0)){
+				$refer_id = $details->ContractorId;
+			}else {
+				$refer_id = '';
+			}
+		}
 		
+		$param['refer_id'] = $refer_id;
     	$this->render('postproject', $param);
      }
    

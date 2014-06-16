@@ -1,8 +1,8 @@
 <?php
 
 // change the following paths if necessary
-defined('ENV') or define('ENV','production');
-$yii=dirname(__FILE__).'../../yii/yii.php';
+defined('ENV') or define('ENV','staging');
+$yii=dirname(__FILE__).'/../yii/framework/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
 
 // remove the following lines when in production mode

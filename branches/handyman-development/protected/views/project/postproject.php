@@ -34,6 +34,7 @@ font-size: 26px;
 					<input type="hidden" id="sesuserid" name="sesuserid" value=""/>
 					<input type="hidden" id="typeofpost" name="typeofpost" value=""/>
 					<input type="hidden" id="invitejob" name="invitejob" value=""/>
+					<input type="hidden" id="refer_id" name="refer_id" value="<?php echo $refer_id?>"/>
 
 					<input type="hidden" id="indicator" name="indicator" value="<?php
 					if(Yii::app()->user->getId()!=""){

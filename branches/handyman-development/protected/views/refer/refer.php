@@ -167,7 +167,7 @@
 					<div class="col-lg-3">
 						<div class="signup-col">
 							<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/signup?refer=<?php echo $profile->Username?>" class="inv-signup"><img src="http://www.iconsdb.com/icons/preview/white/worker-xl.png">Signup As A Contractor</a>
-							<a href="<?php echo Yii::app()->request->baseUrl; ?>/project/post" class="inv-signup"><img src="http://www.iconsdb.com/icons/preview/white/collaborator-xl.png">Signup As A Homeowner</a>
+							<a href="<?php echo Yii::app()->request->baseUrl; ?>/project/post?refer=<?php echo $profile->Username?>" class="inv-signup"><img src="http://www.iconsdb.com/icons/preview/white/collaborator-xl.png">Signup As A Homeowner</a>
 						</div>
 						<div class="panel panel-default panel-style1">
                         <div class="panel-heading">About the Contractor</div>
