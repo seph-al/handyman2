@@ -45,12 +45,12 @@
 	<div class="findJobInner1 relative">
 		<div class="findJobHead row-fluid">
 			<div class="pull-left">	<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/profile/user/<?php echo $model->Username?>"><?php echo $model->Name;?></a>
-			</div>	<span class="col-md-4">
+			</div>	<!-- span class="col-md-4">
 							<span class="relative contStrMarg starHei">
 								<span class="starGrayCont"></span>
 			<span class="starGoldCont" style="width:0%;"></span>
 			</span>
-			</span>
+			</span -->
 			
 		</div>
 		<div class="tradePad">	
@@ -65,7 +65,7 @@
 				View Profile
 			</a>
 			
-			<a data-toggle="modal" data-target="<?echo count($homeowner_projects) > 0 ? '#messageAttachProject': '#messageModal' ?>" class="InviteJob inviteContractor" id="<?php echo $model->ContractorId?>" rel="<?php echo $model->Username?>">
+			<a data-toggle="modal" data-target="<?echo count($homeowner_projects) > 0 ? '#messageAttachProject': '#messageContractorModal' ?>" class="InviteJob inviteContractor" id="<?php echo $model->ContractorId?>" rel="<?php echo $model->Username?>">
 				Invite Contractor
 			</a>
 			
@@ -141,8 +141,7 @@
 	</div>
 
 
-	
-<?if(count($homeowner_projects > 0)):?>
+
 	<div class="modal fade" id="messageAttachProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
 		<div class="modal-content">
@@ -180,8 +179,8 @@
 		</div>
 	  </div>
 	</div>
-	<?else:?>
-	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+	<div class="modal fade" id="messageContractorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -209,7 +208,7 @@
     </div>
   </div>
 </div>
-	<?endif;?>
+	
 
 <?php if (Yii::app()->user->isGuest):?>
 	<input type="hidden" name="is_guest" id="is_guest" value="1" />
@@ -235,6 +234,7 @@
 			var rel = $(this).attr('rel');
 			$('input#invite_contractor_id, input#contractor_id').val(id);
 			$('h4.modal-title').text("Send Message to "+rel);
+			
 		});
 		
 	});
