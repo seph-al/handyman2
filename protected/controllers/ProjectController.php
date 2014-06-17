@@ -153,11 +153,13 @@ class ProjectController extends Controller
 		
        if ($refer != ''){
 			$details = Contractors::model()->findByAttributes(array('Username'=>$refer));
-			if (count($details >0)){
+			if (count($details) >0){
 				$refer_id = $details->ContractorId;
 			}else {
 				$refer_id = '';
 			}
+		}else {
+				$refer_id = '';
 		}
 		
 		$param['refer_id'] = $refer_id;
