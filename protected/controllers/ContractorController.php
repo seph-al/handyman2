@@ -339,7 +339,7 @@ class ContractorController extends Controller
 	public function actionSignup(){
 		$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 		$refer = Yii::app()->Ini->v('refer');
-		
+		$refer_id = '';
 		if ($refer != ''){
 			$details = Contractors::model()->findByAttributes(array('Username'=>$refer));
 			if (count($details >0)){

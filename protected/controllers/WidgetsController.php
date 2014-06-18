@@ -104,7 +104,7 @@
 			
 			$param = array();
 			$param['home_advisor_results'] = $home_advisor_results;
-			
+			$param['pages'] = $pages;
 			$param['contractors'] = $models;
 			$param['title'] = $title;
 			

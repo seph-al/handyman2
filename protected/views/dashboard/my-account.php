@@ -7,6 +7,7 @@
 			<li><a href="javascript:void(0)" class="tabcontractor3" id="tabplicense">License</a></li>
 			<li><a href="javascript:void(0)" class="tabcontractor4" id="tabbonded">Bond</a></li>
 			<li><a href="javascript:void(0)" class="tabcontractor5" id="tabsocials">Socials</a></li>
+			<li><a href="javascript:void(0)" class="tabcontractor6" id="deactivate-account">Deactivate</a></li>
 		</ul>
 		<div id="errors2"></div>
 		<div class="row-fluid margTop10 margBot15">
@@ -205,6 +206,50 @@
 						<div class="contain" id="myprofcontractpassword" style="display: none">
 							<?$this->renderPartial('my-account-password',array('cmodel'=>$cmodel))?>
 						</div>
+						
+						<div class="contain" id="deactivate-content" style="display: none">
+							<form class="form-horizontal" role="form" style="width:50%; margin-top:20px;" id="haccountdeactivateform">
+							   <div class="alert alert-block">
+												<h4 class="alert-heading">Warning!</h4>
+													  By deactivating your account, your projects, connections and other information about you will be permanently removed.
+													<br> These data can not be retrieved in the future.
+												</div>
+											<div id="errors4"></div>	
+										<ul class="postProjUl">
+											
+											
+											<li class="control-group">
+												<div class="">
+													<label for="business_name">Reason why you deactivate your account  <span class="starcolor">*</span></label>
+												</div>
+												<div class="controls">
+													<textarea class="form-control" rows="3" id="reason" name="reason"></textarea>
+													<label class="postProjErr projectdesc_message"></label>
+												</div>
+							               </li>
+											<li class="control-group">
+												<div class="control-label" style="text-align:left;">
+													<label for="business_name">Confirm Password<span class="starcolor">*</span>
+													</label>
+												</div>
+												<div class="controls">
+													<input type="password" style="width:60%;" id="password" name="password" value="" class="form-control" autocomplete="off" />	<span class="postErrors cusconfpwd"></span>
+												</div>
+											</li>
+											
+											<li class="control-group marg0">
+												<div class="control-label empty">
+													<label for="business_name">&nbsp;</label>
+												</div>
+												<div class="controls">
+												    <input type="hidden" name="t" id="t" value="deactivateaccount">
+												    <input type="button" class="btn btn-danger" value="Deactivate" id="btn-deactivate" />
+												</div>
+											</li>
+										</ul>
+							</form>
+						</div>
+						
 					</div>
 					<!-- myaccount contact details end -->
 				</div>

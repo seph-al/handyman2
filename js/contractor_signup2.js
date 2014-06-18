@@ -87,9 +87,6 @@ $(document).ready(function(){
 		}else if(password_confirm != password){
 			$("#errors2").html('<div class="alert alert-danger">Passwords did not match <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			$("#password").focus();
-		}else if(website == ""){
-			$("#errors2").html('<div class="alert alert-danger">Website is required <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-			$("#website").focus();
 		}else if(projecttype == ""){
 			$("#errors2").html('<div class="alert alert-danger">Projecttype is required <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 			$("#projecttype").focus();

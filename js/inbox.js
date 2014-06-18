@@ -43,7 +43,9 @@ $("#table-messages tbody").delegate("tr td:nth-child(4) .messageView ", "click",
 	   var base_url = $('#base_url').val();
 		
 		$.post(base_url+'/dashboardajax',{t:'showmessage',id:message_id,from:'inbox'},function(data){
+			//var test = "<br><br>Project Details:<br> <b>Description: </b>Paint ceiling<br> <b>Project Type: </b>Carpentry<br> <b>Start Date: </b>1-Week<br> <b>Time Frame: </b>Less than 2 months<br> <b>Budget: </b><br> <b>Home Owner: </b> <a href='http://handyman.com/homeowner/profile/user/Chikaysci'>Kareen Joy Castanos</a><br> Learn more <a href='http://handyman.com/project/jobdetails/pj_id/900'>here</a>.<br> ";
 			$('.modal-content').html(data.html);
+			//$('.modal-content').html(test);
 			$('#myModalMessage').modal('show');
 		});
 });

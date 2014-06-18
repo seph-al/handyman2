@@ -8,6 +8,7 @@
 class UserIdentity extends CUserIdentity
 {
         private $_id;
+        private $_username;
         public $errorMessage;
         
         
@@ -37,6 +38,7 @@ public function authenticate()
 			    $this->setState('role',$this->role);
 			    $this->setState('loginname',$user->firstname);
 				$this->_id = $user->homeowner_id;
+				$this->_username = $user->username;
 				
 			}
 		}else {
@@ -51,13 +53,16 @@ public function authenticate()
 			    $this->setState('role',$this->role);
 			    $this->setState('loginname',$user->ContactName);
 				$this->_id = $user->ContractorId;
-				
+				$this->_username = $user->Username;
 			}
 		}
 		return !$this->errorMessage;
 	}
     public  function getId(){
         return $this->_id;
+    }
+    public function getUsername(){
+    	return $this->_username;
     }
 
    

@@ -12,17 +12,34 @@ $(document).ready(function(){
 		
 		$('#condetails').click(function(){
 			
-			$('#custContactDet').css('display','block');
+			
 			$('#custChangePwd').css('display','none');
-			$("#condetails").addClass("active");
 			$('#changepass').removeClass("active");
+			$('#custDeactivate').css('display','none');
+			$('#deactivate-account').removeClass("active");
+			$('#custContactDet').css('display','block');
+			$("#condetails").addClass("active");
+			
 		});
 
 		$('#changepass').click(function(){
-			$('#custChangePwd').css('display','block');
 			$('#custContactDet').css('display','none');
-			$("#changepass").addClass("active");
 			$('#condetails').removeClass("active");
+			$('#custDeactivate').css('display','none');
+			$('#deactivate-account').removeClass("active");
+			$('#custChangePwd').css('display','block');
+			$("#changepass").addClass("active");
+			
+		});
+		
+		$('#deactivate-account').click(function(){
+			$('#custContactDet').css('display','none');
+			$('#condetails').removeClass("active");
+			$('#custChangePwd').css('display','none');
+			$("#changepass").removeClass("active");
+			$('#custDeactivate').css('display','block');
+			$('#deactivate-account').addClass("active");
+			
 		});
 		
 		
@@ -110,6 +127,40 @@ $(document).ready(function(){
 		           },
 			        error: function(){
 			        	$("#errors3").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while submitting project</div>');
+			        }
+			    });
+			}
+		
+		})
+		
+		$('#btn-deactivate').click(function(){
+		
+			var base_url =  $('#base_url').val();
+			var reason = $('#reason').val();
+			var password = $('#password').val();
+			var cdata = $('#haccountdeactivateform').serialize();
+			
+			if(reason == ""){
+				$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>Please enter reason</div>');
+				$("#reason").focus();
+			}else if(password == ""){
+				$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>Please enter password</div>');
+				$("#password").focus();
+			}else{
+				$.ajax({
+			        url: base_url+'/dashboardajax',
+			        type: 'POST',
+			        dataType:"JSON",
+			        data: cdata,
+			        success: function(response){
+			        	if (response.status){
+			   					window.location = base_url+"/logout";
+			   			}else {
+							$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+response.message+'</div>');
+						}
+		           },
+			        error: function(){
+			        	$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while deactivating account</div>');
 			        }
 			    });
 			}

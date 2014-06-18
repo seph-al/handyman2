@@ -164,4 +164,54 @@ public function updatePoints($userid){
 	    $details->save();
 	    return $total;
 	}
+	
+	public function deactivate($homeowner_id){
+		  $criteria = new CDbCriteria();
+		  $criteria->condition = "user_type='homeowner' AND userid=".$homeowner_id;
+	      Affiliates::model()->deleteAll($criteria);
+	      Referral::model()->deleteAll($criteria);
+	    		
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "owner_user_type='homeowner' AND owner_id=".$homeowner_id;
+	      Answers::model()->deleteAll($criteria);
+	      Questions::model()->deleteAll($criteria);
+		        
+	     
+		  $criteria = new CDbCriteria();
+		  $criteria->condition = "user_type='homeowner' AND deleted_by=".$homeowner_id;
+	      Messagedeleted::model()->deleteAll($criteria);
+	      
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "from_user_type='homeowner' AND from_id=".$homeowner_id;
+	      Messages::model()->deleteAll($criteria);
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "to_user_type='homeowner' AND to_id=".$homeowner_id;
+	      Messages::model()->deleteAll($criteria);
+	      
+	     
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "project_id NOT IN (Select project_id from projects where homeowner_id = $homeowner_id )";
+	      Projectphotos::model()->deleteAll($criteria);
+		  
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "viewed_user_type='homeowner' AND viewed_by=".$homeowner_id;
+	      QuestionViews::model()->deleteAll($criteria);
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "referred_by_type='homeowner' AND referred_by=".$homeowner_id;
+	      Referral::model()->deleteAll($criteria);
+	      
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "homeowner_id=".$homeowner_id;
+	      HomeownerPoints::model()->deleteAll($criteria);
+		  Feedback::model()->deleteAll($criteria);
+		  HomeownerViews::model()->deleteAll($criteria);
+          Projects::model()->deleteAll($criteria);
+          
+          self::model()->deleteAll($criteria);
+    	  return true;	
+	}
 }

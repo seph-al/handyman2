@@ -37,5 +37,10 @@ class WebUser extends CWebUser {
         }
         return $this->_model;
     }
+    
+ function getUsername(){
+    $user = $this->loadUser(Yii::app()->user->id);
+    return Yii::app()->user->getUsername();
+  }
 }
 ?>
