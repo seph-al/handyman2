@@ -508,4 +508,6 @@ class ContractorajaxController extends Controller
 		
 		$this->renderJSON($return);
 	}
+	
+	
 }

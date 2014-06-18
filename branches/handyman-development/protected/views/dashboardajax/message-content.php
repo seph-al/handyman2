@@ -25,7 +25,7 @@
 												<p style="clear:both"></p>
 											</div>
 											<div class="msg-con">
-												<p><?php echo CHtml::encode($message->message); ?></p>
+												<p><?php echo $message->message; ?></p>
 											</div>
 										  </div>
 										  <div class="modal-footer">

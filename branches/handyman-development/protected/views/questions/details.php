@@ -59,7 +59,8 @@
 																				<div class="qa-q-view-main">
 																						<span class="qa-q-view-avatar-meta">
 																						<span class="qa-q-view-meta">
-																						<span class="qa-q-view-what">asked</span>
+																						<span class="qa-q-view-what"></span>
+																						<span class="qa-q-view-what"><?echo $question->content?><br>asked</span>
 																						<span class="qa-q-view-when">
 																						<span class="qa-q-view-when-data">
 																						<span class="published">

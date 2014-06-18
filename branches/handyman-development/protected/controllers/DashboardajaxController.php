@@ -708,4 +708,55 @@ public function loadquestions($post){
    	   $return['status'] = true;
 	   $this->renderJSON($return, true);
    }
+   
+ public function deactivateaccount($post){
+ 	    $role = Yii::app()->user->role;
+ 	    $password = $post['password'];
+ 	    $reason = $post['reason'];
+ 	    
+ 	    if ($role == 'homeowner'){
+	    	$homeowner_id = Yii::app()->user->getId();
+	    	$hmodel = Homeowners::model()->findByPk($homeowner_id);
+	    	if ($hmodel->password == $password){
+	    	
+		    	$subject    = 'Handyman Homeowner Deactivated Account';
+		    	$content = $hmodel->firstname.' '.$hmodel->lastname.' '.$hmodel->email.' has deactivated his/her account.<br>';
+		    	$content .= 'Reason:<br>';
+		    	$content .= $reason;
+		    	$headers="From: admin <admin@>".Yii::app()->name."\r\n".
+							"MIME-Version: 1.0\r\n".
+							"Content-type: text/html; charset=UTF-8";
+		    	
+		    	mail('support@handyman.com',$subject,$content,$headers);
+			    		
+		    	Homeowners::model()->deactivate($homeowner_id);
+	    		$status = true;
+	    	}else {
+	    		$status = false;
+	    		$return['message'] = 'Invalid password.';
+	    	}
+	    }else {
+ 	    	$contractor_id = Yii::app()->user->getId();
+ 	    	$cmodel = Contractors::model()->findByPk($contractor_id);
+ 	    	if ($cmodel->Password == $password){
+ 	    		
+ 	    		$subject    = 'Handyman Contractor Deactivated Account';
+		    	$content = $cmodel->Name.' - '.$cmodel->Email.' has deactivated his/her account.<br>';
+		    	$content .= 'Reason:<br>';
+		    	$content .= $reason;
+		    	$headers="From: admin <admin@>".Yii::app()->name."\r\n".
+							"MIME-Version: 1.0\r\n".
+							"Content-type: text/html; charset=UTF-8";
+		    	mail('support@handyman.com',$subject,$content,$headers);
+			    Contractors::model()->deactivate($contractor_id);
+	    		$status = true;
+ 	    	}else {
+ 	    		$status = false;
+	    		$return['message'] = 'Invalid password.';
+ 	    	}
+ 	    }    
+	    $return['status'] = $status;
+        $this->renderJSON($return, $status);
+    }
+   
 }

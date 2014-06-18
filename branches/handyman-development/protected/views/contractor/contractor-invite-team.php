@@ -1,6 +1,14 @@
 <?php $this->renderPartial('../dashboard/navigation',array('pages'=>'')); ?>
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/result-page.css">
 <div class="container">
+   <ol class="breadcrumb">
+		<?if(Yii::app()->user->isGuest):?>
+			  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>">Home</a></li>
+		<?else:?>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/invite">Invite</a></li>
+		<?endif;?>
+		<li class="active">Add To Team</li>
+	</ol>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="search-page">

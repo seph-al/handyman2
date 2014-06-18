@@ -4,11 +4,14 @@ function resetcontent(){
 	$('#account-license').hide();
 	$('#account-bonded').hide();
 	$('#account-socials').hide();
+	$('#deactivate-content').hide();
+	
 	$('.tabcontractor1').removeClass('active');
 	$('.tabcontractor2').removeClass('active');
 	$('.tabcontractor3').removeClass('active');
 	$('.tabcontractor4').removeClass('active');
 	$('.tabcontractor5').removeClass('active');
+	$('.tabcontractor6').removeClass('active');
 }
 
 $(document).ready(function(){
@@ -42,6 +45,13 @@ $(document).ready(function(){
 		$('#account-socials').show();
 		$('.tabcontractor5').addClass('active');
 	});
+	
+	$('#myaccountsub #deactivate-account').click(function(){
+		resetcontent();
+		$('#deactivate-content').show();
+		$('.tabcontractor6').addClass('active');
+	});
+	
 
 		 $("#conzip").keypress(function (e) {
 			 
@@ -258,8 +268,44 @@ $(document).ready(function(){
 			    });
 			}
 		
+		});
+		
+		$('#btn-deactivate').click(function(){
+			
+			var base_url =  $('#base_url').val();
+			var reason = $('#reason').val();
+			var password = $('#password').val();
+			var cdata = $('#haccountdeactivateform').serialize();
+			
+			if(reason == ""){
+				$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>Please enter reason</div>');
+				$("#reason").focus();
+			}else if(password == ""){
+				$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>Please enter password</div>');
+				$("#password").focus();
+			}else{
+				$.ajax({
+			        url: base_url+'/dashboardajax',
+			        type: 'POST',
+			        dataType:"JSON",
+			        data: cdata,
+			        success: function(response){
+			        	if (response.status){
+			   					window.location = base_url+"/logout";
+			   			}else {
+							$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+response.message+'</div>');
+						}
+		           },
+			        error: function(){
+			        	$("#errors4").html('<div class="alert alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>An error occurred while deactivating account</div>');
+			        }
+			    });
+			}
+		
 		})
 
+		
+		
 $("#cusconfpwd").keypress(function(event) {
 		  if ( event.which == 13 ) {
 				var base_url =  $('#base_url').val();

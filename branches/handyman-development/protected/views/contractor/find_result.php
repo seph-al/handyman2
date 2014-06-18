@@ -141,7 +141,8 @@
 	</div>
 
 
-
+	
+<?if(count($homeowner_projects > 0)):?>
 	<div class="modal fade" id="messageAttachProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	   <div class="modal-dialog">
 		<div class="modal-content">
@@ -179,7 +180,7 @@
 		</div>
 	  </div>
 	</div>
-
+	<?else:?>
 	<div class="modal fade" id="messageContractorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -208,7 +209,7 @@
     </div>
   </div>
 </div>
-	
+	<?endif;?>
 
 <?php if (Yii::app()->user->isGuest):?>
 	<input type="hidden" name="is_guest" id="is_guest" value="1" />

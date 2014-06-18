@@ -231,3 +231,30 @@ span.name{
 .ch-1.checkbox input[type="checkbox"]{
 	float: none;
 }
+.v-all h3 a {
+color:#333;
+background:#fafafa;
+padding:6px 10px;
+border-radius:4px;
+font-size:15px;
+text-decoration:none;
+text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
+color: #fff;
+background-color: #f0ad4e;
+border-color: #eea236;
+}
+.v-all h3 a:hover {
+color: #fff;
+background-color: #ed9c28;
+border-color: #d58512;
+}
+.panel-style2 .checkbox div {
+background:#ffffff;
+padding:20px 0;
+border-radius:4px;
+}
+.panel-style2 .checkbox div img {
+border:1px solid #ccc;
+padding:5px;
+box-shadow: 0px 0px 5px rgba(99, 99, 99, 0.2);
+}

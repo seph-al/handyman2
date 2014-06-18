@@ -102,3 +102,33 @@ margin-bottom: 20px;
 				text-decoration:none;
 				padding:10px;
 			}
+
+.rp {
+border:1px solid #ccc;
+box-shadow: 0px 0px 5px rgba(99, 99, 99, 0.2);
+border-radius:4px;
+padding:20px;
+margin-bottom:40px;
+background:#fafafa;
+}
+.rp .nav-tabs li.contractor a {
+font-size:21px;
+}
+.rp .nav-tabs li.contractor a::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/worker-l.png');
+vertical-align:-15px;
+}
+.rp .tab-content .tab-pane {
+border-bottom:1px solid #ccc;
+border-left:1px solid #ccc;
+border-right:1px solid #ccc;
+padding: 10px 20px 30px 20px;
+background: none repeat scroll 0% 0% rgb(255, 255, 255);
+}
+.rp .bg-warning {
+    background-color: rgb(252, 248, 227);
+    padding: 10px;
+}
+.rp textarea {
+padding:10px;
+}

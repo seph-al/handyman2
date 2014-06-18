@@ -81,7 +81,7 @@ class Contractors extends CActiveRecord
 		  'bond'         => array(self::HAS_ONE, 'ContractorBond','contractor_id'),
 		  'viewCount' => array(self::STAT, 'ContractorViews','contractor_id'),
 		  'isTeam' => array(self::HAS_ONE, 'ContractorTeam','contractor_id'),
-		  'picture' => array(self::HAS_MANY, 'Contractorphotos', 'contractor_id')
+		  'picture' => array(self::HAS_ONE, 'Contractorphotos', 'contractor_id', 'condition' => 'is_profile = 1')
 		);
 	}
 
@@ -206,5 +206,63 @@ class Contractors extends CActiveRecord
 	    $details->contractor_id = $userid;
 	    $details->save();
 	    return $total;
+	}
+	
+public function deactivate($contractor_id){
+		  $criteria = new CDbCriteria();
+		  $criteria->condition = "user_type='contractor' AND userid=".$contractor_id;
+	      Affiliates::model()->deleteAll($criteria);
+	      Referral::model()->deleteAll($criteria);
+	    		
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "owner_user_type='contractor' AND owner_id=".$contractor_id;
+	      Answers::model()->deleteAll($criteria);
+	      Questions::model()->deleteAll($criteria);
+		        
+	     
+		  $criteria = new CDbCriteria();
+		  $criteria->condition = "user_type='contractor' AND deleted_by=".$contractor_id;
+	      Messagedeleted::model()->deleteAll($criteria);
+	      
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "from_user_type='contractor' AND from_id=".$contractor_id;
+	      Messages::model()->deleteAll($criteria);
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "to_user_type='contractor' AND to_id=".$contractor_id;
+	      Messages::model()->deleteAll($criteria);
+	      
+	     
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "viewed_user_type='contractor' AND viewed_by=".$contractor_id;
+	      QuestionViews::model()->deleteAll($criteria);
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "referred_by_type='contractor' AND referred_by=".$contractor_id;
+	      Referral::model()->deleteAll($criteria);
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "invited_id=".$contractor_id;
+	      ContractorTeam::model()->deleteAll($criteria);
+	      
+	      
+	      $criteria = new CDbCriteria();
+		  $criteria->condition = "contractor_id=".$contractor_id;
+	      ContractorBond::model()->deleteAll($criteria);
+	      ContractorLicense::model()->deleteAll($criteria);
+	      ContractorPoints::model()->deleteAll($criteria);
+	      ContractorSocials::model()->deleteAll($criteria);
+	      ContractorTeam::model()->deleteAll($criteria);
+	      ContractorViews::model()->deleteAll($criteria);
+	      Contractorphotos::model()->deleteAll($criteria);
+	      Feedback::model()->deleteAll($criteria);
+	      
+	      
+	      
+		  $criteria = new CDbCriteria();
+		  $criteria->condition = "ContractorId=".$contractor_id;
+	      self::model()->deleteAll($criteria);
+    	  return true;	
 	}
 }

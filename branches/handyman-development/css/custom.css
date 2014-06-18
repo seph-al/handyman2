@@ -351,7 +351,8 @@ border:5px solid #ccc;
     padding: 30px 0px;
 }
 .marg0 {
-    margin: 0px !important;	position: relative;
+    margin: 0px !important;
+	position: relative;
 }
 .contZipSelect .btn {
     color: rgb(197, 198, 198);
@@ -2434,6 +2435,18 @@ ul#myaccountsub li a#tabsocials::before {
     margin-right: 3px;
     vertical-align: -8px;
 }
+ul#cusmysetting li a#deactivate-account::before {
+	content: url("http://domaindirectory.com/template/handyman/images/deactivate.png");
+    margin-right: 3px;
+    vertical-align: -8px;
+}
+
+ul#myaccountsub li a#deactivate-account::before {
+		content: url("http://domaindirectory.com/template/handyman/images/deactivate.png");
+    margin-right: 3px;
+    vertical-align: -8px;
+}
+
 .margTop15 {
     margin-top: 15px !important;
 }
@@ -3054,7 +3067,13 @@ display:block;
 text-decoration:none;
 background:red;
 color:#ffffff;
-}.times{	position: absolute; 	top: -11px; 	right: 0px;}
+}
+
+.times{
+	position: absolute; 
+	top: -11px; 
+	right: 0px;
+}
 .findJobRight ul.list-group {
 margin-top:-33px;
 }
