@@ -41,152 +41,81 @@
 			<div class="container">
 				<div class="row">				
 					<div class="col-lg-6">
-						<div class="badge-col">
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_22"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-1.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_22" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-1.png" width="170" height="187" alt=""></a>
-								</textarea>
-							</p>
-								<div style="clear:both"></div>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_23"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-2.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_23" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-2.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_24"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-3.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_24" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-3.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_25"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-4.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_25" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-4.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_26"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-5.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_26" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-5.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_27"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-6.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_27" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-6.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_28"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-7.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_28" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-7.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_29"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-8.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_29" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-8.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_30"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-9.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_30" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-9.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_31"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-10.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_31" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-10.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_32"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-11.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_32" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-11.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-							<div class="bdg-in">
-							<a class="bdg-img" href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_33"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-12.png" width="170" height="200" alt=""></a>
-							<p class="bdg-code">
-								<span class="bdg-title">Source Code - Copy/Paste Into Your Website</span>
-								<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"> 
-								<a href="http://referrals.contrib.com/idevaffiliate.php?id=394_4_1_33" target="_blank"><img style="border:0px" src="http://referrals.contrib.com/banners/handyman-badge-12.png" width="170" height="187" alt=""></a>
-								</textarea>
-								<div style="clear:both"></div>
-							</p>
-							</div>
-						</div>
-					</div>
+						
+														<!-- Nav tabs -->
+							<ul class="nav nav-tabs">
+							  <li class="active"><a href="#find-a-handyman" data-toggle="tab">Find A Handyman</a></li>
+							  <li><a href="#get-our-badges" data-toggle="tab">Get Our Badges</a></li>
+							  <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/project/post?refer=<?php echo $profile->Username?>">Post Your Project</a></li>
+							 
+							</ul>
+
+							<!-- Tab panes -->
+							<div class="tab-content">
+							  <div class="tab-pane active" id="find-a-handyman">
+								
+								<form class="form-inline form-tabs" id="search-form">
+										<br>
+									  <div class="form-group">
+									<select class="form-control" name="projecttype" id="projecttype">
+									  <option value="">Select Project Type</option>
+										<?foreach($projecttype AS $k=>$v):?>
+											<option value="<?echo $v->ProjectTypeId?>"><?echo $v->Name?></option>
+										<?endforeach;?>
+									  </select>
+									</div>
+									  <div class="form-group">
+									<input type="text" class="form-control" placeholder="zipcode" id="zipcode" value="<?echo $zipcode?>">
+									</div>
+									  <div class="form-group">
+										<button class="btn btn-default" id="search-form-btn" type="button">Search</button>
+									</div>
+								</form>
+								
+								<br>
+								
+								<div id="find-result"></div>
+								
+							  </div>
+							  <div class="tab-pane" id="get-our-badges">
+								<?$this->renderPartial('refer-badges',array('base_url'=> Yii::app()->request->baseUrl ,'username' => $profile->Username))?>
+							  </div>
+							  <div class="tab-pane" id="post-your-project">
+									<div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> &nbsp; In production</div>	
+							  </div>
+							  
+							</div><!-- tab-content -->
+													
+						
+					</div><!-- col-lg-9 -->
+					
+					
+						
 					<div class="col-lg-3">
-						<div class="signup-col">
-							<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/signup?refer=<?php echo $profile->Username?>" class="inv-signup"><img src="http://www.iconsdb.com/icons/preview/white/worker-xl.png">Signup As A Contractor</a>
-							<a href="<?php echo Yii::app()->request->baseUrl; ?>/project/post?refer=<?php echo $profile->Username?>" class="inv-signup"><img src="http://www.iconsdb.com/icons/preview/white/collaborator-xl.png">Signup As A Homeowner</a>
-						</div>
+					
+										<div class="signup-col">
+											<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/signup?refer=<?php echo $profile->Username?>" class="inv-signup"><img src="http://www.iconsdb.com/icons/preview/white/worker-xl.png">Signup As A Contractor</a>
+											<a href="<?php echo Yii::app()->request->baseUrl; ?>/project/post?refer=<?php echo $profile->Username?>" class="inv-signup"><img src="http://www.iconsdb.com/icons/preview/white/collaborator-xl.png">Signup As A Homeowner</a>
+										</div>
+						
 						<div class="panel panel-default panel-style1">
-                        <div class="panel-heading">About the Contractor</div>
-                        <div class="panel-body" id="profeditbtn1">
-                            <div id="about_content">
-                            <?php $string = (strlen($profile->AboutBusiness) > 250) ? substr($profile->AboutBusiness,0,250).'...&nbsp;<a href="">read more</a>' : $profile->AboutBusiness;?>
-                            <?php echo $string;?>
-                            </div>
+											<div class="panel-heading">About the Contractor</div>
+											<div class="panel-body" id="profeditbtn1">
+												<div id="about_content">
+												<?php $string = (strlen($profile->AboutBusiness) > 250) ? substr($profile->AboutBusiness,0,250).'...&nbsp;<a href="">read more</a>' : $profile->AboutBusiness;?>
+												<?php echo $string;?>
+												</div>
+											</div>
+											 <div class="panel-heading">Services</div>
+											<div class="panel-body" id="profeditbtn1">
+												 <div id="about_content">
+												 <?php $string = (strlen($profile->Services) > 250) ? substr($profile->Services,0,250).'...&nbsp;<a href="">read more</a>' : $profile->Services;?>
+												<?php echo $string;?>
+												 </div>
+											</div>
 						</div>
-						 <div class="panel-heading">Services</div>
-                        <div class="panel-body" id="profeditbtn1">
-                             <div id="about_content">
-                             <?php $string = (strlen($profile->Services) > 250) ? substr($profile->Services,0,250).'...&nbsp;<a href="">read more</a>' : $profile->Services;?>
-                            <?php echo $string;?>
-                             </div>
-						</div>
-                    </div>
-						<!-- -->
-					</div>
+					</div><!-- col-lg-9 -->
+					
 					<div id="credentials" class="col-lg-3">
 						<div class="panel panel-default panel-style1 back-1">
 							<div class="panel-body">
@@ -259,7 +188,32 @@
 							</ul>
 						</div>
 						
+						
+						
+						
 					</div>
 				</div>
 			</div>
 		</div>
+
+<style>
+.form-tabs .form-control {
+    width: 238px;
+}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#search-form-btn').click(function(){
+			var zipcode = $('#zipcode').val();
+			var projecttype = $('#projecttype').val();
+			
+					$('#find-result').html('<p class="text-center alert-warning"><span class="glyphicon glyphicon-refresh"></span>loading results..</p>');
+					$.post('/widgets/searchcontractor',{zipcode:zipcode,projecttype:projecttype},function(data_html){
+						$('#find-result').html(data_html);
+					});
+			
+			return false;
+		});
+	});
+</script>

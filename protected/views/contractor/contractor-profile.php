@@ -172,6 +172,13 @@
                         </div>
                     </div>
 					<?php endif; ?>
+					
+					
+					 <div class="panel panel-default panel-style1">
+						<div class="panel-heading"><?echo ucfirst($company)?></div>
+						<div class="panel-body text-center"><a href="/refer/<?echo $username?>" class="btn btn-success">Referral Program</a></div>
+					 </div>
+					
 				   
 					<div class="panel panel-default panel-style1">
 					<div class="panel-heading">Connect with us</div>

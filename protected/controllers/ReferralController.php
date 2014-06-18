@@ -25,6 +25,7 @@ class ReferralController extends Controller
 								'redirect' => $banner_redirect);
 				$this->render('referral',$data);
 			}else {
+				
 				$data['url'] = Yii::app()->Ini->getaffiliatelogin(Yii::app()->user->role,Yii::app()->user->getId());
 				$this->render('referral_login',$data);
 			}

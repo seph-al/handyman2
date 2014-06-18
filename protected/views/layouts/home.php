@@ -155,30 +155,36 @@
 </li>
 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/login">Login</a></li>
 <?php else:?>
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/referral">Referral</a></li>
+	<?php if (Yii::app()->user->role=='homeowner'):?>
+	<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/referral">Referral</a></li>
+	<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi <?php echo Yii::app()->user->loginname?> <b class="caret"></b></a>
+		<ul class="dropdown-menu">
+		<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/home-owner">My Dashboard</a></li>
+		<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/homeowner-account">My Account</a></li>
+		<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-inbox">My Inbox</a></li>
+		<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/logout">Logout</a></li>
+		</ul>
+	</li>
+	<?php endif;?>
+	<?php if (Yii::app()->user->role=='contractor'):?>
+		<li class="dropdown"><a href="#"  class="dropdown-toggle" data-toggle="dropdown" >Referral <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+			  <?php $model = Contractors::model()->findByPk(Yii::app()->user->id)?>
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/refer/<?php echo $model->Username?>">Badges</a></li>
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/referral">Widgets</a></li>
+			</ul>
+		</li>
+		<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi <?php echo Yii::app()->user->loginname?> <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/contractor">Dashboard</a></li>
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-inbox">Inbox</a></li>
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-profile">My Profile</a></li>
 
-<?php if (Yii::app()->user->role=='homeowner'):?>
-<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi <?php echo Yii::app()->user->loginname?> <b class="caret"></b></a>
-<ul class="dropdown-menu">
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/home-owner">My Dashboard</a></li>
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/homeowner-account">My Account</a></li>
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-inbox">My Inbox</a></li>
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/logout">Logout</a></li>
-</ul>
-</li>
-<?php endif;?>
-<?php if (Yii::app()->user->role=='contractor'):?>
-<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi <?php echo Yii::app()->user->loginname?> <b class="caret"></b></a>
-<ul class="dropdown-menu">
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/contractor">Dashboard</a></li>
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-inbox">Inbox</a></li>
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-profile">My Profile</a></li>
-
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-account">My Account</a></li>
-<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/logout">Logout</a></li>
-</ul>
-</li>
-<?php endif;?>
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/dashboard/my-account">My Account</a></li>
+				<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/logout">Logout</a></li>
+			</ul>
+		</li>
+	<?php endif;?>
 <?php endif;?>
 </ul>
 </div>
@@ -282,6 +288,8 @@
 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/home/privacy">Privacy Policy</a>
 </li>
 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/home/terms">Terms &amp; Conditions</a>
+</li>
+<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/partners">Partners</a>
 </li>
 <!--<li><a href="">Testimonial</a>
 </li>-->
