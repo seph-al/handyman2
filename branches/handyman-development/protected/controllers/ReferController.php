@@ -17,7 +17,9 @@ class ReferController extends Controller
     	$details = Contractors::model()->findByAttributes(array('Username'=>$username));
     	$pic = '';
     	$bg = '';
-    	
+    	$zipcode =  Yii::app()->Ini->v('zipcode');
+		$projecttype = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+		
     	if (count($details)>0){
     	  $this->pageTitle = 'Handyman.com - Refer '.$details->Name;
     	  $criteria=new CDbCriteria();
@@ -39,7 +41,9 @@ class ReferController extends Controller
 		  	}
 		  }
 		  
-		  $this->render('refer', array( 'profile' => $details,'logo'=>$pic,'bg'=>$bg,'socials'=>$socials,'bonds'=>$bonds,'license'=>$license));
+		  $this->render('refer', array( 'profile' => $details,'logo'=>$pic,'bg'=>$bg,'socials'=>$socials,'bonds'=>$bonds,'license'=>$license,
+		  'zipcode' => $zipcode,
+		  'projecttype' => $projecttype));
 		}else {
     		$this->redirect(Yii::app()->homeUrl.'home/error');
     	}
