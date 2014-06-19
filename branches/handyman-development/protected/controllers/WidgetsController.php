@@ -51,10 +51,9 @@
 		$this->render('searchbyzip',$data);
 	}
 	
-	public function actionSearch(){
-		$data['sample_text'] = "test";
-		$this->render('search-zipcode',$data);
-		//$this->render('searchbyzip',$data);
+	public function actionSearchhorizontal(){
+		$data['username'] = $_GET['username'];
+		$this->render('horizontal-search',$data);
 	}
 	
 	 public function actionSearchcontractor(){
@@ -104,7 +103,7 @@
 			
 			$param = array();
 			$param['home_advisor_results'] = $home_advisor_results;
-			$param['pages'] = $pages;
+			
 			$param['contractors'] = $models;
 			$param['title'] = $title;
 			

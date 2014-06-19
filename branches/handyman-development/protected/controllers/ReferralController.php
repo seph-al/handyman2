@@ -9,7 +9,7 @@ class ReferralController extends Controller
 		public function actionIndex(){
 			//Yii::app()->name
 			
-			if (Yii::app()->user->isGuest){
+			if (Yii::app()->user->isGuest || Yii::app()->user->role == 'homeowner'){
 				$domain_name = 'handyman.com';
 				$domainid = 10231;
 				$banner_redirect = "http://handyman.com";
@@ -25,9 +25,14 @@ class ReferralController extends Controller
 								'redirect' => $banner_redirect);
 				$this->render('referral',$data);
 			}else {
+					$contractor_id = Yii::app()->user->getId();
+					$contractor = Contractors::model()->findbyPk($contractor_id);
+					$data['username'] = $contractor->Username;
+					$data['base_url'] = Yii::app()->request->baseUrl;
+					
+					$data['url'] = Yii::app()->Ini->getaffiliatelogin(Yii::app()->user->role,Yii::app()->user->getId());
+					$this->render('referral_login',$data);
 				
-				$data['url'] = Yii::app()->Ini->getaffiliatelogin(Yii::app()->user->role,Yii::app()->user->getId());
-				$this->render('referral_login',$data);
 			}
 		}
 }

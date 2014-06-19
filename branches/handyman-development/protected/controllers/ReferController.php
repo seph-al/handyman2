@@ -18,7 +18,8 @@ class ReferController extends Controller
     	$pic = '';
     	$bg = '';
     	$zipcode =  Yii::app()->Ini->v('zipcode');
-		$projecttype = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+		$projecttype = Yii::app()->Ini->v('projecttype');
+		$project = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 		
     	if (count($details)>0){
     	  $this->pageTitle = 'Handyman.com - Refer '.$details->Name;
@@ -43,7 +44,8 @@ class ReferController extends Controller
 		  
 		  $this->render('refer', array( 'profile' => $details,'logo'=>$pic,'bg'=>$bg,'socials'=>$socials,'bonds'=>$bonds,'license'=>$license,
 		  'zipcode' => $zipcode,
-		  'projecttype' => $projecttype));
+		  'projecttype' => $projecttype,
+		  'project' => $project));
 		}else {
     		$this->redirect(Yii::app()->homeUrl.'home/error');
     	}

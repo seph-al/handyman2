@@ -50,17 +50,36 @@ class PartnersController extends Controller
 			$key = md5('vnoc.com');
 			$headers = array('Accept: application/json');
 			
-				$api_url2 = "http://api2.contrib.com/request/";
+				//$api_url2 = "http://api2.contrib.com/request/";
+				$api_url2 = "http://api.contrib.com/request/";
 				$url = $api_url2.'getpartners?domain='.$domain_name.'&key='.$key;
 				$result = $this->createApiCall($url, 'GET', $headers, array());
 				$partners_result = json_decode($result,true);
 				$approved_partner = "";
 				
-				if ($partners_result['success']){
-					$data['partners'] = $partners_result['data'];
-				}
-			
+				//if ($partners_result['success']){
+					//$data['partners'] = $partners_result['data'];
+				//}
+			$data['partners'] = $partners_result;
 			$this->render('partners',$data);
+		}
+		
+		public function actionGetsearchedpartner(){
+			$search_key = $_POST['search_key'];
+			$domain_name = 'handyman.com';
+			$domainid = 10231;
+			$key = md5('vnoc.com');
+			$headers = array('Accept: application/json');
+			
+				
+				$api_url2 = "http://api.contrib.com/request/";
+				$url = $api_url2.'getsearchedpartner?domain='.$domain_name.'&key='.$key.'&search_key='.$search_key;
+				$result = $this->createApiCall($url, 'GET', $headers, array());
+				$partners_result = json_decode($result,true);
+				$approved_partner = "";
+			
+			$data['partners'] = $partners_result;
+			$this->renderPartial('partners-find',$data);
 		}
 }
 ?>
