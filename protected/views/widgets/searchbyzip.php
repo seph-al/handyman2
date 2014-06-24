@@ -212,7 +212,7 @@ var html = '<style type="text/css">';
 	html += ' </span>';
 	html += ' </div></form>';
 	html += '<div class="wrap-link"> Get our <a class="referral-link" href="http://www.handyman.com/refer/<?echo $username?>">Handyman Tools</a> or ';
-	html += ' <a class="referral-link" href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://www.contrib.com/signup/firststep?domain=handyman.com">Signup for our Handyman Referral Program</a> </div>';
+	html += ' <a class="referral-link" href="http://referrals.contrib.com/idevaffiliate.php?id=<?echo $aff_id?>&url=http://www.handyman.com">Signup for our Handyman Referral Program</a> </div>';
 	html += '</div>';
 	html += '</div>';
 	document.write(html);

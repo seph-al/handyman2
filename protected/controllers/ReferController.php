@@ -47,7 +47,7 @@ class ReferController extends Controller
 		  'projecttype' => $projecttype,
 		  'project' => $project));
 		}else {
-    		$this->redirect(Yii::app()->homeUrl.'home/error');
+    		$this->redirect(Yii::app()->homeUrl);
     	}
     }
     
