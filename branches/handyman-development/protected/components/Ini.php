@@ -553,6 +553,14 @@ class Ini extends CApplicationComponent
 		   $url = $res->data->url;
 		   return $url;
 	}
+	
+	public function getaffiliateloginbyemail($email){
+		$url = 'http://api2.contrib.com/request/getaffiliateloginurl?email='.$email;
+			$response = @file_get_contents($url);
+		   $res = json_decode($response);
+		   $url = $res->data->url;
+		   return $url;
+	}
    
    
 }

@@ -46,8 +46,45 @@
 	}
 	
 	public function actionSearchbyzip(){
-		$data['username'] = $_GET['username'];
-		//$this->render('search-zipcode',$data);
+		$username = Yii::app()->Ini->v('username');
+		$aff_id = Yii::app()->Ini->v('aff_id');
+		
+			if(!empty($aff_id)){
+			
+				//get username based on affiliate id
+				$affiliate = Affiliates::model()->findByAttributes(array('affiliate_id' => $aff_id));
+				if(count($affiliate) > 0){
+					$role = $affiliate->user_type;
+					$userid = $affiliate->userid;
+					if($role == 'contractor'){
+						$contractor = Contractors::model()->findbyPk($userid);
+						$username = $contractor->Username;
+					}else{
+						$homeowners = Homeowners::model()->findbyPk($userid);
+						$username = $homeowners->username;
+					}
+					
+				}else{
+					$username = 'guest';
+				}
+			}else if($username != ""){
+				//get contractor's affiliate id
+				$contractors = Contractors::model()->findByAttributes(array('Username' => $username));
+				if(count($contractors) > 0){
+					$userid = $contractors->ContractorId;
+						
+					$affiliates = Affiliates::model()->findByAttributes(array('userid' => $userid,'user_type' => 'contractor'));
+					if(count($affiliates)>0)
+					$aff_id = $affiliates->affiliate_id;
+					else
+					$aff_id = 10231; //handyman affiliate id
+				}else{
+					$username = 'guest';
+					$aff_id = 10231;
+				}
+			}
+		$data['username'] = $username;
+		$data['aff_id'] = $aff_id;
 		$this->render('searchbyzip',$data);
 	}
 	
