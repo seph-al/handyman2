@@ -81,55 +81,69 @@
 								</div>
 							</div>
 							<div class="tab-pane" id="B">
+							<div class="row">
+							<div class="col-md-6">
 								<center>
-									<iframe width="350px" height="500px" frameborder="0" src="http://domaindirectory.com/servicepage/partners_form.php?domain=handyman.com"></iframe>
+									<iframe width="99%" height="500px" frameborder="0" src="http://domaindirectory.com/servicepage/partners_form.php?domain=handyman.com"></iframe>
 								</center>
+							</div>
+							<div class="col-md-6">
+							<h2>Be Our Preferred Partner and Earn Referral Income</h2>
+							<p>You could now earn while referring traffic to Handyman.com and be added in our exclusive Partners Directory.</p>
+							<div class="col-md-11  bg-warning">
+							<i class="fa fa-sign-in fa-4x pull-left icon-muted"></i>
+<h5><b>Step 1. </b> Fill up the partnership form on the left. Choose "Distributed  Partnership" as type of partnership.</h5>
+							</div>
+							<br />
+							<div class="col-md-11  bg-warning">
+							<i class="fa fa-money fa-4x pull-left icon-muted"></i>
+<h5><b>Step 2. </b> Login to our Referral Program using the access info from your Referral Welcome Email. Click here to <a href="/referral">Login.</a></h5>
+							</div>
+							<br />
+							<div class="col-md-11  bg-warning">
+							<i class="fa fa-copy fa-4x pull-left icon-muted"></i>
+<h5><b>Step 3. </b> Get your signin link or affiliate id to create your widgets here.</h5>
+							</div>
+							
+							
+							</div>	
+							</div>	
 								<br />
+								<hr />
+								<h2>Widgets and Banners</h2>
+								<div class="row">
 								
-								<h3>Official Partners</h3>
-								<ul class="media-list">
-									<li class="media">
-										<a class="pull-right" href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://contrib.com">
-											<img class="media-object" src="http://d2qcctj8epnr7y.cloudfront.net/images/2013/logo-contrib-green13.png">
-										</a>
-												<div class="media-body">
-													<h3 class="media-heading"><a  href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://contrib.com">Contrib.com</a></h3>
-													<p class="description">Our network of Contributors power our domains. Browse through our Marketplace of People, Partnerships,Proposals and Brands and find your next great opportunity. Join Free Today.</p>
-													<a href="http://www.contrib.com/" class="bdge">Go to <span class="badge">Contrib.com</span></a>
-												</div>
-									</li>
-									<li class="media">
-										<a class="pull-right" href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://globalventures.com">
-											<img class="media-object" style="width:300px;" src="http://d2qcctj8epnr7y.cloudfront.net/images/lucille/logo-gv-re283x35.png">
-										</a>
-												<div class="media-body">
-													<h3 class="media-heading"><a href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://globalventures.com">GlobalVentures.com</a></h3>
-													<p class="description">Global Ventures owns a premium network of 20,000 websites and powerful tools to help you build successful companies quickly. Some of the things we offer you include a great domain name with targeted traffic, unique business model, equity ownership, and flexible, performance based compensation. You just need to bring your knowledge, passion and work smart.
-													With over 17 years of internet experience, we built a network of over 20,000 websites and created dozens of successful businesses. We would love to work on the next cutting-edge projects with great companies and talented people.</p>
-													<a href="http://www.globalventures.com/" class="bdge">Go to <span class="badge">GlobalVentures.com</span></a>
-												</div>
-									</li>
-									<li class="media">
-										<a class="pull-right" href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://ifund.com">
-											<img class="media-object" style="width:300px;" src="http://www.contrib.com/uploads/logo/ifund.png">
-										</a>
-												<div class="media-body">
-													<h3 class="media-heading"><a href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://ifund.com">IFund.com</a></h3>
-													<p class="description">iFund is a software as a service crowdfunding platform. iFund is not a registered broker-dealer and does not offer investment advice or advise on the raising of capital through securities offerings. iFund does not recommend or otherwise suggest that any investor make an investment in a particular company, or that any company offer securities to a particular investor. iFund takes no part in the negotiation or execution of transactions for the purchase or sale of securities, and at no time has possession of funds or securities. No securities transactions are executed or negotiated on or through the iFund platform. iFund receives no compensation in connection with the purchase or sale of securities.
-													<a href="http://www.ifund.com/" class="bdge">Go to <span class="badge">IFund.com</span></a>
-												</div>
-									</li>
-									<li class="media">
-										<a class="pull-right" href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://ichallenge.com">
-											<img class="media-object" style="width:300px;" src="http://d2qcctj8epnr7y.cloudfront.net/images/2013/logo-ichallenge1.png">
-										</a>
-												<div class="media-body">
-													<h3 class="media-heading"><a href="http://referrals.contrib.com/idevaffiliate.php?id=10231&url=http://ichallenge.com">IChallenge.com</a></h3>
-													<p class="description">The best internet challenges. Solve and win online prizes.</p>
-													<a href="http://www.ichallenge.com/" class="bdge">Go to <span class="badge">IChallenge.com</span></a>
-												</div>
-									</li>
-								</ul>
+									<br>
+									<div class="col-lg-12">
+										<div class="row">
+											<h3>1. Find Handyman by Zipcode</h3>
+											<div class="col-lg-4">
+												<script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=sheinavi"></script>
+											</div>
+											<div class="col-lg-8">
+											
+											<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control">												&lt;script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=sheinavi"&gt;&lt;/script&gt;
+											</textarea>
+											</div>
+										</div>
+									</div>
+									<br>
+									<div class="col-lg-12">
+										<div class="row">
+											<h3>2. Find Handyman Horizontal Widget</h3>
+												<script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=sheinavi"></script>
+											<br>
+											<br>
+											<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control">												&lt;script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=sheinavi"&gt;&lt;/script&gt;
+											</textarea>
+											
+										</div>
+									</div>
+									
+														</div>
+								
+								
+								
 							</div>
 						</div>
 					</div><!-- directory -->
