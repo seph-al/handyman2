@@ -50,23 +50,10 @@
 		$aff_id = Yii::app()->Ini->v('aff_id');
 		
 			if(!empty($aff_id)){
-			
-				//get username based on affiliate id
-				$affiliate = Affiliates::model()->findByAttributes(array('affiliate_id' => $aff_id));
-				if(count($affiliate) > 0){
-					$role = $affiliate->user_type;
-					$userid = $affiliate->userid;
-					if($role == 'contractor'){
-						$contractor = Contractors::model()->findbyPk($userid);
-						$username = $contractor->Username;
-					}else{
-						$homeowners = Homeowners::model()->findbyPk($userid);
-						$username = $homeowners->username;
-					}
-					
-				}else{
-					$username = 'guest';
-				}
+				$redirect_url = Yii::app()->Ini->v('url');
+				$data['aff_id'] = $aff_id;
+				$data['redirect_url'] = $redirect_url;
+				$this->render('search-zipcode',$data);
 			}else if($username != ""){
 				//get contractor's affiliate id
 				$contractors = Contractors::model()->findByAttributes(array('Username' => $username));
@@ -82,10 +69,15 @@
 					$username = 'guest';
 					$aff_id = 10231;
 				}
+				
+					$data['username'] = $username;
+					$data['aff_id'] = $aff_id;
+					$this->render('searchbyzip',$data);
 			}
-		$data['username'] = $username;
-		$data['aff_id'] = $aff_id;
-		$this->render('searchbyzip',$data);
+			
+		
+		
+		
 	}
 	
 	public function actionSearchhorizontal(){
