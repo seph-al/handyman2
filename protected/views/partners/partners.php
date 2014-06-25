@@ -81,6 +81,24 @@
 								</div>
 							</div>
 							<div class="tab-pane" id="B">
+							<div class="row" style="padding:20px 20px 35px;background: url(http://rdbuploads.s3.amazonaws.com/backgrounds/photodune-2564773-business-group-m.jpg) no-repeat bottom;border-radius:8px;">
+								<div class="span12" >
+								<div class="col-md-6">
+								
+							</div>
+							<div class="col-md-6">
+							<div class="row well" style="opacity:8">
+							<h2>Be Our Preferred Partner and Earn Referral Income</h2>
+							<p>You could now earn while referring traffic to Handyman.com and be added in our exclusive Partners Directory.</p>
+						
+							</div>
+							
+							</div>	
+								
+								</div>
+							
+							</div>
+							<hr />
 							<div class="row">
 							<div class="col-md-6">
 								<center>
@@ -88,9 +106,8 @@
 								</center>
 							</div>
 							<div class="col-md-6">
-							<h2>Be Our Preferred Partner and Earn Referral Income</h2>
-							<p>You could now earn while referring traffic to Handyman.com and be added in our exclusive Partners Directory.</p>
-							<div class="col-md-11  bg-warning">
+					<h3>Fill up this partnership form and get your affiliate id immediately</h3>
+								<div class="col-md-11  bg-warning">
 							<i class="fa fa-sign-in fa-4x pull-left icon-muted"></i>
 <h5><b>Step 1. </b> Fill up the partnership form on the left. Choose "Distributed  Partnership" as type of partnership.</h5>
 							</div>
@@ -105,7 +122,6 @@
 <h5><b>Step 3. </b> Get your signin link or affiliate id to create your widgets here.</h5>
 							</div>
 							
-							
 							</div>	
 							</div>	
 								<br />
@@ -114,8 +130,10 @@
 								<div class="row">
 								
 									<div class="col-lg-12" style="text-align:right;">
+										<form onsubmit="return false;">
 										<input type="text" id="widgetaffid" value="" placeholder="Enter Affiliate ID here . . ." style="width:170px;padding:3px">
 										<button id="btn_widgetaffid">Get Code</button>
+										</form>
 									</div>
 									<script>
 										$(function(){
@@ -125,8 +143,8 @@
 													$('#widgetone').html('&lt;script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?aff_id=http://referrals.contrib.com/idevaffiliate.php?id='+affid+'&url=http://handyman.com"&gt;&lt;/script&gt;');
 													$('#referralaffiddivone').show();
 													
-													//$('#widgettwo').html('&lt;script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?aff_id=http://referrals.contrib.com/idevaffiliate.php?id='+affid+'&url=http://handyman.com"&gt;&lt;/script&gt;');
-													//$('#referralaffiddivtwo').show();
+													$('#widgettwo').html('&lt;script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?aff_id=http://referrals.contrib.com/idevaffiliate.php?id='+affid+'&url=http://handyman.com"&gt;&lt;/script&gt;');
+													$('#referralaffiddivtwo').show();
 												}
 											});
 										});
@@ -159,11 +177,11 @@
 											<br>
 <b>by contractor username:	</b>										
 <textarea readonly="readonly" onclick="this.focus();this.select()" rows="1" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=sheinavi"></script></textarea>
-<!--div id="referralaffiddivtwo" style="display:none">
+<div id="referralaffiddivtwo" style="display:none">
 <br />
 <b>by contractor affiliate ID:</b>
 <textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control" id="widgettwo"></textarea>
-</div-->	
+</div>	
 <br /><br />											
 										</div>
 									</div>
