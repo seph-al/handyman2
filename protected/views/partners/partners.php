@@ -113,6 +113,24 @@
 								<h2>Widgets and Banners</h2>
 								<div class="row">
 								
+									<div class="col-lg-12" style="text-align:right;">
+										<input type="text" id="widgetaffid" value="" placeholder="Enter Affiliate ID here . . ." style="width:170px;padding:3px">
+										<button id="btn_widgetaffid">Get Code</button>
+									</div>
+									<script>
+										$(function(){
+											$('#btn_widgetaffid').click(function(){
+												var affid = $('#widgetaffid').val();
+												if(affid!=''){
+													$('#widgetone').html('&lt;script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?aff_id=http://referrals.contrib.com/idevaffiliate.php?id='+affid+'&url=http://handyman.com"&gt;&lt;/script&gt;');
+													$('#referralaffiddivone').show();
+													
+													//$('#widgettwo').html('&lt;script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?aff_id=http://referrals.contrib.com/idevaffiliate.php?id='+affid+'&url=http://handyman.com"&gt;&lt;/script&gt;');
+													//$('#referralaffiddivtwo').show();
+												}
+											});
+										});
+									</script>
 									<br>
 									<div class="col-lg-12">
 										<div class="row">
@@ -121,9 +139,14 @@
 												<script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=sheinavi"></script>
 											</div>
 											<div class="col-lg-8">
+<b>by contractor username:	</b>											
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=sheinavi"></script></textarea>
+<div id="referralaffiddivone" style="display:none">
+<br />
+<b>by contractor affiliate ID:</b>
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control" id="widgetone"></textarea>
+</div>										
 											
-											<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control">												&lt;script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=sheinavi"&gt;&lt;/script&gt;
-											</textarea>
 											</div>
 										</div>
 									</div>
@@ -134,9 +157,14 @@
 												<script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=sheinavi"></script>
 											<br>
 											<br>
-											<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control">												&lt;script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=sheinavi"&gt;&lt;/script&gt;
-											</textarea>
-											
+<b>by contractor username:	</b>										
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="1" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=sheinavi"></script></textarea>
+<!--div id="referralaffiddivtwo" style="display:none">
+<br />
+<b>by contractor affiliate ID:</b>
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control" id="widgettwo"></textarea>
+</div-->	
+<br /><br />											
 										</div>
 									</div>
 									

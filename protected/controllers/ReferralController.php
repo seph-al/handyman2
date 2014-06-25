@@ -30,9 +30,23 @@ class ReferralController extends Controller
 					$data['username'] = $contractor->Username;
 					$data['base_url'] = Yii::app()->request->baseUrl;
 					
+					$ContractorId = $contractor->ContractorId;					
+					$affiliate = Affiliates::model()->findByAttributes(array('userid' => $ContractorId,'user_type' => 'contractor'));
+					$data['aff_id'] = $affiliate->affiliate_id;
+					
 					$data['url'] = Yii::app()->Ini->getaffiliatelogin(Yii::app()->user->role,Yii::app()->user->getId());
 					$this->render('referral_login',$data);
 				
+			}
+		}
+		
+		public function actionAutologin(){
+			$email = $_GET['email'];
+			if(!empty($email)){
+				$data['url'] = Yii::app()->Ini->getaffiliateloginbyemail($email);
+				$this->render('referral_login_by_email',$data);
+			}else{
+				$this->redirect(Yii::app()->homeUrl.'referral');
 			}
 		}
 }
