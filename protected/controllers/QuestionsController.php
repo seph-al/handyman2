@@ -40,7 +40,14 @@ class QuestionsController extends Controller
 						$current_user_id = Yii::app()->user->getId();
 						$current_user_role = Yii::app()->user->role;
 				}
+
 				
+			$pie = new SimplePie();
+		    $pie->set_feed_url('http://media.handyman.com/feed/');
+		    $pie->init();
+		    $pie->handle_content_type();
+		
+		    $param['feed'] = $pie;
 			$param['questions'] = $questions;
 			$param['pages'] = $pages;
 	    	$this->render('index',$param);
@@ -66,6 +73,12 @@ class QuestionsController extends Controller
 				
 				$questions = Questions::model()->findAll($criteria); 
 		
+		$pie = new SimplePie();
+		$pie->set_feed_url('http://media.handyman.com/feed/');
+		$pie->init();
+		$pie->handle_content_type();
+		
+		$param['feed'] = $pie;
 		$param['title'] = "All activities";
 		$param['questions'] = $questions;
 		$param['pages'] = $pages;
@@ -88,7 +101,13 @@ class QuestionsController extends Controller
 				$pages->applyLimit($criteria);
 				
 		 $questions = Questions::model()->findAll($criteria);
+		 
+		 $pie = new SimplePie();
+		 $pie->set_feed_url('http://media.handyman.com/feed/');
+		 $pie->init();
+		 $pie->handle_content_type();
 		
+		 $param['feed'] = $pie;
 		
 		$param['questions'] = $questions;
 		$param['pages'] = $pages;
@@ -106,6 +125,13 @@ class QuestionsController extends Controller
 	    	$param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 	    	$param['projects'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 	    	$param['q_title'] = $q_title;
+	    	
+	    	$pie = new SimplePie();
+		    $pie->set_feed_url('http://media.handyman.com/feed/');
+		    $pie->init();
+		    $pie->handle_content_type();
+		
+		    $param['feed'] = $pie;
 	    	$this->render('postquestion',$param);
     		
     	
@@ -135,7 +161,13 @@ public function actionDetails()
     	 $view->viewed_user_type = $viewed_user_type;
     	 $view->save();
     	 
-    	 
+    	 $pie = new SimplePie();
+		 $pie->set_feed_url('http://media.handyman.com/feed/');
+		 $pie->init();
+		 $pie->handle_content_type();
+		
+		 $param['feed'] = $pie;
+		 
     	 $this->pageTitle = 'Handyman.com Answers - '.$question->title;
     	 $param['question'] = $question;
 	     $param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
@@ -156,6 +188,13 @@ public function actionEdit()
 		    	$param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 		    	$param['projects'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
 		    	$param['question'] = $question;
+		    	
+		    	 $pie = new SimplePie();
+		         $pie->set_feed_url('http://media.handyman.com/feed/');
+		         $pie->init();
+		         $pie->handle_content_type();
+		
+		         $param['feed'] = $pie;
 		    	$this->render('editquestion',$param);
     		}else {
     			$this->redirect(Yii::app()->homeUrl.'home/error');
@@ -170,6 +209,13 @@ public function actionCategory_list()
     {
     	 $this->pageTitle = 'Handyman.com  - Question Categories';
     	 $param['sidecats'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+    	 
+		 $pie = new SimplePie();
+		 $pie->set_feed_url('http://media.handyman.com/feed/');
+		 $pie->init();
+		 $pie->handle_content_type();
+		
+		 $param['feed'] = $pie;
     	 $this->render('category-list',$param);
     }
     
@@ -191,7 +237,13 @@ public function actionCategory()
 				
 				$count = Questions::model()->count($criteria);
 				$pages = new CPagination($count);
-					
+
+			$pie = new SimplePie();
+		    $pie->set_feed_url('http://media.handyman.com/feed/');
+		    $pie->init();
+		    $pie->handle_content_type();
+		
+		    $param['feed'] = $pie;
 			$param['questions'] = $questions;
 			$param['type'] = $category;
 			$this->render('index-by-category',$param);

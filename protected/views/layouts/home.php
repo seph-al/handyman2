@@ -21,7 +21,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css">
-
+<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/side-article.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery.js"></script>

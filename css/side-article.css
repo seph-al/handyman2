@@ -1,0 +1,89 @@
+.side-articles {
+background:#fafafa;
+border:1px solid #ddd;
+margin-top:20px;
+border-radius:3px;
+padding:12px;
+}
+
+.side-articles h3 {
+margin-top:0;
+}
+
+.side-articles h3::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/paper-m.png');
+}
+
+.side-articles a {
+color:#0083ae;
+}
+
+.side-articles .item {
+margin-bottom:10px;
+border-bottom:1px solid #dfdfdf;
+padding-bottom:10px;
+}
+
+.side-articles .item a,#LocalNews .body .item a:visited {
+font-weight:700;
+}
+
+.side-articles .item .date {
+display:block;
+color:#999;
+margin-top:2px;
+}
+
+/*2*/
+.side-articles2 {
+background:#fafafa;
+border-radius:3px;
+padding:12px;
+}
+
+.side-articles2 h3 {
+margin-top:0;
+}
+
+.side-articles2 h3::before {
+content:url('http://www.iconsdb.com/icons/preview/gray/paper-m.png');
+}
+
+.side-articles2 a {
+color:#0090CB;
+font-size:16px;
+}
+.side-articles2 .glyphicon-book {
+float: left;
+height: 20px;
+color: #777;
+}
+.side-articles2 .side-right {
+margin-left: 2px;
+color: #0090CB;
+float: right;
+width: 305px;
+}
+.side-articles2 .CityDisplay a {
+margin-left:0px;
+color:#777;
+}
+.side-articles2 .date {
+margin-left:0px;
+}
+
+.side-articles2 .item {
+margin-bottom:10px;
+border-bottom:1px solid #dfdfdf;
+padding-bottom:10px;
+}
+
+.side-articles2 .item a,#LocalNews .body .item a:visited {
+font-weight:700;
+}
+
+.side-articles2 .item .date {
+display:block;
+color:#999;
+margin-top:2px;
+}
