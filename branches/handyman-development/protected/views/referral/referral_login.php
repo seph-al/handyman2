@@ -3,6 +3,7 @@
    <?php else:?>
    <?php $this->renderPartial('../dashboard/homeownernav',array('pages'=>'')); ?>
 <?php endif?>
+
 <div class="container">
 	<br />
 	<div class="row">
@@ -37,10 +38,13 @@
 												<script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=<?echo $username?>"></script>
 											</div>
 											<div class="col-lg-8">
-											
-											<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control">
-												<script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=<?echo $username?>"></script>
-											</textarea>
+
+
+<b>by contractor username:	</b>										
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=<?echo $username?>"></script></textarea>											</textarea>
+<br />
+<b>by contractor affiliate ID:</b>
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?aff_id=<?echo $aff_id?>"></script></textarea>												</textarea>
 											</div>
 										</div>
 									</div>
@@ -49,12 +53,15 @@
 										<div class="row">
 											<h3>2. Find Handyman Horizontal Widget</h3>
 												<script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=<?echo $username?>"></script>
-											<br />
-											<br />
-											<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control">
-												<script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=<?echo $username?>"></script>
-											</textarea>
-											
+											<br /><br />
+<b>by contractor username:	</b>										
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="1" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=<?echo $username?>"></script></textarea>
+<br />
+<!--b>by contractor affiliate ID:</b>
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="1" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?aff_id=<?echo $aff_id?>"></script></textarea-->
+
+<br />
+<br />											
 										</div>
 									</div>
 									
