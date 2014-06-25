@@ -15,7 +15,7 @@
 																				 </ul>
 																				<div class="qa-nav-cat-clear"><br></div>
 																			</div>
-																			<div class="qa-feed"><a class="qa-feed-link" href="./feed/qa.rss">
+																			<div class="qa-feed"><a class="qa-feed-link" href="http://media.handyman.com/feed/" target="_blank">
 																			  Recent questions and answers
 																			</a>
 																			</div>

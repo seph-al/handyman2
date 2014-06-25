@@ -26,8 +26,9 @@
 																<div class="qa-nav-main-clear"><br></div>
 															</div>
 														  <div class="col-md-4qa">
-																<div class="qa-sidepanel">
+																        <div class="qa-sidepanel">
 																			<?php $this->renderPartial('sidebar',array('sidecats'=>$sidecats)); ?>
+																			<?php $this->renderPartial('article',array('feed'=>$feed)); ?>
 																		</div>
 																  </div>
 																<div class="col-md-7qa" id="recent-questions">

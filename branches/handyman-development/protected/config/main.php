@@ -35,17 +35,14 @@ return array(
 	'name'=>'Handyman.com',
     'defaultController'=>'home',
     'charset'=>'utf-8',
-    'import'=>array(
-        'application.models.*',
-        'application.components.*',
-        
-    ),
+   
     
     'preload'=>array('Ini'),
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'application.vendors.*',
         'application.extensions.crugeconnector.*'
 	),
 
@@ -56,7 +53,7 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'school30',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','120.28.195.174','::1'),
+			'ipFilters'=>array('127.0.0.1','120.28.195.174','::1','202.137.120.23'),
 		),
 		
 	),

@@ -321,5 +321,18 @@ class TestController extends Controller
 		$this->render('testlink');
 	}
 	
+     public function actionTestpie(){
+		$pie = new SimplePie();
+		$pie->set_feed_url('http://media.handyman.com/feed/');
+		$pie->init();
+		$pie->handle_content_type();
+		
+		$feed = $pie;
+		
+		var_dump($feed);
+		
+		
+	}
+	
 }
 ?>
