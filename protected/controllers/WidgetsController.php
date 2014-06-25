@@ -85,6 +85,11 @@
 		$this->render('horizontal-search',$data);
 	}
 	
+	public function actionAffiliatehorizontalsearch(){
+		$data['aff_id'] = Yii::app()->Ini->v('aff_id');
+		$this->render('affiliate-horizontal-search',$data);
+	}
+	
 	 public function actionSearchcontractor(){
 		$zipcode = Yii::app()->Ini->v('zipcode');
 		$projecttype = Yii::app()->Ini->v('projecttype');
