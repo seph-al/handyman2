@@ -44,6 +44,13 @@ class ContractorController extends Controller
 		
 		$homeowner_projects = $this->getHomeOwnerProjects();
 		
+		$pie = new SimplePie();
+		$pie->set_feed_url('http://media.handyman.com/feed/');
+		$pie->init();
+		$pie->handle_content_type();
+		
+		    
+		
     	if ($city){
     		
     		 $details = Cities::model()->findByAttributes(array('RewriteUrl'=>$city."/"));
@@ -68,7 +75,8 @@ class ContractorController extends Controller
 		        'city_name'=>$city_name,
 		        'location'=>$city_name.",USA",
 		        'questions'=>$questions,
-				'homeowner_projects' => $homeowner_projects
+				'homeowner_projects' => $homeowner_projects,
+		        'feed'=>$pie
              ));
              
     	}else if($project && $zipcode){
@@ -100,7 +108,7 @@ class ContractorController extends Controller
 					$models=Contractors::model()->findAll($criteria);
 				
 				$this->render('match-result',array('pages' => $pages,'result' => $models,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location
-				,'city_name'=>$city_name.' In Zipcode '.$zipcode,'questions'=>$questions));
+				,'city_name'=>$city_name.' In Zipcode '.$zipcode,'questions'=>$questions,'feed'=>$pie));
 			  
 			  
 			  
@@ -130,7 +138,8 @@ class ContractorController extends Controller
 		        'city_name'=>$city_name,
 		        'location'=>$location,
 		        'questions'=>$questions,
-				'homeowner_projects' => $homeowner_projects
+				'homeowner_projects' => $homeowner_projects,
+		        'feed'=>$pie
              ));
     	}else if ($zipcode){
     		 
@@ -151,7 +160,8 @@ class ContractorController extends Controller
 		        'records'=>$count,
 		        'city_name'=>$zipcode,
 		        'questions'=>$questions,
-				'homeowner_projects' => $homeowner_projects
+				'homeowner_projects' => $homeowner_projects,
+		        'feed'=>$pie
              ));
     	}else if($match){
 			$proj = Projects::model()->findByPk($match);
@@ -177,14 +187,13 @@ class ContractorController extends Controller
 						}
 					
 					
-					$this->render('match-result',array('pages' => $pages,'result' => $result,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location,'city_name'=>$this->getProjectTypeName($project_type_id).' In Zipcode '.$proj_zipcode,'questions'=>$questions));
+					$this->render('match-result',array('pages' => $pages,'result' => $result,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location,'city_name'=>$this->getProjectTypeName($project_type_id).' In Zipcode '.$proj_zipcode,'questions'=>$questions,'feed'=>$pie));
 			}else{
 				$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions));
 			}
 		}
     	else {
-    		
-    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions));
+    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions,'feed'=>$pie));
     	}
     	
     	
