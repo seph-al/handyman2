@@ -32,6 +32,12 @@
 <input type="hidden" name="base_url" id="base_url" value = "<?php echo Yii::app()->request->baseUrl; ?>">
 
 <script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-29828968-27']);
+_gaq.push(['_setDomainName', 'handyman.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
