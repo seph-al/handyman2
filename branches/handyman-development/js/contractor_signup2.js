@@ -45,6 +45,7 @@ $(document).ready(function(){
 		var password_confirm = $('#password_confirm').val();
 		var website = $('#website').val();
 		var projecttype = $('#projecttype').val();
+		var type_name = $("#projecttype option:selected").text();
 		var about_business = $('#about_business').val();
 		var primary_services = $('#primary_services').val();
 		var emailfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -153,6 +154,7 @@ $(document).ready(function(){
 					}
 					,function(data){
 						if(data.status){
+							_gaq.push(['_trackEvent', 'Signup Contractor', type_name, state]);
 							window.location.href = "/dashboard/contractor";
 						}else{
 							$("#errors2").html('<div class="alert alert-danger">Something just totally went wrong.. WHAT DID YOU DO?<button type="button" class="close" data-dismiss="alert">&times;</button></div>');

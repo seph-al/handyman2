@@ -58,6 +58,7 @@ $(document).ready(function(){
 		
 			var base_url = $('#base_url').val();
 			var projecttype = $('#projecttype').val();
+			var type_name = $("#projecttype option:selected").text();
 			var projectdesc = $('#projectdesc').val();
 			var projectstart = $('#projectstart').val();
 			var projectstatus = $('#projectstatus').val();
@@ -196,9 +197,11 @@ $(document).ready(function(){
 			        data: cdata,
 			        success: function(response){
 			        	if (response.status){
+			        		_gaq.push(['_trackEvent', 'Submit Project', type_name, state]);
 			   				if (response.indicator==1){
 			   					window.location.href = base_url+'/dashboard/home-owner';
 			   				}else if(response.indicator==2){
+			   					_gaq.push(['_trackEvent', 'Signup Homeowner', type_name, state]);
 								alert("Please check your email to view your credentials");
 								window.location.href = base_url+'/contractor/find/match/'+response.projectid;
 							}else {
