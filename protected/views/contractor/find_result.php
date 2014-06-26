@@ -134,6 +134,7 @@
 						  <div style="clear:both"><br></div>
 						</div>
 				
+				<?php $this->renderPartial('article',array('feed'=>$feed)); ?>
 
 				</div>
 			</div>

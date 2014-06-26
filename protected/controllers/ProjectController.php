@@ -31,6 +31,12 @@ class ProjectController extends Controller
         $city =  Yii::app()->Ini->v('city');
         $project =  Yii::app()->Ini->v('project');
         $zipcode =  Yii::app()->Ini->v('zipcode');
+        
+        $pie = new SimplePie();
+		$pie->set_feed_url('http://media.handyman.com/feed/');
+		$pie->init();
+		$pie->handle_content_type();
+        
     	if ($city){
     		
     		 $details = Cities::model()->findByAttributes(array('RewriteUrl'=>$city."/"));
@@ -54,7 +60,8 @@ class ProjectController extends Controller
 		        'records'=>$count,
 		        'city_name'=>$city_name,
 		        'location'=>$city_name.",USA",
-		        'questions'=>$questions
+		        'questions'=>$questions,
+		        'feed'=>$pie
              ));
              
     	}else if ($project){
@@ -89,7 +96,8 @@ class ProjectController extends Controller
 		        'records'=>$count,
 		        'search_name'=>$search_name,
 				 'location'=>"Albuquerque, New Mexico,USA",
-		        'questions'=>$questions
+		        'questions'=>$questions,
+		       'feed'=>$pie
              ));
     	}else if ($zipcode){
     		
@@ -105,19 +113,19 @@ class ProjectController extends Controller
 		    $pages->applyLimit($criteria);
 		    $models=Projects::model()->findAll($criteria);
     		
-		     $this->render('find_result', array(
+		    $this->render('find_result', array(
 	            'models' => $models,
 	            'pages' => $pages,
 		        'projects'=>$projects,
 		        'records'=>$count,
 		        'search_name'=>"Zipcode ".$zipcode,
 				'location'=>"Albuquerque, New Mexico,USA",
-		        'questions'=>$questions
+		        'questions'=>$questions,
+		        'feed'=>$pie
              ));
     	}
     	else {
-    		
-    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions));
+    		$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions,'feed'=>$pie));
     	}
 	}else{
 	

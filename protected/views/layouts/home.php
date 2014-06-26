@@ -22,6 +22,7 @@
 <script src="https://code.jquery.com/jquery.js"></script>
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom.css">
 <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/side-article.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery.js"></script>
@@ -144,6 +145,8 @@
 
 </li>
 <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/questions">Discussions</a></li>
+<li><a href="http://www.media.handyman.com" target="_blank">Media</a></li>
+
 <?php if (Yii::app()->user->isGuest):?>
 
 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">SignUp <b class="caret"></b></a>
