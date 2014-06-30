@@ -17,6 +17,7 @@ class AuthController extends Controller
 			$this->render('index',array('redirect'=>$_GET['redirect']));
 		}else{
 			$redirect = $_GET['redirect'];
+			
 			if(Yii::app()->user->getState('role')=='homeowner'){
 				$user = Homeowners::model()->findByPk(Yii::app()->user->id);
 				$code=$this->encrypt_decrypt('encrypt',json_encode(array(
@@ -29,8 +30,8 @@ class AuthController extends Controller
 			}else{
 				$user = Contractors::model()->findByPk(Yii::app()->user->id);
 				$code=$this->encrypt_decrypt('encrypt',json_encode(array(
-					'name'=>$user->firstname,
-					'contact_name'=>$user->lastname,
+					'name'=>$user->Name,
+					'contact_name'=>$user->ContactName,
 					'username'=>$user->Username,
 					'password'=>$user->Password,
 					'email'=>$user->Email,
