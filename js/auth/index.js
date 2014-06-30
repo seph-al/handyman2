@@ -37,6 +37,7 @@ Handyman.Auth = {
 		
 		//contractor----
 		El.obj.find('#contractor_sign_in').on('click',function(){
+			var contractor_email = $('#contractor_email').val();
 			if(contractor_email == ""){
 				El.error("Email is required");
 				$("#contractor_email").focus();
@@ -49,7 +50,7 @@ Handyman.Auth = {
 				El.error("Email is invalid");
 				$("#contractor_email").focus();
 			}else{
-				El.subtmit(El.obj.find('#contractorloginform').serialize());
+				El.submit(El.obj.find('#contractorloginform').serialize());
 			}
 		});
 		El.obj.find("#contractor_password").on('keypress',function(event) {
@@ -66,7 +67,6 @@ Handyman.Auth = {
 	submit: function(cdata){
 		var El = this;
 		var base_url = El.baseUrl;
-		var cdata = jQuery('#homeownerloginform').serialize();
 		jQuery.ajax({
 			url: base_url+'/auth',
 			type: 'POST',
