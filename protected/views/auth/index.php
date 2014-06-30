@@ -86,6 +86,9 @@
 						<div class="col-sm-offset-2 col-sm-10">
 						  <button type="button" id="contractor_sign_in" class="btn btn-default">Sign in</button>
 						  <input type="hidden" name="t" id="t" value="logincontractor">
+						  <?php if(!empty($_SERVER['HTTP_REFERER'])){?>
+						  &nbsp;&nbsp;&nbsp;<a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="btn btn-default">Cancel</a>
+						  <?php }?>
 						</div>
 					  </div>
 					</form>
