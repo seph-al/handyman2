@@ -41,10 +41,10 @@
 
 
 <b>by contractor username:	</b>										
-<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=<?echo $username?>"></script></textarea>											</textarea>
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?username=<?echo $username?>"></script></textarea>										
 <br />
 <b>by contractor affiliate ID:</b>
-<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?aff_id=<?echo $aff_id?>"></script></textarea>												</textarea>
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="3" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchbyzip?aff_id=http://referrals.contrib.com/idevaffiliate.php?id=<?echo $aff_id?>&url=http://handyman.com"></script></script></textarea>
 											</div>
 										</div>
 									</div>
@@ -57,8 +57,8 @@
 <b>by contractor username:	</b>										
 <textarea readonly="readonly" onclick="this.focus();this.select()" rows="1" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?username=<?echo $username?>"></script></textarea>
 <br />
-<!--b>by contractor affiliate ID:</b>
-<textarea readonly="readonly" onclick="this.focus();this.select()" rows="1" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/searchhorizontal?aff_id=<?echo $aff_id?>"></script></textarea-->
+<b>by contractor affiliate ID:</b>
+<textarea readonly="readonly" onclick="this.focus();this.select()" rows="2" class="text-left form-control"><script type="text/javascript" src="http://handyman.com/widgets/affiliatehorizontalsearch?aff_id=http://referrals.contrib.com/idevaffiliate.php?id=<?echo $aff_id?>&url=http://handyman.com"></script></textarea>
 
 <br />
 <br />											
