@@ -66,6 +66,7 @@ $(document).ready(function(){
 			var owned = $('input[name="won_pro"]:checked').val();
 			var address =  $('#projectaddress').val();
 			var state = $('#projectstate').val();
+			var state_name = $("#projectstate option:selected").text();
 			var city = $('#city').val();
 			var zip_code = $('#zip_code').val();
 			var indicator = $('#indicator').val();
@@ -197,11 +198,11 @@ $(document).ready(function(){
 			        data: cdata,
 			        success: function(response){
 			        	if (response.status){
-			        		_gaq.push(['_trackEvent', 'Submit Project', type_name, state]);
-			   				if (response.indicator==1){
+			        		   ga('send', 'event', 'Submit Project', type_name, state_name);
+			        		if (response.indicator==1){
 			   					window.location.href = base_url+'/dashboard/home-owner';
 			   				}else if(response.indicator==2){
-			   					_gaq.push(['_trackEvent', 'Signup Homeowner', type_name, state]);
+			   					ga('send', 'event', 'Signup Homeowner', type_name, state_name);
 								alert("Please check your email to view your credentials");
 								window.location.href = base_url+'/contractor/find/match/'+response.projectid;
 							}else {

@@ -562,5 +562,20 @@ class Ini extends CApplicationComponent
 		   return $url;
 	}
    
+   public function savetocampaign($email,$name){
+	$campaign_id = "uesF";
+   	 $url = "http://www.manage.vnoc.com/campaignresponse/addContact";
+   	 $param = array(
+   	   'campaign_id'=>$campaign_id,
+   	   'email'=>$email,
+   	   'name'=>$name
+   	 ); 
+   	 
+    	$headers = array(
+	        'Accept: application/json'
+	    ); 
+	    
+   	   $result = Yii::app()->Ini->createApiCall($url, 'POST', $headers,$param);
+   }
    
 }
