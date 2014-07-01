@@ -154,7 +154,7 @@ $(document).ready(function(){
 					}
 					,function(data){
 						if(data.status){
-							_gaq.push(['_trackEvent', 'Signup Contractor', type_name, state]);
+							ga('send', 'event', 'Signup Contractor', type_name, state);
 							window.location.href = "/dashboard/contractor";
 						}else{
 							$("#errors2").html('<div class="alert alert-danger">Something just totally went wrong.. WHAT DID YOU DO?<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
