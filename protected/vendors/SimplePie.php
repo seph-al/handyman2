@@ -10896,7 +10896,7 @@ class SimplePie_Misc
 	 * @param string $data Input data
 	 * @return string Output data
 	 */
-	function entities_decode($data)
+	public static function entities_decode($data)
 	{
 		$decoder = new SimplePie_Decode_HTML_Entities($data);
 		return $decoder->parse();
@@ -11150,7 +11150,7 @@ class SimplePie_Misc
 	 * @param int $codepoint Unicode codepoint
 	 * @return string UTF-8 character
 	 */
-	function codepoint_to_utf8($codepoint)
+	public static function codepoint_to_utf8($codepoint)
 	{
 		$codepoint = (int) $codepoint;
 		if ($codepoint < 0)

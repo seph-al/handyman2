@@ -441,7 +441,7 @@ class ContractorajaxController extends Controller
 			$contractor_team->invited_id = $invited_id;
 			$contractor_team->invited_date = date("Y-m-d H:i:s");
 			if($contractor_team->save() == true){
-				$this->sendEmailNotifAddTeam($model->id,$invited_id);
+				$this->sendEmailNotifAddTeam($invited_id);
 				$return = array('success' => true);
 			}else{
 				$return = array('success' => false,'error_message'=>print_r($contractor_team->getErrors()));
@@ -453,7 +453,7 @@ class ContractorajaxController extends Controller
 		$this->renderJSON($return);
 	}
 	
-	private function sendEmailNotifAddTeam($insert_id,$invited_id){
+	private function sendEmailNotifAddTeam($invited_id){
 		$contractor_id = Yii::app()->user->getId();
 		
 		$contractor_details = Contractors::model()->findbyPk($contractor_id);
