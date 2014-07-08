@@ -334,5 +334,16 @@ class TestController extends Controller
 		
 	}
 	
+	public function actionTestresponse(){
+		    echo Yii::app()->Ini->savetocampaign('karaircon@mailinator.com', 'Kareen Aircon');   
+			              
+			           
+	}
+	
+	public function actionTestreno(){
+		echo Yii::app()->Ini->renovationapi(1226);
+		
+	}
+	
 }
 ?>

@@ -46,8 +46,8 @@ class ProjectajaxController extends Controller
 		             	 Yii::app()->Ini-> savetovnoc($post['homeown_email']);
 			             $owner_id = Yii::app()->db->getLastInsertId();
 			             Yii::app()->Ini->savetoaffiliate($owner_id,'homeowner');   
+			             Yii::app()->Ini->savetocampaign($huser->email, $huser->firstname.' '.$huser->lastname);   
 			             $this->SendMailAfterSignUp($owner_id);
-			             
 			             $refer_id = $post['refer_id'];
 			             
 			             if ($refer_id != ''){
@@ -173,6 +173,7 @@ public function editproject($post){
 		$indicator = $post['indicator'];
 		$project_id = $post['project_id'];
 		$status = true;
+		$owner_id = Yii::app()->user->getId();
        
 		if($project_id != 0){
 			Projects::model()->updateByPk($project_id, array(
@@ -189,9 +190,9 @@ public function editproject($post){
 				'budget' => $post['projectbudget']
 			));
 		}
-        
-        if ($status){
-           //saving to project
+         //saving to project
+        /*if ($status){
+          
            $proj = new Projects();
            $proj->project_type_id = $post['projecttype'];
            $proj->description = $post['projectdesc'];
@@ -211,7 +212,7 @@ public function editproject($post){
            	   $status = false; 
         	   $return['message'] = $proj->getErrors();
            }
-        }    
+        }  */  
            
         $return['status'] = $status;
         $this->renderJSON($return, $status);

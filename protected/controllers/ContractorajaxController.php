@@ -55,6 +55,8 @@ class ContractorajaxController extends Controller
 					   Yii::app()->user->login($identity);
 					   $owner_id = Yii::app()->user->getId();
 					   Yii::app()->Ini->savetoaffiliate($owner_id,'contractor');   
+					   Yii::app()->Ini->savetocampaign($_POST['email'], $_POST['company_name']);   
+					   
 					   if ($refer_id != ''){
 					   	     $rcont = Contractors::model()->findByPk($refer_id);
 					   	     if (count($rcont)>0){

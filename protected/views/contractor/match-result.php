@@ -75,6 +75,9 @@
 										
 										
 									<?endforeach;?>
+									<script>
+									 ga('send', 'event', 'Homeadvisor Result', '<?php echo count($home_advisors)?>', '<?php echo ucfirst($city_name)?>');
+									</script>
 								<?endif;?>
 							
 							<div class="alert alert-info"><h4><?echo count($result)?> Handyman Match<?echo count($result) > 1 ? 'es':''?></h4></div>
