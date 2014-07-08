@@ -27,9 +27,13 @@ class ContractorController extends Controller
 		return $return;
 	}
 	
-    public function actionFind()
-    {
-    	$location = Yii::app()->Ini->getlocationbyip(Yii::app()->Ini->rip('ip'));
+	
+	public function actionSearch(){
+	
+	
+		$citysearch = Yii::app()->Ini->v('homesearch_keyword');
+		//$details = Cities::model()->findByAttributes(array('Name'=>$citysearch));
+		$location = Yii::app()->Ini->getlocationbyip(Yii::app()->Ini->rip('ip'));
     	$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
     	$criteria = new CDbCriteria();
 		$criteria->order = "question_id DESC";
@@ -53,7 +57,7 @@ class ContractorController extends Controller
 		
     	if ($city){
     		
-    		 $details = Cities::model()->findByAttributes(array('RewriteUrl'=>$city."/"));
+    		 $details = Cities::model()->findByAttributes(array('Name'=>$citysearch));
     		  if (count($details)>0){ 
 	          	$city_name = $details->Name;
 	          }
@@ -171,6 +175,222 @@ class ContractorController extends Controller
 				
 					$criteria=new CDbCriteria();
 					$criteria->condition = "ProjectTypeId='$project_type_id' AND Zip = '$proj_zipcode'";
+					$count = Contractors::model()->count($criteria);
+					$pages = new CPagination($count);
+					$result=Contractors::model()->findAll($criteria);
+					
+					$projecttypes = ProjectTypes::model()->findByPK($project_type_id);
+					$proj_oid = $projecttypes->OID;
+					//$proj_zipcode = '11741';
+					//$proj_oid = '12070';
+					$home_advisor = Yii::app()->Ini->searchhomeadvisor($proj_zipcode,$proj_oid);
+						if($home_advisor == false){
+							$home_advisor_results = false;
+						}else{
+							$home_advisor_results = $home_advisor['serviceProvider'];
+						}
+					
+					
+					$this->render('match-result',array('pages' => $pages,'result' => $result,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location,'city_name'=>$this->getProjectTypeName($project_type_id).' In Zipcode '.$proj_zipcode,'questions'=>$questions,'feed'=>$pie));
+			}else{
+				$this->render('find_form', array('projects'=>$projects,'states'=>$states,'location'=>$location,'questions'=>$questions));
+			}
+		}
+    	else {
+    		
+			 $details = Cities::model()->findByAttributes(array('Name'=>$citysearch));
+    		  if (count($details)>0){ 
+	          	$city_name = $details->Name;
+				$criteria=new CDbCriteria();
+				$criteria->condition = "City like '%$city_name%'";
+				$count=Contractors::model()->count($criteria);
+				$pages=new CPagination($count);
+
+				// results per page
+				$pages->pageSize=5;
+				$pages->applyLimit($criteria);
+				$models=Contractors::model()->findAll($criteria);
+				
+				 $this->render('find_result', array(
+					'models' => $models,
+					'pages' => $pages,
+					'projects'=>$projects,
+					'records'=>$count,
+					'city_name'=>$city_name,
+					'location'=>$city_name.",USA",
+					'questions'=>$questions,
+					'homeowner_projects' => $homeowner_projects,
+					'feed'=>$pie
+				 ));
+				
+	          }else{
+			  
+				if (Yii::app()->user->isGuest){
+					$this->pageTitle = 'Handyman.com The #1 Source to find a Local, Professional, Licensed, Screened Handyman';
+					$this->cities = Cities::model()->findAll(array('order' => 'RAND()','limit'=>10));
+					$param['projects'] = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+					$this->render('../home/index', $param);
+				 }else {
+					if ( Yii::app()->user->role=='homeowner'){
+						$this->redirect(Yii::app()->homeUrl.'dashboard/home-owner');
+					}else {
+						$this->redirect(Yii::app()->homeUrl.'dashboard/contractor');
+					}
+				 }
+			  
+			  }
+    		
+    	}
+    	
+	}
+	
+    public function actionFind()
+    {
+    	$location = Yii::app()->Ini->getlocationbyip(Yii::app()->Ini->rip('ip'));
+    	$projects = Projecttypes::model()->findAll(array('order' => 'Name ASC'));
+    	$criteria = new CDbCriteria();
+		$criteria->order = "question_id DESC";
+		$criteria->limit = 5;
+		$questions = Questions::model()->findAll($criteria); 
+				
+    	$states = States::model()->findAll(array('order' => 'Name ASC'));
+        $city =  Yii::app()->Ini->v('city');
+        $project =  Yii::app()->Ini->v('project');
+        $zipcode =  Yii::app()->Ini->v('zipcode');
+		$match = Yii::app()->Ini->v('match');
+		
+		$homeowner_projects = $this->getHomeOwnerProjects();
+		
+		$pie = new SimplePie();
+		$pie->set_feed_url('http://media.handyman.com/feed/');
+		$pie->init();
+		$pie->handle_content_type();
+		
+		    
+		
+    	if ($city){
+    		
+    		 $details = Cities::model()->findByAttributes(array('RewriteUrl'=>$city."/"));
+    		  if (count($details)>0){ 
+	          	$city_name = $details->Name;
+	          }else{
+			  
+				$city_name = "";
+			  }
+    		$criteria=new CDbCriteria();
+    		$criteria->condition = "City like '%$city_name%'";
+		    $count=Contractors::model()->count($criteria);
+		    $pages=new CPagination($count);
+
+		    // results per page
+		    $pages->pageSize=5;
+		    $pages->applyLimit($criteria);
+		    $models=Contractors::model()->findAll($criteria);
+    		
+		     $this->render('find_result', array(
+	            'models' => $models,
+	            'pages' => $pages,
+		        'projects'=>$projects,
+		        'records'=>$count,
+		        'city_name'=>$city_name,
+		        'location'=>$city_name.",USA",
+		        'questions'=>$questions,
+				'homeowner_projects' => $homeowner_projects,
+		        'feed'=>$pie
+             ));
+             
+    	}else if($project && $zipcode){
+			 $details = Projecttypes::model()->findByAttributes(array('ProjectTypeId'=>$project));
+    		  if (count($details)>0){ 
+	          	
+				$oid =  $details->OID;
+				$city_name = $details->Name;
+					
+					$home_advisor = Yii::app()->Ini->searchhomeadvisor($zipcode,$oid);
+					  //$home_advisor = Yii::app()->Ini->searchhomeadvisor('11741','12005');
+					  if($home_advisor == false){
+							$home_advisor_results = false;
+						}else{
+							$home_advisor_results = $home_advisor['serviceProvider'];
+						}
+				
+			  }
+			  
+
+					$criteria=new CDbCriteria();
+					$criteria->condition = "ProjectTypeId='".$project."' AND Zip='".$zipcode."'";
+					$count=Contractors::model()->count($criteria);
+					$pages=new CPagination($count);
+
+					// results per page
+					$pages->pageSize=5;
+					$pages->applyLimit($criteria);
+					$models=Contractors::model()->findAll($criteria);
+				
+				$this->render('match-result',array('pages' => $pages,'result' => $models,'home_advisors' => $home_advisor_results,'projects'=>$projects,'states'=>$states,'location'=>$location
+				,'city_name'=>$city_name.' In Zipcode '.$zipcode,'questions'=>$questions,'feed'=>$pie));
+			  
+			  
+			  
+			  
+		}else if ($project){
+    		 
+    	 $details = Projecttypes::model()->findByAttributes(array('ProjectTypeId'=>$project));
+    		  if (count($details)>0){ 
+	          	$city_name = $details->Name;
+	          }
+    		
+    		$criteria=new CDbCriteria();
+    		$criteria->condition = "ProjectTypeId=".$project;
+		    $count=Contractors::model()->count($criteria);
+		    $pages=new CPagination($count);
+
+		    // results per page
+		    $pages->pageSize=5;
+		    $pages->applyLimit($criteria);
+		    $models=Contractors::model()->findAll($criteria);
+    		
+		     $this->render('find_result', array(
+	            'models' => $models,
+	            'pages' => $pages,
+		        'projects'=>$projects,
+		        'records'=>$count,
+		        'city_name'=>$city_name,
+		        'location'=>$location,
+		        'questions'=>$questions,
+				'homeowner_projects' => $homeowner_projects,
+		        'feed'=>$pie
+             ));
+    	}else if ($zipcode){
+    		 
+    		$criteria=new CDbCriteria();
+    		$criteria->condition = "Zip='$zipcode'";
+		    $count=Contractors::model()->count($criteria);
+		    $pages=new CPagination($count);
+
+		    // results per page
+		    $pages->pageSize=5;
+		    $pages->applyLimit($criteria);
+		    $models=Contractors::model()->findAll($criteria);
+    		
+		     $this->render('find_result', array(
+	            'models' => $models,
+	            'pages' => $pages,
+		        'projects'=>$projects,
+		        'records'=>$count,
+		        'city_name'=>$zipcode,
+		        'questions'=>$questions,
+				'homeowner_projects' => $homeowner_projects,
+		        'feed'=>$pie
+             ));
+    	}else if($match){
+			$proj = Projects::model()->findByPk($match);
+			if (count($proj)>0){ 
+	          	$proj_zipcode = $proj->zipcode;
+	          	$project_type_id = $proj->project_type_id;
+				
+					$criteria=new CDbCriteria();
+					$criteria->condition = "ProjectTypeId='".$project_type_id."' AND Zip = '".$proj_zipcode."'";
 					$count = Contractors::model()->count($criteria);
 					$pages = new CPagination($count);
 					$result=Contractors::model()->findAll($criteria);
@@ -351,7 +571,7 @@ class ContractorController extends Controller
 		$refer_id = '';
 		if ($refer != ''){
 			$details = Contractors::model()->findByAttributes(array('Username'=>$refer));
-			if (count($details >0)){
+			if (count($details) >0){
 				$refer_id = $details->ContractorId;
 			}
 		}

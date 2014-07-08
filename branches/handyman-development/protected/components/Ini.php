@@ -355,7 +355,7 @@ class Ini extends CApplicationComponent
    	 //$url = "http://affiliate.renovationexperts.com/pingpost/lemond_ping.asp";
    	 $param = array(
    	   'checksum'=>'B4rM7kq25duX',
-   	   'usern'=>'chad@ecorp.com',
+   	   'usern'=>'chadecorp',
    	   'passw'=>'ecorp123',
    	   'sid'=>'485',
    	   'zip'=>$pmodel->zipcode,
@@ -369,6 +369,7 @@ class Ini extends CApplicationComponent
 	    
 	    $result = Yii::app()->Ini->createApiCall($url, 'POST', $headers,$param);
 	    $pos = strpos($result, 'SEED:');
+	    
 	    if ($pos === false) {
 	        $response['status'] = false;
 	        $response['message'] = 'ping failed';    	
@@ -377,7 +378,7 @@ class Ini extends CApplicationComponent
 	    	$seed = $s[1];
 	    	$param = array(
 		   	   'checksum'=>'B4rM7kq25duX',
-		   	   'usern'=>'chad@ecorp.com',
+		   	   'usern'=>'chadecorp',
 		   	   'passw'=>'ecorp123',
 		   	   'sid'=>'485',
 	    	   'seed'=>$seed,
@@ -567,8 +568,8 @@ class Ini extends CApplicationComponent
    	 $url = "http://www.manage.vnoc.com/campaignresponse/addContact";
    	 $param = array(
    	   'campaign_id'=>$campaign_id,
-   	   'email'=>$email,
-   	   'name'=>$name
+   	   'contact_email'=>$email,
+   	   'contact_name'=>$name
    	 ); 
    	 
     	$headers = array(
@@ -576,6 +577,7 @@ class Ini extends CApplicationComponent
 	    ); 
 	    
    	   $result = Yii::app()->Ini->createApiCall($url, 'POST', $headers,$param);
+   	   return $result;
    }
    
 }
