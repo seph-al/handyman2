@@ -1,3 +1,162 @@
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">  
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <style>
+	.custom-combobox-input{
+		height: 67px;
+		width: 400px;
+		margin: 0;
+		padding: 18px 10px;
+		background: none repeat scroll 0 0 #ffffff;
+		position: relative;
+		display: inline-block;
+		font-size: 21px;
+	}
+	.ui-button{
+		width: 22px;
+		height: 67px;
+		vertical-align: top;
+	}
+  </style>
+  <script>
+  (function( $ ) {
+    $.widget( "custom.combobox", {
+      _create: function() {
+        this.wrapper = $( "<span>" )
+          .addClass( "custom-combobox" )
+          .insertAfter( this.element );
+ 
+        this.element.hide();
+        this._createAutocomplete();
+        this._createShowAllButton();
+      },
+ 
+      _createAutocomplete: function() {
+        var selected = this.element.children( ":selected" ),
+          value = selected.val() ? selected.text() : "";
+ 
+        this.input = $( "<input>" )
+          .appendTo( this.wrapper )
+          .val( value )
+          .attr( "title", "" )
+          .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: $.proxy( this, "_source" )
+          })
+          .tooltip({
+            tooltipClass: "ui-state-highlight"
+          });
+ 
+        this._on( this.input, {
+          autocompleteselect: function( event, ui ) {
+            ui.item.option.selected = true;
+            this._trigger( "select", event, {
+              item: ui.item.option
+            });
+          },
+ 
+          autocompletechange: "_removeIfInvalid"
+        });
+      },
+ 
+      _createShowAllButton: function() {
+        var input = this.input,
+          wasOpen = false;
+ 
+        $( "<a>" )
+          .attr( "tabIndex", -1 )
+          //.attr( "title", "Show All Items" )
+          .tooltip()
+          .appendTo( this.wrapper )
+          .button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .removeClass( "ui-corner-all" )
+          .addClass( "custom-combobox-toggle ui-corner-right" )
+          .mousedown(function() {
+            wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+          })
+          .click(function() {
+            input.focus();
+ 
+            // Close if already visible
+            if ( wasOpen ) {
+              return;
+            }
+ 
+            // Pass empty string as value to search for, displaying all results
+            input.autocomplete( "search", "" );
+          });
+      },
+ 
+      _source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+        response( this.element.children( "option" ).map(function() {
+          var text = $( this ).text();
+          if ( this.value && ( !request.term || matcher.test(text) ) )
+            return {
+              label: text,
+              value: text,
+              option: this
+            };
+        }) );
+      },
+ 
+      _removeIfInvalid: function( event, ui ) {
+ 
+        // Selected an item, nothing to do
+        if ( ui.item ) {
+          return;
+        }
+ 
+        // Search for a match (case-insensitive)
+        var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+        this.element.children( "option" ).each(function() {
+          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+            this.selected = valid = true;
+            return false;
+          }
+        });
+ 
+        // Found a match, nothing to do
+        if ( valid ) {
+          return;
+        }
+ 
+        // Remove invalid value
+        this.input
+          .val( "" )
+          .attr( "title", value + " didn't match any item" )
+          .tooltip( "open" );
+        this.element.val( "" );
+        this._delay(function() {
+          this.input.tooltip( "close" ).attr( "title", "" );
+        }, 2500 );
+        this.input.autocomplete( "instance" ).term = "";
+      },
+ 
+      _destroy: function() {
+        this.wrapper.remove();
+        this.element.show();
+      }
+    });
+  })( jQuery );
+ 
+  $(function() {
+    $( "#combobox" ).combobox();
+	$(".custom-combobox-input").on("click", function () {
+	   $(this).select();
+	});
+  });
+  </script>
+
+ 
 	<style type="text/css">
 		
 		
@@ -27,7 +186,7 @@
 		line-height: 1.33;
 		padding: 18px 10px 15px 10px;
 	}
-	select.input-s1 {
+	select.input-s1 { 
 		height: 65px;
 		line-height: 46px;
 	}
@@ -49,7 +208,7 @@
 					<?endforeach;?>	
 							<div class="form-group">
 								<label class="sr-only">Project Type</label>
-								<select class="form-control input-lg input-s1" name="project">
+								<select id="combobox" class="form-control input-lg input-s1" name="project">
 								<?foreach($projects AS $k=>$v):?>
 									<option value="<?echo $v->ProjectTypeId?>"><?echo $v->Name?></option>
 								<?endforeach;?>
@@ -175,7 +334,7 @@
 				<h3>Are you a contractor, architect, property manager, service provider or sell tools or appliances?</h3>
 				<h4>Receive online ratings and reviews from satisfied customers to boost your company reputation</h4>
 				<p> Get your free contractor or homeowner webpage and manage your services with improved efficiency and in real time, anywhere in the world. A few examples include remodel, renovation, maintenance, management and “Before and After” images. Handyman.com offers you free, no obligation project tools and property management software. </p>
-				<button type="button" class="btn btn-lg btn-danger">Join Now</button>
+				<a href="<?php echo Yii::app()->request->baseUrl; ?>/contractor/signup"><button type="button" class="btn btn-lg btn-danger">Join Now</button></a>
 				<hr />
 				<h3>Are you a Home Owner or Real Estate Investor? </h3>
 				<p>Get your free Homeowner Webpage and build an interactive virtual version of your custom home on line or manage your property listings. You will be able to add service requests such as restoration, home repairs, rate developers, or consult with a real estate agent as well as “Before and After” images or show off special features on your property. Handyman.com will provide you with a full list of installers, hardwood floor professionals, electricians, painters, plumbers, just to name a few as well as home repair tips, home designs and new hometech products and services.</p>
